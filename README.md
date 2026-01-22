@@ -112,11 +112,13 @@ bun run build
 
 ## 📈 Star History
 
-<div align="center">
-
-[![Star History Chart](https://api.star-history.com/svg?repos=ngxccc/portfolio&type=timeline&legend=top-left)](https://www.star-history.com/#ngxccc/portfolio&type=timeline&legend=top-left)
-
-</div>
+<a href="https://www.star-history.com/#ngxccc/portfolio&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=ngxccc/portfolio&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=ngxccc/portfolio&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ngxccc/portfolio&type=date&legend=top-left" />
+ </picture>
+</a>
 
 ## 📄 License
 
