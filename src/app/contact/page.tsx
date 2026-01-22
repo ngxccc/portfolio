@@ -1,0 +1,16 @@
+import type { Metadata } from "next";
+import { ContactContent } from "./_components/contact-content";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with me, a Software Developer specializing in full-stack development.",
+};
+
+export default function ContactPage() {
+  return (
+    <div className="mx-auto min-h-screen max-w-6xl px-4 pt-16 pb-16 sm:pt-20 sm:pb-20">
+      <ContactContent />
+    </div>
+  );
+}
