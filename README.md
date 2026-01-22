@@ -14,7 +14,7 @@
 
   <h3>Full Stack Developer | MERN Specialist | Database Expert</h3>
 
-[View Live Demo](https://ngxc.vercel.app) · [Report Bug](https://github.com/ngxccc/Software-Dev-Portfolio/issues) · [Request Feature](https://github.com/ngxccc/Software-Dev-Portfolio/issues)
+[View Live Demo](https://ngxc.vercel.app) · [Report Bug](https://github.com/ngxccc/portfolio/issues) · [Request Feature](https://github.com/ngxccc/portfolio/issues)
 
 </div>
 
@@ -26,8 +26,8 @@ A modern, responsive portfolio website showcasing my journey as a Full Stack Dev
 
 <div align="center">
 
-| Feature             | Description                               |
-| ------------------- | ----------------------------------------- |
+| Feature            | Description                               |
+| ------------------ | ----------------------------------------- |
 | 🎨 Modern Design    | Sleek dark theme with beautiful gradients |
 | 📱 Responsive       | Optimized for all devices                 |
 | ⚡ Fast Performance | Optimized loading and rendering           |
@@ -47,8 +47,8 @@ A modern, responsive portfolio website showcasing my journey as a Full Stack Dev
 | ------------ | --------- | -------- | ------- |
 | Next.js      | Node.js   | MongoDB  | VS Code |
 | React        | Express   | MySQL    | Git     |
-| TypeScript   | REST API  | NoSQL    | Vercel  |
-| Tailwind CSS | WebSocket | Redis    | Docker  |
+| TypeScript   | REST API  | Redis    | Vercel  |
+| Tailwind CSS | WebSocket |          | Docker  |
 
 </div>
 
@@ -81,7 +81,7 @@ bun run build
 <div align="center">
 
 | Section         | Description                 |
-| --------------- | --------------------------- |
+| --------------  | --------------------------- |
 | 🏠 Home         | Welcome and introduction    |
 | 👨‍💻 About        | Professional background     |
 | 📂 Projects     | Development portfolio       |
@@ -110,11 +110,11 @@ bun run build
 
 </div>
 
-## 📈 GitHub Stats
+## 📈 Star History
 
 <div align="center">
 
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=ngxccc&theme=dark)](https://github.com/ngxccc)
+[![Star History Chart](https://api.star-history.com/svg?repos=ngxccc/portfolio&type=timeline&legend=top-left)](https://www.star-history.com/#ngxccc/portfolio&type=timeline&legend=top-left)
 
 </div>
 
