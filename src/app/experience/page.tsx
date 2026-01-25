@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="mx-auto min-h-screen max-w-5xl px-4 pt-16 pb-16 sm:pt-20 sm:pb-20">
+    <div className="mx-auto my-16 min-h-screen max-w-5xl px-4 sm:my-20">
       <ExperienceContent />
     </div>
   );

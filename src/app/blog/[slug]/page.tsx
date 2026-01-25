@@ -1,3 +1,4 @@
+import { MDXContent } from "@/components/mdx-content";
 import { getBlogPosts, getPostBySlug } from "@/lib/blog";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -42,7 +43,7 @@ const BlogPost = async ({ params }: PageProps) => {
   }
 
   return (
-    <article className="prose prose-invert mx-auto px-4 py-10">
+    <article className="mx-auto my-20 max-w-3xl px-4">
       <div className="mb-8 text-center">
         <h1 className="mb-2 text-3xl font-bold md:text-5xl">{post.title}</h1>
         <div className="text-gray-400">
@@ -58,10 +59,8 @@ const BlogPost = async ({ params }: PageProps) => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white/5 p-8">
-        <pre className="font-mono text-sm whitespace-pre-wrap">
-          {post.content}
-        </pre>
+      <div className="mdx-container">
+        <MDXContent source={post.content} />
       </div>
     </article>
   );

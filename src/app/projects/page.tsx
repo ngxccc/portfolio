@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="mx-auto min-h-screen max-w-6xl px-4 pt-20 pb-20">
+    <div className="mx-auto my-20 min-h-screen max-w-6xl px-4">
       <ProjectsContent />
     </div>
   );

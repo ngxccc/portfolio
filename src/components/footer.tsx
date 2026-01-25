@@ -3,17 +3,7 @@
 import Link from "next/link";
 import { Code2, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
-
-const PAGELINKS = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Education", path: "/education" },
-  { name: "Experience", path: "/experience" },
-  { name: "Skills", path: "/skills" },
-  { name: "Projects", path: "/projects" },
-  { name: "Certificates", path: "/certificates" },
-  { name: "Contact", path: "/contact" },
-];
+import { PAGELINKS } from "./navbar";
 
 // Split links into columns of 3
 const COLUMN1 = PAGELINKS.slice(0, 3);
@@ -79,7 +69,7 @@ const Footer = () => {
                     href={link.path}
                     className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    {link.name}
+                    {link.label}
                   </Link>
                 ))}
               </div>
@@ -91,7 +81,7 @@ const Footer = () => {
                     href={link.path}
                     className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    {link.name}
+                    {link.label}
                   </Link>
                 ))}
               </div>
@@ -103,7 +93,7 @@ const Footer = () => {
                     href={link.path}
                     className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    {link.name}
+                    {link.label}
                   </Link>
                 ))}
               </div>

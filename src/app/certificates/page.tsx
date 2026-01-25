@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CertificatesPage() {
   return (
-    <div className="mx-auto min-h-screen max-w-6xl px-4 pt-20 pb-20">
+    <div className="mx-auto my-20 min-h-screen max-w-6xl px-4">
       <div className="mb-12">
         <ScrollAnimation>
           <div className="flex items-center gap-3">

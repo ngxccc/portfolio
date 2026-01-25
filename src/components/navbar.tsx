@@ -8,16 +8,16 @@ import { Code2, Menu, X } from "lucide-react";
 import SearchDialog from "./search-dialog";
 import { cn } from "@/lib/utils";
 
-const NAVLINKS = [
-  { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  { path: "/education", label: "Education" },
-  { path: "/experience", label: "Experience" },
-  { path: "/skills", label: "Skills" },
-  { path: "/projects", label: "Projects" },
-  { path: "/certificates", label: "Certificates" },
-  { path: "/contact", label: "Contact" },
-  { path: "/blog", label: "Blog" },
+export const PAGELINKS = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Education", path: "/education" },
+  { label: "Experience", path: "/experience" },
+  { label: "Skills", path: "/skills" },
+  { label: "Projects", path: "/projects" },
+  { label: "Certificates", path: "/certificates" },
+  { label: "Contact", path: "/contact" },
+  { label: "Blog", path: "/blog" },
 ];
 
 const Navbar = () => {
@@ -45,7 +45,7 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden items-center space-x-6 md:flex">
               <SearchDialog />
-              {NAVLINKS.map((link) => (
+              {PAGELINKS.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -85,7 +85,7 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="space-y-1 px-4 pt-2 pb-3">
-              {NAVLINKS.map((link) => (
+              {PAGELINKS.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
