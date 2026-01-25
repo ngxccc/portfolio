@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 export const PAGELINKS = [
   { label: "Home", path: "/" },
+  { label: "Blog", path: "/blog" },
   { label: "About", path: "/about" },
   { label: "Education", path: "/education" },
   { label: "Experience", path: "/experience" },
@@ -17,7 +18,6 @@ export const PAGELINKS = [
   { label: "Projects", path: "/projects" },
   { label: "Certificates", path: "/certificates" },
   { label: "Contact", path: "/contact" },
-  { label: "Blog", path: "/blog" },
 ];
 
 const Navbar = () => {
