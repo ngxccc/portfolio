@@ -3,178 +3,44 @@
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Search, Command, ArrowRight } from "lucide-react";
-
-const searchData = [
-  {
-    title: "Home",
-    description: "Go to the welcome page",
-    path: "/",
-    keywords: [
-      "home",
-      "cv",
-      "resume",
-      "start",
-      "welcome",
-      "portfolio",
-      "ngxc",
-      "tran van ngoc",
-      "software developer",
-      "full stack developer",
-      "mern stack",
-      "web developer",
-    ],
-  },
-  {
-    title: "About",
-    description: "Learn more about me and my background",
-    path: "/about",
-    keywords: [
-      "about",
-      "background",
-      "education",
-      "bio",
-      "profile",
-      "cv",
-      "resume",
-      "ngxc",
-      "tran",
-      "van",
-      "ngoc",
-      "full stack developer",
-      "software engineer",
-      "web developer",
-    ],
-  },
-  {
-    title: "Education",
-    description: "View my educational background",
-    path: "/education",
-    keywords: [
-      "education",
-      "university",
-      "college",
-      "degree",
-      "school",
-      "board",
-      "computer science",
-      "engineering",
-      "b.tech",
-      "bengal college",
-    ],
-  },
-  {
-    title: "Experience",
-    description: "Check out my professional experience",
-    path: "/experience",
-    keywords: [
-      "experience",
-      "work",
-      "career",
-      "jobs",
-      "professional",
-      "internships",
-      "certificates",
-      "mern",
-      "web developer",
-      "full stack",
-      "software developer",
-    ],
-  },
-  {
-    title: "Skills",
-    description: "Explore my technical skills and expertise",
-    path: "/skills",
-    keywords: [
-      "skills",
-      "technologies",
-      "programming",
-      "languages",
-      "frameworks",
-      "web",
-      "development",
-      "software",
-      "tools",
-      "react",
-      "node",
-      "javascript",
-      "typescript",
-      "next.js",
-      "mongodb",
-      "sql",
-    ],
-  },
-  {
-    title: "Projects",
-    description: "View my portfolio of projects",
-    path: "/projects",
-    keywords: [
-      "projects",
-      "portfolio",
-      "work",
-      "examples",
-      "github",
-      "code",
-      "open-source",
-      "web applications",
-      "full stack",
-      "mern stack",
-      "react",
-      "node",
-    ],
-  },
-  {
-    title: "Certificates",
-    description: "View my certifications and achievements",
-    path: "/certificates",
-    keywords: [
-      "certificates",
-      "certifications",
-      "achievements",
-      "courses",
-      "learning",
-      "skills",
-      "professional",
-      "development",
-      "awards",
-      "badges",
-    ],
-  },
-  {
-    title: "Contact",
-    description: "Get in touch with me",
-    path: "/contact",
-    keywords: [
-      "contact",
-      "email",
-      "message",
-      "connect",
-      "hire",
-      "freelance",
-      "work",
-      "collaboration",
-      "job",
-      "opportunity",
-    ],
-  },
-];
+import { navigationConfig } from "@/config/navigation";
 
 const SearchDialog = () => {
+  const [blogPosts, setBlogPosts] = useState<SearchDataType[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch("/api/search");
+        const data = (await res.json()) as SearchDataType[];
+        setBlogPosts(data);
+      } catch (error) {
+        console.error("Failed to fetch blog posts for search", error);
+      }
+    };
+
+    void fetchPosts();
+  }, []);
+
+  const allSearchData = useMemo(() => {
+    return [...navigationConfig, ...blogPosts];
+  }, [blogPosts]);
+
   const results = useMemo(() => {
-    if (!searchQuery) return searchData;
+    if (!searchQuery) return allSearchData.slice(0, 5);
 
     const lowerQuery = searchQuery.toLowerCase();
-    return searchData.filter(
+    return allSearchData.filter(
       (item) =>
         item.title.toLowerCase().includes(lowerQuery) ||
         item.description.toLowerCase().includes(lowerQuery) ||
         item.keywords.some((k) => k.toLowerCase().includes(lowerQuery)),
     );
-  }, [searchQuery]);
+  }, [allSearchData, searchQuery]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -262,32 +128,36 @@ const SearchDialog = () => {
                 </div>
               ) : (
                 <div className="py-2">
-                  {results.map((result, index) => (
-                    <button
-                      key={result.path}
-                      className={`flex w-full items-center justify-between px-4 py-3 text-left hover:bg-white/5 ${
-                        index === selectedIndex ? "bg-white/10" : ""
-                      }`}
-                      onClick={() => {
-                        router.push(result.path);
-                        setIsOpen(false);
-                      }}
-                    >
-                      <div>
-                        <div className="font-medium text-white">
-                          {result.title}
-                        </div>
-                        <div className="text-sm text-gray-400">
-                          {result.description}
-                        </div>
-                      </div>
-                      <ArrowRight
-                        className={`h-4 w-4 text-gray-400 ${
-                          index === selectedIndex ? "opacity-100" : "opacity-0"
+                  {results.map((result, index) => {
+                    return (
+                      <button
+                        key={result.path}
+                        className={`flex w-full items-center justify-between px-4 py-3 text-left hover:bg-white/5 ${
+                          index === selectedIndex ? "bg-white/10" : ""
                         }`}
-                      />
-                    </button>
-                  ))}
+                        onClick={() => {
+                          router.push(result.path);
+                          setIsOpen(false);
+                        }}
+                      >
+                        <div>
+                          <div className="font-medium text-white">
+                            {result.title}
+                          </div>
+                          <div className="text-sm text-gray-400">
+                            {result.description}
+                          </div>
+                        </div>
+                        <ArrowRight
+                          className={`h-4 w-4 text-gray-400 ${
+                            index === selectedIndex
+                              ? "opacity-100"
+                              : "opacity-0"
+                          }`}
+                        />
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>

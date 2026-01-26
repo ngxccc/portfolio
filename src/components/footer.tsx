@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { Code2, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { PAGELINKS } from "./navbar";
+import { navigationConfig } from "@/config/navigation";
 
 // Split links into columns of 3
-const COLUMN1 = PAGELINKS.slice(0, 3);
-const COLUMN2 = PAGELINKS.slice(3, 6);
-const COLUMN3 = PAGELINKS.slice(6, 9);
+const COLUMN1 = navigationConfig.slice(0, 3);
+const COLUMN2 = navigationConfig.slice(3, 6);
+const COLUMN3 = navigationConfig.slice(6, 9);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -69,7 +69,7 @@ const Footer = () => {
                     href={link.path}
                     className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    {link.label}
+                    {link.title}
                   </Link>
                 ))}
               </div>
@@ -81,7 +81,7 @@ const Footer = () => {
                     href={link.path}
                     className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    {link.label}
+                    {link.title}
                   </Link>
                 ))}
               </div>
@@ -93,7 +93,7 @@ const Footer = () => {
                     href={link.path}
                     className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    {link.label}
+                    {link.title}
                   </Link>
                 ))}
               </div>

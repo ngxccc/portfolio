@@ -7,18 +7,7 @@ import { motion } from "framer-motion";
 import { Code2, Menu, X } from "lucide-react";
 import SearchDialog from "./search-dialog";
 import { cn } from "@/lib/utils";
-
-export const PAGELINKS = [
-  { label: "Home", path: "/" },
-  { label: "Blog", path: "/blog" },
-  { label: "About", path: "/about" },
-  { label: "Education", path: "/education" },
-  { label: "Experience", path: "/experience" },
-  { label: "Skills", path: "/skills" },
-  { label: "Projects", path: "/projects" },
-  { label: "Certificates", path: "/certificates" },
-  { label: "Contact", path: "/contact" },
-];
+import { navigationConfig } from "@/config/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +34,7 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden items-center space-x-6 md:flex">
               <SearchDialog />
-              {PAGELINKS.map((link) => (
+              {navigationConfig.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -54,7 +43,7 @@ const Navbar = () => {
                     pathname === link.path && "bg-white/15 backdrop-blur-sm",
                   )}
                 >
-                  {link.label}
+                  {link.title}
                 </Link>
               ))}
             </div>
@@ -85,7 +74,7 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="space-y-1 px-4 pt-2 pb-3">
-              {PAGELINKS.map((link) => (
+              {navigationConfig.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -96,7 +85,7 @@ const Navbar = () => {
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.label}
+                  {link.title}
                 </Link>
               ))}
             </div>
