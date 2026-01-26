@@ -38,24 +38,17 @@
     mask-image: radial-gradient(circle at 50% 0%, white 20%, transparent 70%);
   }
 
-  .spotlight {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    --size: 600px;
-    --spotlight: radial-gradient(
-      var(--size) var(--size) at center,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1) 100%
-    );
-    mask-image: var(--spotlight);
-    -webkit-mask-image: var(--spotlight);
-    background: radial-gradient(
-      300px 300px at center,
-      rgba(255, 255, 255, 0.05),
-      transparent 100%
-    );
+  .prose h2 a,
+  .prose h3 a {
+    @apply no-underline hover:underline;
+  }
+
+  span[data-highlighted-line] {
+    @apply -mx-4 block border-l-4 border-cyan-500 bg-cyan-500/10 px-4;
+  }
+
+  :not(pre) > code {
+    @apply rounded-md bg-white/10 px-1.5 py-0.5 font-mono text-sm text-cyan-300;
   }
 }
 
