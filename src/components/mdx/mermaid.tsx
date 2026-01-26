@@ -39,7 +39,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
   return (
     <div
       className={cn(
-        "relative my-8 h-fit w-full overflow-hidden rounded-xl border border-white/10 bg-gray-900/50 backdrop-blur-sm",
+        "relative my-8 h-fit w-full overflow-hidden rounded-xl border border-white/10 bg-white/5",
         className,
       )}
     >
@@ -47,9 +47,9 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
         <TransformWrapper
           initialScale={1}
           minScale={0.5}
-          maxScale={4}
+          maxScale={5}
           centerOnInit={true}
-          wheel={{ step: 0.1 }}
+          wheel={{ step: 0.4 }}
         >
           {({ zoomIn, zoomOut, resetTransform }) => (
             <>
@@ -66,7 +66,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
               </TransformComponent>
 
               {/* Thanh công cụ (Toolbar) */}
-              <div className="absolute right-4 bottom-4 z-10 flex flex-col gap-2 rounded-lg border border-white/10 bg-gray-800/90 p-1.5 shadow-xl backdrop-blur">
+              <div className="absolute right-4 bottom-4 z-10 flex flex-col gap-2 rounded-lg border border-white/10 bg-gray-200/10 p-1.5 shadow-xl backdrop-blur">
                 <button
                   onClick={() => zoomIn()}
                   className="rounded p-1.5 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
@@ -74,6 +74,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
                 >
                   <ZoomIn className="h-4 w-4" />
                 </button>
+
                 <button
                   onClick={() => zoomOut()}
                   className="rounded p-1.5 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
@@ -81,6 +82,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
                 >
                   <ZoomOut className="h-4 w-4" />
                 </button>
+
                 <button
                   onClick={() => resetTransform()}
                   className="rounded p-1.5 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
@@ -88,7 +90,9 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
                 >
                   <RotateCcw className="h-4 w-4" />
                 </button>
+
                 <div className="my-0.5 h-px w-full bg-white/10" />
+
                 <div
                   className="flex items-center justify-center p-1.5 text-gray-500"
                   title="Pan Mode Active"

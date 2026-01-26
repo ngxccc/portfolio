@@ -9,6 +9,18 @@
     @apply bg-black text-gray-100;
     overflow-x: hidden;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply scroll-mt-20;
+  }
+
+  :target {
+    @apply scroll-mt-20;
+  }
 }
 
 /* Các thành phần UI phức tạp -> Bỏ vào components */

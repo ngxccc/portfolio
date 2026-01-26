@@ -49,7 +49,22 @@ const remarkMermaid = () => {
 
 const components = {
   h1: (props: any) => (
-    <h1 className="mt-8 mb-4 text-3xl font-bold text-white" {...props} />
+    <h1
+      className="mt-12 mb-4 scroll-mt-24 text-3xl font-bold text-white"
+      {...props}
+    />
+  ),
+  h2: (props: any) => (
+    <h2
+      className="mt-10 mb-4 scroll-mt-24 border-b border-white/10 pb-2 text-2xl font-bold text-white"
+      {...props}
+    />
+  ),
+  h3: (props: any) => (
+    <h3
+      className="mt-8 mb-4 scroll-mt-24 text-xl font-bold text-white"
+      {...props}
+    />
   ),
   p: (props: any) => <p className="mb-4 leading-7 text-gray-300" {...props} />,
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
