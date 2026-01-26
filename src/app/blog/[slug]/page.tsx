@@ -1,4 +1,5 @@
 import { MDXContent } from "@/components/mdx-content";
+import { TableOfContents } from "@/components/table-of-contents";
 import { getBlogPosts, getPostBySlug } from "@/lib/blog";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -43,10 +44,13 @@ const BlogPost = async ({ params }: PageProps) => {
   }
 
   return (
-    <article className="mx-auto my-20 max-w-3xl px-4">
-      <div className="mb-8 text-center">
-        <h1 className="mb-2 text-3xl font-bold md:text-5xl">{post.title}</h1>
-        <div className="text-gray-400">
+    <div className="mx-auto max-w-7xl px-4 py-12 md:py-20">
+      <header className="mx-auto mb-5 max-w-3xl text-center">
+        <h1 className="gradient-text mb-6 text-3xl font-bold md:text-5xl">
+          {post.title}
+        </h1>
+
+        <div className="mb-4 flex items-center justify-center gap-4 text-sm text-gray-400">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("en-US", {
               year: "numeric",
@@ -57,12 +61,30 @@ const BlogPost = async ({ params }: PageProps) => {
           <span className="mx-2">•</span>
           <span>{post.readingTime}</span>
         </div>
-      </div>
 
-      <div className="mdx-container">
-        <MDXContent source={post.content} />
+        <div className="flex flex-wrap justify-center gap-2">
+          {post.tags.map((tag) => (
+            <span key={tag} className="text-sm text-cyan-400">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[250px_1fr]">
+        <aside className="hidden lg:block">
+          <div className="sticky top-24">
+            <TableOfContents />
+          </div>
+        </aside>
+
+        <article className="prose prose-invert max-w-none">
+          <div id="mdx-content">
+            <MDXContent source={post.content} />
+          </div>
+        </article>
       </div>
-    </article>
+    </div>
   );
 };
 export default BlogPost;
