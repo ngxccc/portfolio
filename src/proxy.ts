@@ -1,77 +1,29 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { ipAddress } from "@vercel/functions";
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
-});
-
-const ratelimit = new Ratelimit({
-  redis: redis,
-  limiter: Ratelimit.slidingWindow(20, "10s"),
-  analytics: true,
-});
-
-export async function proxy(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const url = request.nextUrl.pathname.toLowerCase();
 
   // Security Headers
   const headers = response.headers;
-  headers.set("X-DNS-Prefetch-Control", "on");
-  headers.set(
-    "Strict-Transport-Security",
-    "max-age=63072000; includeSubDomains; preload",
-  );
   headers.set("X-XSS-Protection", "1; mode=block");
+  // Chống clickjacking
   headers.set("X-Frame-Options", "SAMEORIGIN");
+  // Ép trình duyệt chỉ load resource an toàn
   headers.set("X-Content-Type-Options", "nosniff");
+  // Bảo vệ thông tin referrer
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  // Chặn các tính năng không dùng đến
   headers.set(
     "Permissions-Policy",
     "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   );
-
-  if (
-    /\.(png|jpg|jpeg|gif|webp|svg|ico|css|js)$/.exec(url) ||
-    url.startsWith("/_next") ||
-    url.startsWith("/static")
-  ) {
-    return response;
-  }
-
-  // Enhanced Rate Limiting
-  const ip = ipAddress(request) ?? "127.0.0.1";
-  const { success, limit, reset, remaining } = await ratelimit.limit(ip);
-
-  headers.set("X-RateLimit-Limit", limit.toString());
-  headers.set("X-RateLimit-Remaining", remaining.toString());
-  headers.set("X-RateLimit-Reset", reset.toString());
-
-  if (!success) {
-    const isPageRequest = request.headers.get("accept")?.includes("text/html");
-
-    if (isPageRequest) {
-      return NextResponse.rewrite(new URL("/too-many-requests", request.url), {
-        status: 429,
-      });
-    }
-
-    return NextResponse.json(
-      {
-        error: "rate_limit_exceeded",
-        message: "Bạn gửi yêu cầu quá dồn dập, hãy bình tĩnh!",
-        retryAfter: 60,
-      },
-      {
-        status: 429,
-        headers: { "Retry-After": "60" },
-      },
-    );
-  }
+  // HSTS (Bắt buộc dùng HTTPS)
+  headers.set(
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains; preload",
+  );
 
   // Prevent common attack patterns
   const blockedPatterns = ["/wp-admin", "/wp-login", "/admin", ".php", ".env"];

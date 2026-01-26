@@ -1,22 +1,48 @@
 import { getBlogPosts } from "@/lib/blog";
 import Link from "next/link";
 import { ScrollAnimation } from "@/components/scroll-animation";
-import { Calendar, Tag } from "lucide-react";
+import { Calendar, Tag, X } from "lucide-react";
 
-const Blog = () => {
-  const posts = getBlogPosts();
+interface BlogPageProps {
+  searchParams: Promise<{ tag: string }>;
+}
+
+const Blog = async ({ searchParams }: BlogPageProps) => {
+  const allPosts = getBlogPosts();
+  const { tag } = await searchParams;
+
+  const posts = tag
+    ? allPosts.filter((post) => post.tags.includes(tag))
+    : allPosts;
 
   return (
     <div className="mx-auto my-20 min-h-screen max-w-4xl px-4">
       <ScrollAnimation>
-        <h2 className="gradient-text mb-12 text-4xl font-bold">Latest Posts</h2>
+        <div className="mb-12">
+          <h2 className="gradient-text mb-12 text-4xl font-bold">
+            {tag ? `Posts tagged "${tag}"` : "Latest Posts"}
+          </h2>
+
+          {tag && (
+            <Link
+              href="/blog"
+              className="mt-4 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white"
+            >
+              <X className="h-4 w-4" /> Clear filter
+            </Link>
+          )}
+        </div>
       </ScrollAnimation>
 
       <div className="space-y-8">
-        {posts.map((post) => (
-          <ScrollAnimation key={post.slug}>
-            <Link href={`/blog/${post.slug}`} className="group block">
-              <article className="relative overflow-hidden rounded-2xl border border-white/10 bg-gray-800/50 p-6 backdrop-blur-sm transition-all hover:border-cyan-500/30 hover:bg-gray-800/80 hover:shadow-lg hover:shadow-cyan-500/5">
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <ScrollAnimation key={post.slug}>
+              <article className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gray-800/50 p-6 backdrop-blur-sm transition-all hover:border-cyan-500/30 hover:bg-gray-800/80 hover:shadow-lg hover:shadow-cyan-500/5">
+                <Link href={`/blog/${post.slug}`}>
+                  <span className="absolute inset-0" />
+                </Link>
+
                 {/* Header: Date & Title */}
                 <div className="mb-4 space-y-2">
                   <div className="flex items-center gap-3 text-sm text-gray-400">
@@ -43,21 +69,28 @@ const Blog = () => {
                 </p>
 
                 {/* Footer: Tags */}
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="relative z-10 flex flex-wrap items-center gap-2">
                   <Tag className="h-4 w-4 text-gray-500" />
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/5 bg-white/5 px-3 py-1 text-xs text-gray-300 transition-colors group-hover:border-white/10 group-hover:bg-white/10"
+                  {post.tags.map((t) => (
+                    <Link
+                      key={t}
+                      href={`/blog?tag=${t}`}
+                      className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                        t === tag
+                          ? "border-cyan-500 bg-cyan-500/10 text-cyan-400"
+                          : "border-white/5 bg-white/5 text-gray-300 hover:bg-white/10"
+                      }`}
                     >
-                      {tag}
-                    </span>
+                      {t}
+                    </Link>
                   ))}
                 </div>
               </article>
-            </Link>
-          </ScrollAnimation>
-        ))}
+            </ScrollAnimation>
+          ))
+        ) : (
+          <p className="text-gray-400">No posts found.</p>
+        )}
       </div>
     </div>
   );
