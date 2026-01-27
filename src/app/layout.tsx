@@ -62,13 +62,13 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = await headers();
-  const nonce = headersList.get("x-nonce") ?? "";
+  // const headersList = await headers();
+  // const nonce = headersList.get("x-nonce") ?? "";
 
   return (
     <html lang="en" className={inter.className}>
