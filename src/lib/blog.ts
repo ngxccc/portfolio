@@ -21,6 +21,14 @@ export type BlogPost = z.infer<typeof BlogPostSchema> & {
   readingTime: string;
 };
 
+const calculateReadingTime = (content: string): string => {
+  const wordsPerMinute = 200;
+  // Loại bỏ HTML tags và ký tự đặc biệt để đếm từ chuẩn hơn
+  const words = content.replace(/<[^>]*>/g, "").split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
+};
+
 export const getBlogPosts = (): BlogPost[] => {
   if (!existsSync(postsDir)) return [];
 
@@ -43,7 +51,7 @@ export const getBlogPosts = (): BlogPost[] => {
         slug,
         ...parsedData,
         content,
-        readingTime: "5 min read", // tạm hardcode
+        readingTime: calculateReadingTime(content),
       } as BlogPost;
     });
 
@@ -65,7 +73,7 @@ export const getPostBySlug = (slug: string): BlogPost | null => {
       slug,
       ...parsedData,
       content,
-      readingTime: "5 min read", // tạm hardcode
+      readingTime: calculateReadingTime(content),
     } as BlogPost;
   } catch (error) {
     return null;

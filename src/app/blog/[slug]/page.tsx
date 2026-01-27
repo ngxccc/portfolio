@@ -4,6 +4,7 @@ import { getBlogPosts, getPostBySlug } from "@/lib/blog";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "katex/dist/katex.min.css";
+import { ChevronDown, List } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -53,7 +54,7 @@ const BlogPost = async ({ params }: PageProps) => {
 
         <div className="mb-4 flex items-center justify-center gap-4 text-sm text-gray-400">
           <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString("en-US", {
+            {new Date(post.date).toLocaleDateString("vi-VN", {
               year: "numeric",
               month: "long",
               day: "numeric",
@@ -72,12 +73,29 @@ const BlogPost = async ({ params }: PageProps) => {
         </div>
       </header>
 
-      <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[250px_1fr]">
+      <div className="relative grid grid-cols-1 lg:grid-cols-[250px_1fr] lg:gap-12">
         <aside className="hidden lg:block">
           <div className="sticky top-24">
             <TableOfContents />
           </div>
         </aside>
+
+        {/* Mục lục cho Mobile */}
+        <div className="sticky lg:hidden">
+          <details className="group rounded-xl border border-white/10 bg-white/5 [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-gray-200">
+              <div className="flex items-center gap-2">
+                <List className="h-5 w-5 text-cyan-400" />
+                Mục lục
+              </div>
+              <ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" />
+            </summary>
+
+            <div className="border-t border-white/10 p-4 pt-2">
+              <TableOfContents />
+            </div>
+          </details>
+        </div>
 
         <article className="prose prose-invert max-w-none">
           <div id="mdx-content">

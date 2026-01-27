@@ -4,6 +4,11 @@
   color-scheme: dark;
 }
 
+@theme inline {
+  --font-sans: var(--font-inter-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
 @layer base {
   body {
     @apply bg-black text-gray-100;
@@ -21,10 +26,21 @@
   :target {
     @apply scroll-mt-20;
   }
+
+  code, pre {
+    font-family: var(--font-mono);
+    font-variant-ligatures: normal;
+    /* Tinh chỉnh render chữ cho sắc nét trên màn hình to */
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 /* Các thành phần UI phức tạp -> Bỏ vào components */
 @layer components {
+  .bg-glass {
+    @apply border border-white/10 bg-white/5;
+  }
+
   .gradient-text {
     @apply bg-linear-to-r from-white to-gray-500 bg-clip-text text-transparent;
   }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Background3D from "@/components/background-3d";
 import Navbar from "@/components/navbar";
 import "./globals.css";
@@ -7,11 +7,18 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/footer";
 import { siteConfig } from "@/config/site";
+import { BackToTop } from "@/components/back-to-top";
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter-sans",
   display: "swap",
   preload: true,
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
@@ -74,12 +81,15 @@ export default function RootLayout({
           content="44UaAHzsglSAsbWEa_MVdQhAeNTB0JfR5MgYRQ63OOs"
         />
       </head>
-      <body>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} bg-black text-gray-100 antialiased`}
+      >
         <div className="flex min-h-screen flex-col">
           <Background3D />
           <Navbar />
           <main className="grow pt-16">{children}</main>
           <SpeedInsights />
+          <BackToTop />
           <Footer />
         </div>
         <Analytics />
