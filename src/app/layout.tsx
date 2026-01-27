@@ -54,11 +54,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/nextjs.png",
-    shortcut: "/nextjs.png",
-    apple: "/nextjs.png",
-  },
 };
 
 export const viewport: Viewport = {
