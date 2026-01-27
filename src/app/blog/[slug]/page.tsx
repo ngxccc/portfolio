@@ -3,6 +3,7 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { getBlogPosts, getPostBySlug } from "@/lib/blog";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import "katex/dist/katex.min.css";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -44,7 +45,7 @@ const BlogPost = async ({ params }: PageProps) => {
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 md:py-20">
+    <div className="mx-auto max-w-7xl px-4 py-2 md:py-4">
       <header className="mx-auto mb-5 max-w-3xl text-center">
         <h1 className="gradient-text mb-6 text-3xl font-bold md:text-5xl">
           {post.title}

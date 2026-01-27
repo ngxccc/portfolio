@@ -7,8 +7,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import Pre from "./mdx/pre";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
-
-import dynamic from "next/dynamic";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import MermaidWrapper from "./mdx/mermaid-wrapper";
 
 interface VisitLineNode {
@@ -143,10 +143,11 @@ export const MDXContent = ({ source }: { source: string }) => {
       components={components}
       options={{
         mdxOptions: {
-          remarkPlugins: [remarkGfm, remarkMermaid],
+          remarkPlugins: [remarkGfm, remarkMermaid, remarkMath],
           rehypePlugins: [
             rehypeSlug,
             [rehypeAutolinkHeadings, { behavior: "wrap" }],
+            rehypeKatex,
             [rehypePrettyCode, prettyCodeOptions],
           ],
         },

@@ -1,0 +1,150 @@
+---
+title: "Các kiến thức về Phân Tích Và Thiết Kế Hệ Thống"
+description: "Đây là bài lưu trữ về những kiến thức, thông tin, best practive về Phân Tích Và Thiết Kế Hệ Thống mà tôi biết"
+date: "2026-1-27"
+tags: ["system-design", "pttkht", "knowledge"]
+---
+
+## Khái niệm về Hệ thống (System) là gì?
+
+**Hệ thống** là một tập hợp các thành phần (phần tử) có liên quan và tương tác với nhau để cùng thực hiện một mục tiêu chung.
+
+**Lấy ví dụ thực tế:**
+
+- **Hệ tiêu hóa:** Gồm miệng, dạ dày, ruột... kết hợp với nhau để tiêu hóa thức ăn.
+
+- **Hệ thống ATM:** Gồm phần cứng (máy rút tiền), phần mềm, kết nối mạng và thẻ ngân hàng... kết hợp để giúp khách hàng thực hiện giao dịch tài chính.
+
+Trong ngành IT, khi nói đến "Hệ thống thông tin", chúng ta đang nói về sự kết hợp giữa con người, dữ liệu, quy trình và công nghệ để xử lý thông tin.
+
+## Các thành phần của một hệ thống
+
+| **Thành phần**        | **Ý nghĩa chi tiết**                                                                                                                    |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Các phần tử** 🧩 | Những bộ phận nhỏ nhất cấu thành nên hệ thống. Ví dụ: Trong hệ thống quản lý bán hàng, phần tử là nhân viên, máy tính, mã hàng hóa.     |
+| **2. Liên kết** 🔗    | Mối quan hệ và sự tương tác giữa các phần tử. Nếu các phần tử không liên kết, chúng ta chỉ có một đống lộn xộn chứ không phải hệ thống. |
+| **3. Biên** 🗺️       | Đường ranh giới xác định cái gì thuộc về hệ thống và cái gì không. Nó giúp người phân tích tập trung vào phạm vi dự án.                 |
+| **4. Giao diện** 🖥️  | Điểm tiếp xúc nơi hệ thống trao đổi thông tin với môi trường hoặc hệ thống khác (ví dụ: màn hình đăng nhập, cổng thanh toán).           |
+| **5. Môi trường** 🌍  | Những yếu tố bên ngoài biên giới nhưng có tác động đến hệ thống như luật pháp, khách hàng, đối thủ cạnh tranh.                          |
+| **6. Mục đích** 🎯    | Lý do tối thượng mà hệ thống được xây dựng. Mọi hoạt động của các phần tử đều phải hướng tới mục đích này.                              |
+| **7. Input** 📥       | Những tài nguyên, dữ liệu được đưa từ môi trường vào hệ thống qua giao diện.                                                            |
+| **8. Output** 📤      | Những sản phẩm, thông tin mà hệ thống trả lại cho môi trường sau khi xử lý.                                                             |
+| **9. Ràng buộc** ⚖️   | Những giới hạn mà hệ thống phải tuân thủ, ví dụ như ngân sách có hạn, thời gian xử lý phải dưới 2 giây, hoặc quy định về bảo mật.       |
+
+## Khái niệm về Hệ thống thông tin (Information System)💡
+
+**Hệ thống thông tin (HTTT)** là một tập hợp gồm các phần cứng, phần mềm, dữ liệu, con người và quy trình phối hợp với nhau để thu thập, xử lý, lưu trữ và phân phối thông tin nhằm hỗ trợ việc ra quyết định và quản lý trong một tổ chức.
+
+### Phân tích hệ thống Grab qua 9 thành phần 🚗
+
+- **Các phần tử 🧩:** Ứng dụng trên điện thoại khách hàng, ứng dụng của tài xế, máy chủ (server) lưu trữ dữ liệu, hệ thống bản đồ.
+
+- **Liên kết 🔗:** Luồng dữ liệu truyền đi giữa khách hàng và tài xế qua máy chủ (ví dụ: khi khách đặt xe, tín hiệu gửi đến tài xế gần nhất).
+
+- **Biên 🚧:** Phạm vi hoạt động của ứng dụng Grab (không bao gồm các ứng dụng khác như Facebook hay Youtube trên điện thoại của bạn).
+
+- **Giao diện 📱:** Màn hình cảm ứng trên điện thoại, các nút bấm "Đặt xe", hoặc các cổng kết nối (API) với ngân hàng để thanh toán.
+
+- **Môi trường 🌍:** Các yếu tố tác động như thời tiết (mưa thì giá tăng), luật giao thông, hoặc các đối thủ như Be, Xanh SM.
+
+- **Mục đích 🎯:** Kết nối người cần đi xe với người có xe một cách nhanh chóng và an toàn.
+
+- **Input 📥:** Điểm đón, điểm đến, loại xe lựa chọn, mã giảm giá.
+
+- **Output 📤:** Tài xế đến đón, lộ trình di chuyển trên bản đồ, hóa đơn thanh toán khi kết thúc chuyến đi.
+
+- **Ràng buộc ⚖️:** Điện thoại phải có kết nối Internet, số dư tài khoản đủ để thanh toán (nếu dùng thẻ), và tài xế phải đang ở trong trạng thái "Sẵn sàng".
+
+### 5 thành phần (phần tử) cốt lõi của Hệ thống thông tin
+
+| **Thành phần**                | **Ý nghĩa chi tiết**                                                                                        |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Phần cứng (Hardware) 💻**   | Các thiết bị vật lý như máy tính, điện thoại, máy chủ, ổ cứng.                                              |
+| **Phần mềm (Software) 💿**    | Các chương trình điều khiển phần cứng (hệ điều hành) và các ứng dụng cụ thể (như Grab, Excel).              |
+| **Dữ liệu (Data) 📊**         | Các thông tin thô chưa được xử lý (tên khách hàng, tọa độ GPS, giá tiền).                                   |
+| **Quy trình (Procedures) 📋** | Các bước thực hiện, nội quy hoặc logic nghiệp vụ (ví dụ: Quy trình xác nhận đơn hàng, quy trình hoàn tiền). |
+| **Con người (People) 👤**     | Những người vận hành, lập trình và sử dụng hệ thống (đây là thành phần quan trọng nhất).                    |
+
+## **Vòng đời phát triển hệ thống (SDLC - System Development Life Cycle)** 🔄
+
+> Hãy tưởng tượng SDLC giống như việc xây dựng một tòa nhà: bạn cần khảo sát mặt bằng, vẽ bản thiết kế rồi mới bắt đầu xây gạch và hoàn thiện.
+
+| **Giai đoạn**                          | **Nhiệm vụ trọng tâm**                                                                                |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **1. Lập kế hoạch (Planning)** 📝      | Xác định dự án có đáng làm không? (Tính khả thi về kinh tế, kỹ thuật, thời gian).                     |
+| **2. Phân tích (Analysis)** 🔍         | Nghiên cứu hệ thống hiện tại và xác định yêu cầu người dùng (Hệ thống mới cần làm **Cái gì?**).       |
+| **3. Thiết kế (Design)** 📐            | Mô tả chi tiết cách hệ thống vận hành (Hệ thống hoạt động **Thế nào?** về giao diện, dữ liệu, logic). |
+| **4. Triển khai (Implementation)** 🛠️ | Viết code, kiểm thử (Testing), cài đặt hệ thống và đào tạo người dùng sử dụng.                        |
+| **5. Bảo trì (Maintenance)** 🔄        | Sửa lỗi phát sinh và cập nhật các tính năng mới để hệ thống không bị lạc hậu.                         |
+
+## Phân tích vs. Thiết kế: "Cái gì" và "Như thế nào" 🏗️
+
+Trong quá trình xây dựng một hệ thống, hai giai đoạn này có mục tiêu rất khác biệt nhưng lại gắn kết chặt chẽ:
+
+- **Phân tích hệ thống (Analysis) 🔍**: Tập trung vào việc trả lời câu hỏi: **"Hệ thống phải làm cái gì?"**. Ở bước này, chúng ta đóng vai trò như một thám tử để tìm hiểu nhu cầu của người dùng, các vấn đề của hệ thống cũ và xác định các yêu cầu mà hệ thống mới phải đáp ứng.
+
+- **Thiết kế hệ thống (Design) 📐**: Tập trung vào câu hỏi: **"Hệ thống thực hiện điều đó như thế nào?"**. Từ những yêu cầu đã thu thập ở bước phân tích, chúng ta bắt đầu vẽ ra "bản thiết kế" kỹ thuật, bao gồm cấu trúc cơ sở dữ liệu, giao diện người dùng và cách các module phần mềm kết nối với nhau.
+
+## Phân loại các Hệ thống thông tin 🗂️
+
+Dựa vào cấp bậc quản lý và mục đích sử dụng trong doanh nghiệp, các hệ thống thông tin thường được chia thành 4 loại chính theo mô hình kim tự tháp (trong đó 1 và 2 nằm ở tầng thấp nhất):
+
+1. **Hệ thống xử lý giao dịch (TPS - Transaction Processing Systems) 🛒**: Nằm ở tầng thấp nhất, phục vụ các hoạt động hàng ngày. Ví dụ: Máy POS tính tiền tại siêu thị, hệ thống nhập kho.
+
+2. **Hệ chuyển giao (OAS - Office Automation Systems) 🔄**: Đây là hệ thống hỗ trợ việc truyền tải, phối hợp và quản lý các luồng thông tin giữa các cá nhân, bộ phận. Ví dụ: Microsoft Teams, Google Workspace hay các hệ thống quản lý văn bản (e-Office) trong doanh nghiệp.
+
+3. **Hệ thống thông tin quản lý (MIS - Management Information Systems) 📊**: Tổng hợp dữ liệu từ TPS để tạo ra các báo cáo định kỳ cho nhà quản lý cấp trung. Ví dụ: Báo cáo doanh số tháng, báo cáo tồn kho.
+
+4. **Hệ thống hỗ trợ ra quyết định (DSS - Decision Support Systems) ⚖️**: Sử dụng các mô hình phân tích để giúp giải quyết các vấn đề không định kỳ và phức tạp. Ví dụ: Hệ thống dự báo xu hướng thị trường để quyết định đầu tư.
+
+5. **Hệ thống hỗ trợ điều hành (ESS/EIS - Executive Support Systems) 👑**: Cung cấp thông tin tổng quát và trực quan cho lãnh đạo cấp cao nhất để hoạch định chiến lược dài hạn.
+
+## Các góc nhìn của Hệ thống thông tin 👁️
+
+| **Góc nhìn**                   | **Trọng tâm chính**                                                                    | **Câu hỏi then chốt**                                                                     |
+| ------------------------------ | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **1. Người dùng (User)** 👥    | Trải nghiệm và sự tiện lợi của người trực tiếp sử dụng hệ thống.                       | "Giao diện có dễ dùng không? Người dùng cần nhấn bao nhiêu nút để xong việc?"             |
+| **2. Nghiệp vụ (Business)** 💼 | Các quy tắc, quy trình và mục tiêu kinh doanh của tổ chức.                             | "Hệ thống có tuân thủ đúng luật thuế không? Quy trình duyệt đơn hàng gồm những bước nào?" |
+| **3. Logic (Logical)** 🧠      | Cách các thành phần dữ liệu và chức năng liên kết với nhau (không phụ thuộc thiết bị). | "Dữ liệu khách hàng liên kết với hóa đơn như thế nào? Cấu trúc thông tin ra sao?"         |
+| **4. Vật lý (Physical)** 🛠️   | Các thiết bị phần cứng, mạng và ngôn ngữ lập trình cụ thể.                             | "Hệ thống chạy trên server nào? Dùng cơ sở dữ liệu SQL hay NoSQL?"                        |
+
+### Một ví dụ để dễ hình dung 🏠
+
+Hãy so sánh việc xây dựng hệ thống thông tin với việc **xây một ngôi nhà**:
+
+- **Góc nhìn người dùng:** Là cảm giác của chủ nhà khi sống trong đó (phòng khách có thoáng không, công tắc đèn đặt ở đâu cho tiện).
+
+- **Góc nhìn nghiệp vụ:** Là công năng của ngôi nhà (nhà dùng để ở, để kinh doanh hay để cho thuê).
+
+- **Góc nhìn logic:** Là bản vẽ sơ đồ điện nước, sơ đồ các phòng trên giấy.
+
+- **Góc nhìn vật lý:** Là gạch gì, xi măng loại nào, dây điện hãng nào và đặt máy bơm ở đâu.
+
+## Các phương pháp mô hình hoá Hệ thống
+
+### A. Các thành phần của một phương pháp mô hình hóa 🧱
+
+Để một phương pháp mô hình hóa hoạt động hiệu quả, nó thường cần 3 thành phần "kiềng ba chân" sau:
+
+1. **Ngôn ngữ mô hình hóa (Notation/Language):** 🗣️ Là tập hợp các ký hiệu, biểu tượng (hình vuông, hình tròn, mũi tên) và quy tắc để vẽ. Ví dụ: Ngôn ngữ UML (Unified Modeling Language).
+
+2. **Quy trình/Phương pháp luận (Process/Methodology):** 🔄 Các bước thực hiện cụ thể. Chúng ta bắt đầu vẽ cái gì trước? Sau đó đến cái gì? Làm sao để kiểm tra bản vẽ có đúng không?
+
+3. **Công cụ hỗ trợ (Tools):** 🛠️ Các phần mềm giúp chúng ta vẽ và quản lý các mô hình này thay vì vẽ tay (như Visual Paradigm, Draw.io, hay StarUML).
+
+### B. Các phương pháp mô hình hóa phổ biến 📐
+
+Trong lịch sử ngành phân tích hệ thống, có hai "trường phái" lớn nhất:
+
+#### 1. Phương pháp hướng cấu trúc (Structured Approach) 🏗️
+
+- **Tư tưởng:** Chia để trị. Hệ thống được nhìn nhận dưới dạng các **tiến trình** (xử lý) và **luồng dữ liệu** chảy giữa chúng.
+
+- **Công cụ đặc trưng:** Sơ đồ luồng dữ liệu (DFD), Sơ đồ thực thể mối quan hệ (ERD).
+
+#### 2. Phương pháp hướng đối tượng (Object-Oriented Approach - OO) 💎
+
+- **Tư tưởng:** Nhìn hệ thống như một tập hợp các **đối tượng** (Object) tương tác với nhau. Mỗi đối tượng vừa có dữ liệu vừa có hành động.
+
+- **Công cụ đặc trưng:** Các sơ đồ UML (Use Case, Class Diagram, Sequence Diagram).
+

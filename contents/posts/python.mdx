@@ -55,7 +55,7 @@ inverted = {v: k for k, v in original.items()}
 print(inverted)
 ```
 
-### 2. Truy cập an toàn (`.get()`)
+### 2. Truy cập an toàn (.get())
 
 Trong Python, `d["key_khong_ton_tai"]` sẽ ném lỗi **KeyError** làm crash chương trình. Vậy nên chúng ta sẽ sử dụng method `.get()` để tránh việc đó.
 
@@ -64,9 +64,9 @@ Trong Python, `d["key_khong_ton_tai"]` sẽ ném lỗi **KeyError** làm crash c
 print(user_data.get("age", 0))
 ```
 
-### 3. Module `collections`
+### 3. Module collections
 
-#### A. `Counter` (Đếm tần suất)
+#### A. Counter (Đếm tần suất)
 
 ```python
 from collections import Counter
@@ -78,7 +78,7 @@ count = Counter(s)
 print(count.most_common(3))
 ```
 
-#### B. `defaultdict` (Dictionary mặc định)
+#### B. defaultdict (Dictionary mặc định)
 
 Khắc phục sự phiền toái khi phải kiểm tra "key đã tồn tại chưa" trước khi append vào list.
 
@@ -130,7 +130,7 @@ _(Nếu bị lỗi policy, chạy `Set-ExecutionPolicy -ExecutionPolicy RemoteSi
 source .venv/Scripts/activate
 ```
 
-## `@dataclass` (Tự động hóa Class)
+## @dataclass (Tự động hóa Class)
 
 - **Là gì:** Một decorator giúp tự động sinh ra các hàm `__init__`, `__repr__` (tương tự `ToString`), `__eq__` (so sánh bằng) cho class.
 
@@ -141,7 +141,7 @@ source .venv/Scripts/activate
 
   - _Dùng @dataclass:_ Chỉ cần khai báo biến, Python tự làm phần còn lại.
 
-## `@property` (Getter thông minh)
+## @property (Getter thông minh)
 
 - **Là gì:** Biến một phương thức (method) thành một thuộc tính (attribute).
 
@@ -152,7 +152,7 @@ source .venv/Scripts/activate
 
   - Che giấu logic xử lý (Encapsulation). Ví dụ: `price` là số nguyên `1000000`, nhưng `formatted_price` tự động trả về string `"1.000.000 đ"`.
 
-## `@abstractmethod` (Hàm thuần ảo)
+## @abstractmethod (Hàm thuần ảo)
 
 - **Là gì:** Bắt buộc các class con kế thừa **PHẢI** viết lại (override) hàm này. Nếu không viết lại, Python sẽ báo lỗi ngay khi chạy.
 

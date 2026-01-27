@@ -28,7 +28,10 @@ const Pre = ({ children, className, ...props }: PreProps) => {
       <button
         aria-label="Copy code"
         type="button"
-        className="absolute top-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/5 text-gray-400 opacity-0 backdrop-blur transition-all group-hover:opacity-100 hover:bg-white/10 hover:text-white"
+        className={cn(
+          "absolute top-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/5 text-gray-400 backdrop-blur transition-all hover:bg-white/10 hover:text-white",
+          "opacity-100 lg:opacity-0 lg:group-hover:opacity-100",
+        )}
         onClick={onCopy}
       >
         {copied ? (

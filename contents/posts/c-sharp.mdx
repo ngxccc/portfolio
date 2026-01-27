@@ -1,0 +1,122 @@
+---
+title: "Các kiến thức về C#"
+description: "Đây là bài lưu trữ về những kiến thức, thông tin, best practive về C# mà tôi biết"
+date: "2026-1-27"
+tags: ["csharp", "c#", "knowledge"]
+---
+
+## Dotnet CLI
+
+**Create a new solution with .slnx format:**
+
+```bash
+dotnet new sln -n Name -o Path --format slnx
+# or
+dotnet new sln -n Name -o Path
+dotnet sln migrate
+
+rm beginner.sln
+```
+
+**Create a new console app:**
+
+```bash
+# Top-level statements
+dotnet new console -n TenProject -f net8.0
+
+# with main func
+dotnet new console -n TenProject --use-program-main
+```
+
+**Create a new libary project:**
+
+```bash
+dotnet new classlib -n MyApp.Library
+```
+
+**Add and remove a solution into a project:**
+
+```bash
+dotnet sln add TenProject/TenProject.csproj
+dotnet sln remove TenProject/TenProject.csproj
+```
+
+**Create a new winform app:**
+
+```bash
+dotnet new winforms -n GameCaro
+cd GameCaro
+# run to test
+dotnet run
+```
+
+**Install a package into project**:
+
+```bash
+dotnet add package FontAwesome.Sharp
+```
+
+**Thêm tham chiếu đến dự án Library:**
+
+```bash
+dotnet add TenProject/TenProject.csproj reference TenProject/TenProject.csproj
+```
+
+**Để chạy dự án chính từ thư mục gốc:**
+
+```bash
+dotnet run --project MyApp.Console
+```
+
+**Thêm file .gitignore mẫu:**
+
+```bash
+dotnet new gitignore
+```
+
+## Quy tắc
+
+- 1 File = 1 Class: Mỗi Class nên nằm trong một file riêng biệt có tên trùng với tên Class.
+
+## Sự khác biệt giữa Convert (`Convert.ToInt32()`) và Parser (`int.Parse()`)
+
+| **Đặc điểm**                   | **int.Parse(value)**                    | **Convert.ToInt32(value)**                 |
+| ------------------------------ | --------------------------------------- | ------------------------------------------ |
+| **Đầu vào là `null`**          | **Lỗi** (ArgumentNullException)         | **Trả về 0**                               |
+| **Đầu vào sai format ("abc")** | **Lỗi** (FormatException)               | **Lỗi** (FormatException)                  |
+| **Đầu vào khác String**        | Không hỗ trợ                            | Hỗ trợ nhiều kiểu (double, bool...)        |
+| **Hiệu năng**                  | Nhanh hơn một chút (vì xử lý trực tiếp) | Chậm hơn xíu (vì phải kiểm tra null trước) |
+
+```csharp
+// Sử dụng TryParse
+int result;
+bool success = int.TryParse(input, out result);
+```
+
+## `{ get; set; }` là gì?
+
+Đây được gọi là **Auto-implemented Properties** (Thuộc tính tự động). Nó là một cách viết tắt của C# để tuân thủ tính đóng gói (Encapsulation) trong hướng đối tượng.
+
+## Quy tắc đặt tên trong C# (Naming Convention)
+
+### A. PascalCase (Viết Hoa Chữ Cái Đầu Của Mọi Từ)
+
+Dùng cho những thứ "lớn", mang tính chất toàn cục hoặc công khai (`public`).
+
+- **Áp dụng cho:** Class, Property, Method (Hàm), Namespace.
+
+- **Ví dụ:** `Student`, `SayHello`, `FirstName`, `Program`.
+
+### B. camelCase (viết thường chữ đầu, Viết Hoa Các Chữ Sau)
+
+Dùng cho những thứ "nhỏ", cục bộ hoặc riêng tư.
+
+- **Áp dụng cho:** Biến cục bộ (trong hàm), Tham số truyền vào hàm.
+
+- **Ví dụ:** `studentName`, `totalScore`, `id`.
+
+### C. Quy tắc đặc biệt khác
+
+- **Interface (Giao diện):** Luôn bắt đầu bằng chữ `I`. (Ví dụ: `IAnimal`, `IDisposable`).
+
+- **Biến Private (Riêng tư):** Thường bắt đầu bằng dấu gạch dưới `_` kết hợp camelCase. (Ví dụ: `_connectionString`, `_age`).

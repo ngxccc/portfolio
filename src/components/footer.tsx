@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-black/50 backdrop-blur-xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 py-12 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 py-4 md:grid-cols-4">
           {/* Branding */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
@@ -124,7 +124,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 py-6">
+        <div className="border-t border-white/10 py-3">
           <div className="flex flex-col items-center justify-between md:flex-row">
             <p className="text-sm text-gray-400">
               © {currentYear} Tran Van Ngoc. All rights reserved.

@@ -1,0 +1,28 @@
+---
+title: "Các kiến thức về Node.js"
+description: "Đây là bài lưu trữ về những kiến thức, thông tin, best practive về Node.js mà tôi biết"
+date: "2026-1-27"
+tags: ["node", "nodejs", "javascript", "knowledge"]
+---
+
+## Node.js Là gì?
+
+> **Node.js không phải là một ngôn ngữ lập trình**, và cũng không phải là một Framework.
+
+- **Nó là:** Một môi trường chạy mã (Runtime Environment) cho JavaScript.
+
+- **Cốt lõi:** Nó được xây dựng dựa trên **V8 JavaScript Engine** của Google (cùng một bộ máy vận hành trình duyệt Google Chrome), giúp chuyển đổi mã JavaScript thành mã máy cực nhanh.
+
+## Đặc điểm nổi bật nhất: "Mô hình Bất đồng bộ" (Asynchronous)
+
+> Đây là lý do khiến Node.js trở nên đặc biệt và mạnh mẽ. Hãy hình dung ví dụ về **Quán Cà Phê**:
+
+- **Cách truyền thống (Blocking I/O - Chặn):**
+
+    > Khách A gọi đồ -> Nhân viên pha chế -> Khách A chờ lấy đồ -> Khách A đi -> Nhân viên mới nhận đơn của Khách B. _Hệ quả:_ Nếu pha đồ lâu, cả hàng người phía sau phải chờ. Rất lãng phí thời gian.
+
+- **Cách của Node.js (Non-blocking I/O - Không chặn):**
+
+    > Khách A gọi đồ -> Nhân viên đưa số thứ tự -> Khách A ra bàn ngồi -> Nhân viên nhận luôn đơn của Khách B -> ... -> Khi đồ của Khách A xong, nhân viên gọi số để trả hàng. _Hệ quả:_ Nhân viên luôn chấp nhận đơn, không ai bị chặn lại. Xử lý được lượng khách cực lớn cùng lúc.
+
+Cơ chế này trong kỹ thuật gọi là **Event Loop** (Vòng lặp sự kiện). Nó cho phép Node.js xử lý hàng ngàn kết nối đồng thời mà không cần phần cứng quá "khủng".

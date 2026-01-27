@@ -1,0 +1,75 @@
+---
+title: "Các kiến thức về Thiết Kế Giao Diện Người Dùng"
+description: "Đây là bài lưu trữ về những kiến thức, thông tin, best practive về Thiết Kế Giao Diện Người Dùng mà tôi biết"
+date: "2026-1-27"
+tags: ["uxui", "tkgdnd", "knowledge"]
+---
+
+## Giao diện người dùng là gì?
+
+**Giao diện người dùng (User Interface - viết tắt là UI)** hiểu đơn giản là **bất kỳ thứ gì cho phép con người giao tiếp với máy móc.**
+
+### 1. Ví dụ đời thường (Cực dễ hiểu)
+
+Hãy tưởng tượng chiếc xe máy hoặc ô tô:
+
+- **Hệ thống bên trong (Backend/Code):** Là động cơ, pít-tông, xăng dầu, hệ thống điện... Những thứ này rất phức tạp và nguy hiểm nếu chạm trực tiếp.
+
+- **Giao diện người dùng (UI):** Là **vô lăng, bảng đồng hồ tốc độ, chân phanh, nút xi-nhan...**
+
+    - Bạn xoay vô lăng (Input) -> Xe rẽ trái (Xử lý).
+
+    - Xe hết xăng -> Đèn báo đỏ sáng lên (Output/Phản hồi).
+
+=> Bạn không cần biết động cơ đốt xăng như thế nào, bạn chỉ cần biết sử dụng cái "Giao diện" (vô lăng/phanh) để điều khiển xe.
+
+---
+
+### 2. Các thành phần của UI
+
+Trong thế giới phần mềm (Web/App), UI bao gồm 2 nhóm chính:
+
+- **Đầu vào (Input):** Những thứ bạn dùng để ra lệnh cho máy.
+
+    - Bàn phím, chuột, màn hình cảm ứng, micro (giọng nói), camera.
+
+- **Đầu ra (Output):** Những thứ máy dùng để trả lời bạn.
+
+    - Màn hình hiển thị (hình ảnh, chữ viết), loa (âm thanh), bộ rung (trên điện thoại).
+
+---
+
+### 3. Các loại Giao diện phổ biến
+
+Khi nói đến UI, chúng ta thường nghĩ đến đồ họa đẹp mắt, nhưng thực tế có nhiều loại hơn:
+
+1. **GUI (Graphical User Interface) - Giao diện đồ họa:**
+
+    - Đây là loại phổ biến nhất hiện nay.
+
+    - Dùng hình ảnh, icon, cửa sổ, nút bấm.
+
+    - _Ví dụ:_ Windows, macOS, Android, trang web bạn đang xem.
+
+2. **CLI (Command Line Interface) - Giao diện dòng lệnh:**
+
+    - Người dùng phải gõ các câu lệnh bằng chữ để điều khiển.
+
+    - _Ví dụ:_ Màn hình Terminal trong Linux, CMD trong Windows. (Loại này rất quen thuộc với lập trình viên).
+
+3. **VUI (Voice User Interface) - Giao diện giọng nói:**
+
+    - Tương tác bằng cách nói chuyện.
+
+    - _Ví dụ:_ Siri, Google Assistant, Alexa.
+
+
+---
+
+### Phân biệt nhanh UI và UX (Rất quan trọng)
+
+Rất nhiều người nhầm lẫn hai khái niệm này.
+
+- **UI (Cái cái thìa):** Chiếc thìa trông như thế nào? Màu bạc, cán tròn hay dẹt, có hoa văn không? -> _Thiên về Thẩm mỹ & Công cụ._
+
+- **UX (Cảm giác ăn):** Chiếc thìa có vừa miệng không? Cầm có nặng quá không? Múc súp có dễ không? -> _Thiên về Trải nghiệm & Cảm giác._
