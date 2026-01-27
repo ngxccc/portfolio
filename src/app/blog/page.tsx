@@ -16,7 +16,7 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
     : allPosts;
 
   return (
-    <div className="mx-auto my-20 min-h-screen max-w-4xl px-4">
+    <div className="mx-auto my-2 min-h-screen max-w-4xl px-4">
       <ScrollAnimation>
         <div className="mb-12">
           <h2 className="gradient-text mb-12 text-4xl font-bold">

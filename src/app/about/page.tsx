@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto my-20 min-h-screen max-w-4xl px-4">
+    <div className="mx-auto my-2 min-h-screen max-w-4xl px-4">
       {/* Tiêu đề chính */}
       <ScrollAnimation>
         <h2 className="gradient-text mb-8 text-4xl font-bold">About Me</h2>

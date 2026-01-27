@@ -53,7 +53,7 @@ export const HomeContent = () => {
   };
 
   return (
-    <div className="mt-7 flex min-h-screen items-center justify-center px-4 sm:mt-0 md:mt-3 lg:mt-5">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.div
           className="relative z-10 mx-auto max-w-4xl text-center"

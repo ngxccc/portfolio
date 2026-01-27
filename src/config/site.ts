@@ -7,6 +7,8 @@ export const siteConfig = {
   title: "Software Developer",
   description:
     "Software Developer specializing in Full Stack Development with expertise in Next.js, Node.js and modern Web Technologies.",
+  ogImage:
+    "https://lh3.googleusercontent.com/pw/AP1GczMtScOnusg84RH0phCSxGXOJMhziNbXbvvQGRIsAC36T8obHo9tC0_RWyaWypOyUBBwQw1Fr4pmQtsxcmRO6qVGIZ7OIgOEPsLJW4oCyFbRfijCNjAi3tA4Dlgawsdrc5YImxBZkKQLpgaVAnBma5Keew=w480-h720-s-no-gm",
 
   email: "ngocshintrann@gmail.com",
   phone: "+84857044507",
