@@ -256,6 +256,7 @@ export const ContactContent = () => {
               type="submit"
               disabled={isSubmitting}
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
+              aria-label="Submit contact form"
             >
               {isSubmitting ? (
                 "Sending..."

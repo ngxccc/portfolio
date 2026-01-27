@@ -110,6 +110,11 @@ export const HomeContent = () => {
           <button
             onClick={(e) => void handleEmailClick(e)}
             className="group relative flex cursor-copy items-center gap-2 py-2 pr-4 pl-8 transition-all hover:bg-transparent sm:cursor-pointer"
+            aria-label={
+              copied
+                ? "Email copied to clipboard"
+                : "Click to copy email address"
+            }
           >
             <div className="absolute left-0 flex items-center">
               <div className="w-3 text-gray-500 transition-colors group-hover:text-white">

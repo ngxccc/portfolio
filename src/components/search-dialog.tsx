@@ -82,6 +82,7 @@ const SearchDialog = () => {
       <button
         onClick={() => setIsOpen(true)}
         className="flex items-center space-x-2 rounded-lg bg-white/15 px-3 py-1.5 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
+        aria-label="Open search dialog"
       >
         <Search className="h-4 w-4" />
         <span className="hidden text-sm sm:block">Search ...</span>
@@ -139,6 +140,8 @@ const SearchDialog = () => {
                           router.push(result.path);
                           setIsOpen(false);
                         }}
+                        onMouseEnter={() => setSelectedIndex(index)}
+                        aria-label={`Navigate to ${result.title}`}
                       >
                         <div>
                           <div className="font-medium text-white">

@@ -21,20 +21,37 @@ interface MermaidProps {
 const Mermaid = ({ chart, className }: MermaidProps) => {
   const [svgContent, setSvgContent] = useState<string>("");
   const [isRendered, setIsRendered] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    const renderChart = async () => {
+    const initAndRender = async () => {
       try {
+        const mermaid = (await import("mermaid")).default;
+
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: "dark",
+          securityLevel: "loose",
+          fontFamily: "inherit",
+        });
+
         const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
         const { svg } = await mermaid.render(id, chart);
+
         setSvgContent(svg);
         setIsRendered(true);
       } catch (error) {
-        console.error("Mermaid error:", error);
+        console.error("Mermaid failed to load or render:", error);
+        setError(true);
       }
     };
-    void renderChart();
+
+    if (chart) {
+      void initAndRender();
+    }
   }, [chart]);
+
+  if (error) return <div className="text-red-500">Lỗi hiển thị biểu đồ</div>;
 
   return (
     <div
@@ -104,8 +121,9 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
           )}
         </TransformWrapper>
       ) : (
-        <div className="flex h-full w-full items-center justify-center text-gray-500">
-          Đang tải biểu đồ...
+        <div className="flex h-75 w-full animate-pulse flex-col items-center justify-center gap-2">
+          <div className="h-12 w-12 animate-spin rounded-full border-2 border-white/10 border-t-white" />
+          <p className="text-sm text-gray-500">Đang vẽ sơ đồ...</p>
         </div>
       )}
     </div>

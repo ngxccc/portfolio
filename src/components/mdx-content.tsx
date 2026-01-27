@@ -7,7 +7,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import Pre from "./mdx/pre";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
-import Mermaid from "./mdx/mermaid";
+
+import dynamic from "next/dynamic";
 
 interface VisitLineNode {
   children: { type: string; value: string }[];
@@ -107,7 +108,7 @@ const components = {
     );
   },
   pre: Pre,
-  Mermaid: Mermaid,
+  Mermaid: dynamic(() => import("./mdx/mermaid"), { ssr: false }),
   code: (props: any) => (
     <code className="bg-transparent p-0 text-inherit" {...props} />
   ),
