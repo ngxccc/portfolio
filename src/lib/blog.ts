@@ -26,7 +26,7 @@ const calculateReadingTime = (content: string): string => {
   // Loại bỏ HTML tags và ký tự đặc biệt để đếm từ chuẩn hơn
   const words = content.replace(/<[^>]*>/g, "").split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
+  return `${minutes} phút đọc`;
 };
 
 export const getBlogPosts = (): BlogPost[] => {

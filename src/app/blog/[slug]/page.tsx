@@ -47,12 +47,12 @@ const BlogPost = async ({ params }: PageProps) => {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-2 md:py-4">
-      <header className="mx-auto mb-5 max-w-3xl text-center">
-        <h1 className="gradient-text mb-6 text-3xl font-bold md:text-5xl">
+      <header className="mx-auto mb-5 max-w-3xl space-y-3 text-center">
+        <h1 className="gradient-text text-3xl font-bold md:text-5xl">
           {post.title}
         </h1>
 
-        <div className="mb-4 flex items-center justify-center gap-4 text-sm text-gray-400">
+        <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("vi-VN", {
               year: "numeric",
@@ -60,7 +60,7 @@ const BlogPost = async ({ params }: PageProps) => {
               day: "numeric",
             })}
           </time>
-          <span className="mx-2">•</span>
+          <span>🎉</span>
           <span>{post.readingTime}</span>
         </div>
 
@@ -81,8 +81,8 @@ const BlogPost = async ({ params }: PageProps) => {
         </aside>
 
         {/* Mục lục cho Mobile */}
-        <div className="sticky lg:hidden">
-          <details className="group rounded-xl border border-white/10 bg-white/5 [&_summary::-webkit-details-marker]:hidden">
+        <div className="lg:hidden">
+          <details className="group rounded-xl border border-white/10 bg-gray-900 [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-gray-200">
               <div className="flex items-center gap-2">
                 <List className="h-5 w-5 text-cyan-400" />

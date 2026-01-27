@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Code2, Menu, X } from "lucide-react";
 import SearchDialog from "./search-dialog";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,19 @@ import { navigationConfig } from "@/config/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
   const pathname = usePathname();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -28,9 +40,12 @@ const Navbar = () => {
   return (
     <motion.nav
       className="fixed top-0 z-50 w-full"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
     >
       <div className="relative">
         <div className="absolute inset-0 bg-black/50 backdrop-blur-xl" />
@@ -44,36 +59,34 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden items-center space-x-6 md:flex">
-              <SearchDialog />
-              {navigationConfig.map((link) => (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={cn(
-                    "nav-link",
-                    pathname === link.path && "bg-white/15 backdrop-blur-sm",
-                  )}
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </div>
+            <div className="flex items-center gap-4">
+              <div className="hidden md:block">
+                <div className="flex items-baseline space-x-4">
+                  {navigationConfig.map((link) => (
+                    <Link
+                      key={link.path}
+                      href={link.path}
+                      className={cn(
+                        "nav-link",
+                        pathname === link.path && "bg-white/10 text-white",
+                      )}
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-            {/* Mobile header right section */}
-            <div className="flex items-center space-x-2 md:hidden">
+              {/* Mobile header right section */}
               <SearchDialog />
-              <button
-                className="p-2 text-gray-400 transition-colors hover:text-white"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
+              <div className="-mr-2 flex md:hidden">
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="p-2 text-gray-400 hover:text-white"
+                >
+                  {isMenuOpen ? <X /> : <Menu />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -81,10 +94,9 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <motion.div
-            className="absolute top-full right-0 left-0 bg-black/50 backdrop-blur-xl md:hidden"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
+            className="absolute top-full right-0 left-0 h-screen bg-black/90 backdrop-blur-xl md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
             <div className="space-y-1 px-4 pt-2 pb-3">
               {navigationConfig.map((link) => (
