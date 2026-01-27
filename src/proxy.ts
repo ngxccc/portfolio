@@ -3,7 +3,6 @@ import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.pathname.toLowerCase();
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
   if (
     url.includes("/sitemap.xml") ||
@@ -37,8 +36,9 @@ export function proxy(request: NextRequest) {
   // `;
 
   // Security Headers
+  // const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-nonce", nonce);
+  // requestHeaders.set("x-nonce", nonce);
   // requestHeaders.set(
   //   "Content-Security-Policy",
   //   cspHeader.replace(/\s{2,}/g, " ").trim(),
