@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const Loading = () => {
+const LoadingUI = () => {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-black">
       <motion.div
@@ -56,4 +56,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoadingUI;

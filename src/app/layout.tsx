@@ -7,7 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/footer";
 import { siteConfig } from "@/config/site";
-import { headers } from "next/headers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -67,11 +66,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const headersList = await headers();
-  // const nonce = headersList.get("x-nonce") ?? "";
-
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={inter.className} data-scroll-behavior="smooth">
       <head>
         <meta
           name="google-site-verification"

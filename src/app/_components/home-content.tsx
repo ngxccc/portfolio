@@ -2,25 +2,26 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import useSWR from "swr";
 import { motion } from "framer-motion";
 import { Copy, Check, FileDown, User } from "lucide-react";
 import { VercelLogo } from "@/components/tech-logos";
-import { GitHubUser, StatsData } from "@/types/stats";
 import { homeData, socialStatsData } from "./home-data";
 import { heroVariants, statsVariants } from "@/config/animations";
 import { formatCount } from "@/lib/utils";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+interface HomeContentProps {
+  initialGithubRepos: number;
+  initialTiktokFollowers: number;
+}
 
-export const HomeContent = () => {
+export const HomeContent = ({
+  initialGithubRepos,
+  initialTiktokFollowers,
+}: HomeContentProps) => {
   const [copied, setCopied] = useState(false);
 
-  const { data: githubData } = useSWR<GitHubUser>(homeData.githubApi, fetcher);
-  const { data: myStats } = useSWR<StatsData>(homeData.statsUrl, fetcher);
-
-  const githubRepos = githubData?.public_repos ?? 0;
-  const tiktokFollowers = Number(myStats?.tiktokFollowers) || 0;
+  const githubRepos = initialGithubRepos;
+  const tiktokFollowers = initialTiktokFollowers;
 
   const socialStats = socialStatsData.map((item) => {
     if (item.id === "github") {

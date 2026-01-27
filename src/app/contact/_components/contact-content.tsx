@@ -37,7 +37,7 @@ export const ContactContent = () => {
       transition={{ duration: 0.8 }}
     >
       <motion.div
-        className="mb-8 flex items-center gap-3 sm:mb-12"
+        className="mb-4 flex items-center gap-3 sm:mb-8"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
