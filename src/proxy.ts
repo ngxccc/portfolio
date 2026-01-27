@@ -5,6 +5,16 @@ export function proxy(request: NextRequest) {
   const url = request.nextUrl.pathname.toLowerCase();
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
+  if (
+    url.includes("/sitemap.xml") ||
+    url.includes("/robots.txt") ||
+    url.includes("/manifest.webmanifest") ||
+    url.endsWith(".png") ||
+    url.endsWith(".ico")
+  ) {
+    return NextResponse.next();
+  }
+
   // Prevent common attack patterns
   const blockedPatterns = ["/wp-admin", "/wp-login", "/admin", ".php", ".env"];
   if (blockedPatterns.some((pattern) => url.includes(pattern))) {
