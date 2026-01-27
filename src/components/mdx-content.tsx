@@ -9,6 +9,7 @@ import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 
 import dynamic from "next/dynamic";
+import MermaidWrapper from "./mdx/mermaid-wrapper";
 
 interface VisitLineNode {
   children: { type: string; value: string }[];
@@ -108,7 +109,7 @@ const components = {
     );
   },
   pre: Pre,
-  Mermaid: dynamic(() => import("./mdx/mermaid"), { ssr: false }),
+  Mermaid: MermaidWrapper,
   code: (props: any) => (
     <code className="bg-transparent p-0 text-inherit" {...props} />
   ),
