@@ -35,7 +35,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Blog",
         url: "/blog",
-        description: "Read my latest posts",
+        description: "Đọc các bài viết mới nhất của tôi",
         icons: [{ src: "/icon.png", sizes: "192x192", type: "image/png" }],
       },
     ],

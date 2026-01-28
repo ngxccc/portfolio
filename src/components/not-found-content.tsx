@@ -7,7 +7,7 @@ import { Home } from "lucide-react";
 
 const NotFoundContent = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
+    <div className="relative flex min-h-[calc(100vh-64px)] w-full items-center justify-center overflow-hidden px-4">
       <div className="relative z-10 mx-auto max-w-2xl text-center">
         <ScrollAnimation>
           <motion.div
@@ -16,8 +16,13 @@ const NotFoundContent = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
+            {/* Responsive Font Size:
+               - macbook/pc: text-[12rem] (giữ nguyên độ chất)
+               - mobile: text-8xl (đủ to nhưng không vỡ)
+               - sm (tablet dọc): text-9xl
+            */}
             <motion.div
-              className="gradient-text text-[12rem] leading-none font-bold"
+              className="gradient-text text-8xl leading-none font-bold sm:text-9xl md:text-[12rem]"
               animate={{
                 y: [0, -20, 0],
                 rotate: [0, -5, 5, 0],
@@ -31,6 +36,7 @@ const NotFoundContent = () => {
               404
             </motion.div>
 
+            {/* Gradient phủ lên chữ */}
             <motion.div
               className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"
               initial={{ opacity: 0 }}
@@ -42,7 +48,8 @@ const NotFoundContent = () => {
 
         <ScrollAnimation>
           <motion.h2
-            className="mb-4 text-3xl font-bold md:text-4xl"
+            // Resize text tiêu đề cho mobile (2xl) và desktop (4xl)
+            className="mb-4 text-2xl font-bold md:text-4xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -53,7 +60,7 @@ const NotFoundContent = () => {
 
         <ScrollAnimation>
           <motion.p
-            className="mb-8 text-lg text-gray-400"
+            className="mb-8 text-base text-gray-400 md:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -79,8 +86,9 @@ const NotFoundContent = () => {
           </motion.div>
         </ScrollAnimation>
 
+        {/* Background Animation Layer */}
         <motion.div
-          className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 md:h-[200%] md:w-[200%]"
           animate={{
             background: [
               "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 50%)",

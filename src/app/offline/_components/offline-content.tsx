@@ -17,7 +17,7 @@ export const OfflineContent = () => {
 
   return (
     <div
-      className="flex min-h-screen items-center justify-center px-4"
+      className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4"
       role="main"
       aria-label="Offline Page"
     >

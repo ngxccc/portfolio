@@ -27,14 +27,12 @@ const Footer = () => {
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="text-sm text-gray-400">
-              Software Developer based in {siteConfig.address}.
-            </p>
+            <p className="text-sm text-gray-400">{siteConfig.address}.</p>
           </div>
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-white">Contact</h3>
+            <h3 className="text-sm font-semibold text-white">Liện hệ</h3>
             <ul className="space-y-3">
               <li>
                 <a
@@ -59,7 +57,7 @@ const Footer = () => {
 
           {/* Links - First Column */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-white">Quick Links</h3>
+            <h3 className="text-sm font-semibold text-white">Liên kết nhanh</h3>
             <div className="grid grid-cols-3 gap-x-6 gap-y-3">
               {/* Column 1 */}
               <div>
@@ -102,7 +100,7 @@ const Footer = () => {
 
           {/* Social */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-white">Social</h3>
+            <h3 className="text-sm font-semibold text-white">Mạng xã hội</h3>
             <div className="flex space-x-4">
               {Object.values(siteConfig.social).map((social) => {
                 const Icon = social.icon;
@@ -127,7 +125,7 @@ const Footer = () => {
         <div className="border-t border-white/10 py-3">
           <div className="flex flex-col items-center justify-between md:flex-row">
             <p className="text-sm text-gray-400">
-              © {currentYear} Tran Van Ngoc. All rights reserved.
+              © {currentYear} {siteConfig.name}. Mọi quyền đã được bảo lưu.
             </p>
             <div className="mt-4 flex space-x-6 md:mt-0">
               <a

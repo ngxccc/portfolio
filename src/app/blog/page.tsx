@@ -37,7 +37,7 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
       <ScrollAnimation>
         <div className="mb-12">
           <h2 className="gradient-text mb-12 text-4xl font-bold">
-            {tag ? `Posts tagged "${tag}"` : "Latest Posts"}
+            {tag ? `Bài viết với tag "${tag}"` : "Bài viết mới nhất"}
           </h2>
 
           {tag && (
@@ -45,7 +45,7 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
               href="/blog"
               className="mt-4 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white"
             >
-              <X className="h-4 w-4" /> Clear filter
+              <X className="h-4 w-4" /> Bỏ lọc tag
             </Link>
           )}
         </div>
@@ -106,7 +106,7 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
             </ScrollAnimation>
           ))
         ) : (
-          <p className="text-gray-400">No posts found.</p>
+          <p className="text-gray-400">Chưa có bài viết nào.</p>
         )}
       </div>
     </div>

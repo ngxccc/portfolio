@@ -54,7 +54,7 @@ export const HomeContent = ({
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
+    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.div
           className="relative z-10 mx-auto max-w-4xl text-center"
@@ -97,14 +97,14 @@ export const HomeContent = ({
               className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-gray-100 sm:px-6 sm:py-3 sm:text-base"
             >
               <FileDown className="h-4 w-4 sm:h-5 sm:w-5" />
-              Download CV
+              Tải xuống CV
             </a>
             <Link
               href="/about"
               className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/20 sm:px-6 sm:py-3 sm:text-base"
             >
               <User className="h-4 w-4 sm:h-5 sm:w-5" />
-              About Me
+              Giới Thiệu
             </Link>
           </div>
 
