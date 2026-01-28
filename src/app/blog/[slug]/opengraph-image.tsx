@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getPostBySlug } from "@/lib/blog";
+import { siteConfig } from "@/config/site";
 
 export const alt = "Ngxc Blog Post";
 export const size = {
@@ -23,8 +24,13 @@ async function loadGoogleFont(font: string, text: string) {
   throw new Error("Failed to load font data");
 }
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function Image({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   const title = post?.title ?? "Blog Post";
   const date = post?.date
@@ -39,13 +45,13 @@ export default async function Image({ params }: { params: { slug: string } }) {
   const [interBold, jetBrainsMono] = await Promise.all([
     fetch(
       new URL(
-        "https://gitlab.com/ngxc/fonts-store/-/blob/main/inter/Inter_18pt-Bold.ttf",
+        "https://gitlab.com/ngxc/fonts-store/-/raw/main/inter/Inter_18pt-Bold.ttf",
         import.meta.url,
       ),
     ).then((res) => res.arrayBuffer()),
     fetch(
       new URL(
-        "https://gitlab.com/ngxc/fonts-store/-/blob/main/jetbrains-mono/JetBrainsMono-Medium.ttf",
+        "https://gitlab.com/ngxc/fonts-store/-/raw/main/jetbrains-mono/JetBrainsMono-Medium.ttf",
         import.meta.url,
       ),
     ).then((res) => res.arrayBuffer()),
@@ -77,11 +83,13 @@ export default async function Image({ params }: { params: { slug: string } }) {
             "linear-gradient(to right, #222 1px, transparent 1px), linear-gradient(to bottom, #222 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           opacity: 0.2,
+          display: "flex",
         }}
       />
 
       <div
         style={{
+          display: "flex",
           position: "absolute",
           top: "-20%",
           right: "-10%",
@@ -96,6 +104,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 
       <div
         style={{
+          display: "flex",
           position: "absolute",
           bottom: "-20%",
           left: "-10%",
@@ -134,7 +143,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
           <polyline points="16 18 22 12 16 6" />
           <polyline points="8 6 2 12 8 18" />
         </svg>
-        <span>ngxc.dev</span>
+        <span>{siteConfig.url.replace(/^https?:\/\//, "")}</span>
       </div>
 
       {/* Body: Post Title */}
@@ -149,6 +158,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
       >
         <div
           style={{
+            display: "flex",
             fontSize: 72,
             fontFamily: '"Inter"',
             fontWeight: 700,
@@ -190,7 +200,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          {date}
+          <div style={{ display: "flex" }}>{date}</div>
         </div>
 
         <div style={{ width: "1px", height: "20px", background: "#334155" }} />
@@ -201,6 +211,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             <div
               key={tag}
               style={{
+                display: "flex",
                 backgroundColor: "rgba(34, 211, 238, 0.1)", // Cyan tint
                 border: "1px solid rgba(34, 211, 238, 0.3)",
                 color: "#22d3ee",
