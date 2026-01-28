@@ -2,10 +2,27 @@ import { getBlogPosts } from "@/lib/blog";
 import Link from "next/link";
 import { ScrollAnimation } from "@/components/scroll-animation";
 import { Calendar, Tag, X } from "lucide-react";
+import { Metadata } from "next";
 
 interface BlogPageProps {
   searchParams: Promise<{ tag: string }>;
 }
+
+export const metadata: Metadata = {
+  title: "Tech Blog - Coding Tutorials & Insights",
+  description:
+    "Chia sẻ kiến thức về lập trình Web, Next.js, React và các công nghệ mới nhất.",
+  keywords: [
+    "Tech Blog",
+    "Lập trình Web",
+    "Next.js Tutorial",
+    "React Tips",
+    "Coding Life",
+  ],
+  alternates: {
+    canonical: "./",
+  },
+};
 
 const Blog = async ({ searchParams }: BlogPageProps) => {
   const allPosts = getBlogPosts();

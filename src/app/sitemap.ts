@@ -1,8 +1,9 @@
+import { siteConfig } from "@/config/site";
 import { getBlogPosts } from "@/lib/blog";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://ngxc.vercel.app";
+  const baseUrl = siteConfig.url;
 
   const routes = [
     { url: "", priority: 1.0 },

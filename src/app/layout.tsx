@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "vi_VN",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(siteConfig.url),
   alternates: {
-    canonical: "/",
+    canonical: "./",
   },
 };
 

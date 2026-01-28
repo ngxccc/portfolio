@@ -2,6 +2,15 @@
 
 :root {
   color-scheme: dark;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.1); /* white/10 */
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  --text-primary: #f3f4f6; /* gray-100 */
+  --text-secondary: #9ca3af; /* gray-400 */
+
+  --accent: #22d3ee; /* cyan-400 */
+  --accent-glow: rgba(34, 211, 238, 0.2); /* Glow effect */
 }
 
 @theme inline {
@@ -11,7 +20,7 @@
 
 @layer base {
   body {
-    @apply bg-black text-gray-100;
+    @apply bg-black text-(--text-primary);
     overflow-x: hidden;
   }
 
@@ -19,7 +28,12 @@
     scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply scroll-mt-20;
   }
 
@@ -27,15 +41,42 @@
     @apply scroll-mt-20;
   }
 
-  code, pre {
+  code,
+  pre {
     font-family: var(--font-mono);
     font-variant-ligatures: normal;
     /* Tinh chỉnh render chữ cho sắc nét trên màn hình to */
     -webkit-font-smoothing: antialiased;
   }
+
+  .glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    @apply rounded-xl transition-all duration-300;
+  }
+
+  .glass-panel:hover {
+    background: var(--glass-bg-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px var(--glass-border);
+  }
+
+  .btn-primary {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all;
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    color: black;
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
 }
 
-/* Các thành phần UI phức tạp -> Bỏ vào components */
+/* Các thành phần UI phức tạp */
 @layer components {
   .bg-glass {
     @apply border border-white/10 bg-white/5;
@@ -80,7 +121,7 @@
   }
 }
 
-/* Các tiện ích nhỏ lẻ -> Bỏ vào utilities */
+/* Các tiện ích nhỏ lẻ */
 @layer utilities {
   .cursor-copy {
     cursor:

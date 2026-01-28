@@ -7,13 +7,12 @@ export const siteConfig = {
   title: "Software Developer",
   description:
     "Software Developer specializing in Full Stack Development with expertise in Next.js, Node.js and modern Web Technologies.",
-  ogImage:
-    "https://lh3.googleusercontent.com/pw/AP1GczMtScOnusg84RH0phCSxGXOJMhziNbXbvvQGRIsAC36T8obHo9tC0_RWyaWypOyUBBwQw1Fr4pmQtsxcmRO6qVGIZ7OIgOEPsLJW4oCyFbRfijCNjAi3tA4Dlgawsdrc5YImxBZkKQLpgaVAnBma5Keew=w480-h720-s-no-gm",
+  ogImage: "/profile/logo.png",
 
   email: "ngocshintrann@gmail.com",
   phone: "+84857044507",
   address: "District 9, Ho Chi Minh City, Vietnam",
-  url: "https://ngxc.vercel.app",
+  url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://ngxc.vercel.app",
 
   social: {
     github: {
@@ -45,22 +44,13 @@ export const siteConfig = {
 
   keywords: [
     "Trần Văn Ngọc",
+    "Tran Van Ngoc",
     "Ngxc",
-    "Full Stack Developer",
-    "React",
-    "Next.js",
-    "Software Developer",
-    "MERN Stack",
-    "Web Developer",
-    "React Developer",
-    "Next.js Expert",
-    "Database Developer",
-    "Frontend Specialist",
-    "Backend Developer",
-    "JavaScript Expert",
-    "TypeScript Developer",
-    "Node.js Developer",
-    "MongoDB Expert",
-    "SQL Developer",
+    "Full Stack Developer Vietnam",
+    "Lập trình viên Full Stack",
+    "React Developer Vietnam",
+    "Lập trình viên React",
+    "Next.js Portfolio",
+    "Web Development Tutorials",
   ],
 };

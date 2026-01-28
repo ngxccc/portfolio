@@ -1,35 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageSquare, Send } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { contactInfo, socialLinks } from "./contact-data";
 
 export const ContactContent = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // TODO: Thêm gửi mail
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    setSubmitStatus("success");
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -49,7 +24,7 @@ export const ContactContent = () => {
       </motion.div>
 
       <div className="grid gap-8 sm:gap-12 lg:grid-cols-[1fr,1.5fr]">
-        {/* Left Column - Contact Information */}
+        {/* Contact Information */}
         <div className="space-y-6 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -143,142 +118,7 @@ export const ContactContent = () => {
               })}
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="rounded-xl border border-white/5 bg-gray-800/50 p-5 backdrop-blur-sm sm:p-6"
-          >
-            <h3 className="mb-4 text-lg font-semibold text-white sm:text-xl">
-              Office Hours
-            </h3>
-            <div className="space-y-2 text-sm text-gray-400 sm:text-base">
-              <p>Monday - Friday: 9:00 AM - 6:00 PM (IST)</p>
-              <p>Saturday: 10:00 AM - 2:00 PM (IST)</p>
-              <p>Sunday: Closed</p>
-            </div>
-          </motion.div>
         </div>
-
-        {/* Right Column - Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="rounded-xl border border-white/5 bg-gray-800/50 p-6 backdrop-blur-sm sm:p-8"
-        >
-          <h3 className="mb-6 text-lg font-semibold text-white sm:text-xl">
-            Send a Message
-          </h3>
-          <form
-            onSubmit={(e) => void handleSubmit(e)}
-            className="space-y-5 sm:space-y-6"
-          >
-            <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 transition-colors outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 sm:text-base"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 transition-colors outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 sm:text-base"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="subject"
-                className="mb-2 block text-sm font-medium text-gray-300"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                required
-                className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 transition-colors outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 sm:text-base"
-                value={formData.subject}
-                onChange={(e) =>
-                  setFormData({ ...formData, subject: e.target.value })
-                }
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-sm font-medium text-gray-300"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={6}
-                required
-                className="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 transition-colors outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 sm:text-base"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
-              aria-label="Submit contact form"
-            >
-              {isSubmitting ? (
-                "Sending..."
-              ) : (
-                <>
-                  Send Message
-                  <Send className="h-4 w-4" />
-                </>
-              )}
-            </button>
-
-            {submitStatus === "success" && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center text-sm text-green-400 sm:text-base"
-              >
-                Message sent successfully! I&apos;ll get back to you soon.
-              </motion.p>
-            )}
-          </form>
-        </motion.div>
       </div>
     </motion.div>
   );

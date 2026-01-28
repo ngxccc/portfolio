@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 import { Code2, Menu, X } from "lucide-react";
 import SearchDialog from "./search-dialog";
 import { cn } from "@/lib/utils";
@@ -12,25 +17,27 @@ import { navigationConfig } from "@/config/navigation";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const { scrollY } = useScroll();
+  const { scrollYProgress, scrollY } = useScroll();
   const pathname = usePathname();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
+  const showProgressBar = pathname.startsWith("/blog/") && pathname !== "/blog";
 
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const previous = scrollYProgress.getPrevious() ?? 0;
+
+    if (latest > previous && latest > 0.015) setHidden(true);
+    else setHidden(false);
   });
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    if (isMenuOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "unset";
 
     return () => {
       document.body.style.overflow = "unset";
@@ -47,7 +54,7 @@ const Navbar = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
     >
-      <div className="relative">
+      <div className="relative border-b border-white/5">
         <div className="absolute inset-0 bg-black/50 backdrop-blur-xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -115,6 +122,16 @@ const Navbar = () => {
               ))}
             </div>
           </motion.div>
+        )}
+
+        {showProgressBar && (
+          <motion.div
+            style={{ scaleX }}
+            className={cn(
+              "absolute right-0 left-0 h-1 origin-left bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]",
+              hidden ? "-bottom-1" : "bottom-0",
+            )}
+          />
         )}
       </div>
     </motion.nav>
