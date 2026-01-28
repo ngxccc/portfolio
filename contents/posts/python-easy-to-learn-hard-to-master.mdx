@@ -1,21 +1,22 @@
 ---
-title: "Các kiến thức về Python"
-description: "Đây là bài lưu trữ về những kiến thức, thông tin, best practive về Python mà tôi biết"
-date: "2026-1-26"
-tags: ["python", "knowledge"]
+title: "Python: Easy to Learn, Hard to Master"
+description: "Tổng hợp các kiến thức cốt lõi về Python: Từ cơ chế hoạt động under-the-hood đến các kỹ thuật tối ưu code hiện đại (Dataclass, Decorators)."
+date: "2026-01-26"
+tags: ["python", "backend", "scripting", "coding-interview"]
+isPublished: true
 ---
 
-## Trình biên dịch (Compiler) vs. Trình thông dịch (Interpreter)
+## 1. Bản chất: Compiler hay Interpreter? 🤔
 
-| **Tiêu chí**  | **Trình biên dịch (C++, Go, Rust)**                                                               | **Trình thông dịch (Python, PHP, JS)**                                                          |
-| ------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| **Cơ chế**    | Dịch **toàn bộ** mã nguồn (Source Code) ra mã máy (Machine Code) một lần duy nhất trước khi chạy. | Dịch từng lệnh (hoặc khối lệnh), chuyển thành mã máy và **thực thi ngay lập tức** theo tuần tự. |
-| **Đầu ra**    | Tạo ra một file thực thi độc lập (`.exe` trên Windows hoặc binary trên Linux).                    | Không tạo file thực thi độc lập. Cần có môi trường (Python runtime) để chạy file nguồn `.py`.   |
-| **Thời gian** | Tốn thời gian chờ biên dịch (Compile time) lâu, nhưng chạy (Run time) cực nhanh.                  | Không tốn thời gian biên dịch (chạy ngay), nhưng tốc độ thực thi chậm hơn.                      |
-| **Báo lỗi**   | Quét toàn bộ code, báo tất cả lỗi cú pháp **trước khi** chạy chương trình.                        | Chạy đến dòng nào lỗi thì báo ở dòng đó. (Dòng 1 đúng vẫn chạy, đến dòng 2 lỗi mới dừng).       |
-| **Bảo mật**   | Mã nguồn được giấu kín (người dùng chỉ nhận được file `.exe`).                                    | Mã nguồn công khai (thường phải giao file `.py` cho người dùng hoặc server).                    |
+Thế giới lập trình chia làm 2 phe, và Python đứng... ở giữa.
 
-## Mô hình hoạt động của Python (Thực tế nó là lai (Hybrid)!)
+| Tiêu chí    | Trình biên dịch (C++, Go)                                 | Trình thông dịch (PHP, JS cũ)                | Python (Hybrid) 🐍                                     |
+| :---------- | :-------------------------------------------------------- | :------------------------------------------- | :----------------------------------------------------- |
+| **Cơ chế**  | Dịch **toàn bộ** ra mã máy (`.exe`) rồi mới chạy.         | Dịch từng dòng và chạy ngay lập tức.         | Dịch ra **Bytecode** (`.pyc`) -> PVM chạy Bytecode.    |
+| **Tốc độ**  | Chạy cực nhanh (Runtime) nhưng Build lâu.                 | Chạy chậm, nhưng sửa code là chạy được ngay. | Chậm hơn C++ khoảng 10-50 lần (nếu code thuần Python). |
+| **Báo lỗi** | Quét lỗi cú pháp **trước khi** chạy (Compile-time error). | Chạy đến dòng lỗi mới báo (Runtime error)    | Báo lỗi cú pháp khi tạo Bytecode, lỗi logic khi chạy.  |
+
+### ⚙️ Under-the-hood: Code Python chạy như thế nào?
 
 ```mermaid
 graph LR
@@ -25,13 +26,17 @@ graph LR
     D -->|Executes| E[CPU / Hardware]
 ```
 
-## Các kiểu reverse
+> Note: Bytecode là mã trung gian, giúp Python chạy được trên mọi hệ điều hành (Cross-platform), miễn là máy đó có cài PVM.
 
-| **Phương pháp** | **Cú pháp**          | **Time Complexity**  | **Space Complexity**     | **Kiểu trả về**        |
-| --------------- | -------------------- | -------------------- | ------------------------ | ---------------------- |
-| **Slicing**     | `new_list = a[::-1]` | $O(N)$               | $O(N)$ (Tạo bản sao)     | `list`                 |
-| **Iterator**    | `it = reversed(a)`   | $O(1)$ (lúc gọi hàm) | $O(1)$ (Chỉ lưu con trỏ) | `list_reverseiterator` |
-| **In-place**    | `a.reverse()`        | $O(N)$               | $O(1)$ (Đổi chỗ tại chỗ) | `None`                 |
+## 2. Các kỹ thuật Đảo ngược (Reverse) 🔄
+
+Đi phỏng vấn mà dùng reversed() là ăn điểm tinh tế về tối ưu bộ nhớ.
+
+| **Phương pháp** | **Cú pháp**        | **Time Complexity** | **Space Complexity** | **Notes**                                             |
+| :-------------- | :----------------- | :------------------ | :------------------- | :---------------------------------------------------- |
+| **Slicing**     | `new = a[::-1]`    | $O(N)$              | $O(N)$               | Tạo ra list mới (tốn RAM).                            |
+| **Iterator**    | `it = reversed(a)` | $O(1)$              | $O(1)$               | **Best Choice**. Chỉ tạo con trỏ, không copy dữ liệu. |
+| **In-place**    | `a.reverse()`      | $O(N)$              | $O(1)$               | Thay đổi trực tiếp list gốc.                          |
 
 ## Dictionary & The "Collections" Power
 

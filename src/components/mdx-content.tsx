@@ -114,7 +114,7 @@ const components = {
     <code className="bg-transparent p-0 text-inherit" {...props} />
   ),
   table: (props: any) => (
-    <div className="my-8 w-full overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-2">
+    <div className="my-4 w-full overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-2">
       <table className="w-full text-left text-sm" {...props} />
     </div>
   ),

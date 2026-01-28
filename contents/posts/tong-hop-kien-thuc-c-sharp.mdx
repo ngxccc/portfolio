@@ -1,0 +1,162 @@
+---
+title: "Tổng hợp kiến thức C#"
+description: "Kho lưu trữ các kiến thức, lệnh CLI và Best Practices về C#/.NET mà tôi đúc kết được."
+date: "2026-01-27"
+tags: ["csharp", "dotnet", "cheatsheet", "backend"]
+---
+
+## 1. .NET CLI (Command Line Interface)
+
+Các lệnh thường dùng để thao tác với .NET Core/NET 5+ mà không cần mở Visual Studio.
+
+### Quản lý Solution (.sln)
+
+**Tạo solution mới (Hỗ trợ định dạng `.slnx` mới):**
+
+```bash
+dotnet new sln -n TenSolution -o DuongDan --format slnx
+```
+
+**Hoặc tạo định dạng sln truyền thống rồi migrate sau**
+
+```bash
+dotnet new sln -n TenSolution -o DuongDan
+dotnet sln migrate
+rm TenSolution.sln # Xóa file cũ nếu cần
+```
+
+**Thêm project vào solution**
+
+```bash
+dotnet sln add TenProject/TenProject.csproj
+```
+
+**Xóa project khỏi solution**
+
+```bash
+dotnet sln remove TenProject/TenProject.csproj
+```
+
+### Quản lý Project
+
+**Tạo các loại dự án phổ biến:**
+
+```bash
+# Tạo Console App (Mặc định dùng Top-level statements)
+dotnet new console -n TenProject -f net8.0
+
+# Tạo Console App (Dùng hàm Main truyền thống)
+dotnet new console -n TenProject --use-program-main
+
+# Tạo Class Library (Thư viện dùng chung)
+dotnet new classlib -n MyApp.Library
+
+# Tạo WinForms App
+dotnet new winforms -n GameCaro
+```
+
+**Quản lý tham chiếu (Reference) & Gói (Package):**
+
+```bash
+# Cài đặt gói NuGet (Ví dụ: FontAwesome)
+dotnet add package FontAwesome.Sharp
+
+# Thêm tham chiếu từ Project này sang Project khác (Vd: Console trỏ tới Library)
+dotnet add TenProject/TenProject.csproj reference MyApp.Library/MyApp.Library.csproj
+```
+
+### Chạy và Cấu hình
+
+**Chạy dự án:**
+
+```bash
+# Chạy project trong thư mục hiện tại
+dotnet run
+
+# Chạy project cụ thể từ thư mục gốc (Root)
+dotnet run --project MyApp.Console
+```
+
+**Tiện ích:**
+
+```bash
+# Tạo file .gitignore chuẩn cho .NET
+dotnet new gitignore
+```
+
+## 2. Quy tắc lập trình (Best Practices)
+
+- **Nguyên tắc tổ chức:** `1 File = 1 Class`. Tên file phải trùng khớp với tên Class bên trong để dễ tìm kiếm và bảo trì.
+
+### So sánh `Convert.ToInt32()` và `int.Parse()`
+
+| **Đặc điểm**                  | **int.Parse(value)**                  | **Convert.ToInt32(value)**                 |
+| ----------------------------- | ------------------------------------- | ------------------------------------------ |
+| **Khi đầu vào là `null`**     | **Ném lỗi** (`ArgumentNullException`) | **Trả về 0** (An toàn hơn)                 |
+| **Khi sai định dạng** ("abc") | **Ném lỗi** (`FormatException`)       | **Ném lỗi** (`FormatException`)            |
+| **Đầu vào khác String**       | Không hỗ trợ đa dạng                  | Hỗ trợ nhiều kiểu (double, float, bool...) |
+| **Hiệu năng**                 | Nhanh hơn một chút (xử lý trực tiếp)  | Chậm hơn xíu (do kiểm tra null trước)      |
+
+> **💡 Mẹo:** Nếu không chắc chắn về dữ liệu đầu vào (có thể không phải số), hãy dùng `TryParse` để không bị crash chương trình:
+
+```csharp
+string input = "123a";
+int result;
+// Trả về true nếu thành công, false nếu thất bại (không ném exception)
+bool success = int.TryParse(input, out result);
+```
+
+### Auto-implemented Properties (`{ get; set; }`)
+
+```csharp
+public int Age { get; set; }
+```
+
+Đây là tính năng **Thuộc tính tự động**. Thay vì phải khai báo một biến private (`_age`) rồi viết hàm get/set dài dòng, C# sẽ tự động tạo ra một biến ngầm định bên dưới (backing field) để lưu giá trị. Giúp code ngắn gọn nhưng vẫn đảm bảo tính đóng gói (Encapsulation).
+
+## 3. Quy tắc đặt tên (Naming Convention)
+
+Việc đặt tên đúng chuẩn giúp code chuyên nghiệp và đồng bộ với các thư viện .NET khác.
+
+### A. PascalCase (Viết Hoa Chữ Cái Đầu Của Mọi Từ)
+
+Dùng cho các thành phần mang tính "công cộng", phạm vi rộng.
+
+- **Áp dụng cho:** `Class`, `Method` (Hàm), `Property`, `Namespace`, `Interface`.
+
+- **Ví dụ:**
+
+  ```csharp
+  public class StudentContext { ... }
+  public void CalculateTotalScore() { ... }
+  public string FirstName { get; set; }
+  ```
+
+### B. camelCase (viết thường chữ đầu, Viết Hoa Các Chữ Sau)
+
+Dùng cho các thành phần "nội bộ", phạm vi hẹp.
+
+- **Áp dụng cho:** Tham số truyền vào hàm (`parameters`), biến cục bộ (`local variables`).
+
+- **Ví dụ:**
+
+  ```csharp
+  public void Login(string userName, string password) { // Tham số
+      int loginAttempts = 0; // Biến cục bộ
+  }
+  ```
+
+### C. Quy tắc đặc biệt (Underscore Prefix)
+
+- **Biến Private (Field):** Thường bắt đầu bằng dấu gạch dưới `_` kết hợp camelCase. Giúp phân biệt rõ ràng với Property hoặc biến cục bộ.
+
+- **Ví dụ:**
+
+  ```csharp
+  private string _connectionString;
+  private readonly ILogger _logger;
+  ```
+
+- **Interface (Giao diện):** Luôn bắt đầu bằng chữ `I` lớn.
+
+- **Ví dụ:** `IAnimal`, `IDisposable`, `IRepository`.
