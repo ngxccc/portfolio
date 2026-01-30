@@ -2,37 +2,59 @@ import Link from "next/link";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { X } from "lucide-react";
 import { Metadata } from "next";
-import { BlogCard, getBlogPosts } from "@/modules/blog";
+import { BlogCard, getPaginatedPosts } from "@/modules/blog";
+import { Pagination } from "@/shared/components/pagination";
 
 interface BlogPageProps {
-  searchParams: Promise<{ tag: string }>;
+  searchParams: Promise<{ tag: string; page?: string }>;
 }
 
 export async function generateMetadata({
   searchParams,
 }: BlogPageProps): Promise<Metadata> {
-  const { tag } = await searchParams;
+  const { tag, page } = await searchParams;
+  const currentPage = Number(page) || 1;
+
+  const { posts } = getPaginatedPosts(currentPage, tag);
+
+  const isEmptyPage = posts.length === 0 && currentPage > 1;
+
+  let canonicalUrl = "/blog";
+  const params = new URLSearchParams();
+
+  if (tag) params.set("tag", tag);
+
+  if (currentPage > 1) params.set("page", currentPage.toString());
+
+  const queryString = params.toString();
+  if (queryString) canonicalUrl += `?${queryString}`;
 
   return {
     title: tag
-      ? `Bài viết về ${tag} - Tech Blog`
-      : "Tech Blog - Coding Tutorials & Insights",
+      ? `Tag: ${tag} (Trang ${currentPage})`
+      : `Blog - Trang ${currentPage}`,
     description: tag
       ? `Tổng hợp các bài viết hướng dẫn, thủ thuật về ${tag} mới nhất.`
       : "Chia sẻ kiến thức về lập trình Web, Next.js, React và các công nghệ mới nhất.",
     alternates: {
-      canonical: tag ? `/blog?tag=${tag}` : "/blog",
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: !isEmptyPage,
+      follow: true,
+      googleBot: {
+        index: !isEmptyPage,
+        follow: true,
+      },
     },
   };
 }
 
 const Blog = async ({ searchParams }: BlogPageProps) => {
-  const allPosts = getBlogPosts();
-  const { tag } = await searchParams;
+  const { tag, page } = await searchParams;
+  const currentPage = Number(page) || 1;
 
-  const posts = tag
-    ? allPosts.filter((post) => post.tags.includes(tag))
-    : allPosts;
+  const { posts, metadata } = getPaginatedPosts(currentPage, tag);
 
   return (
     <div className="mx-auto my-2 min-h-screen max-w-4xl px-4">
@@ -58,22 +80,36 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
               </Link>
             </div>
           )}
+
+          {/* page info */}
+          <p className="mt-2 text-sm text-gray-500">
+            Hiển thị {posts.length} / {metadata.totalPosts} bài viết
+          </p>
         </div>
       </ScrollAnimation>
 
       {/* Blog List Section */}
       <div className="space-y-8">
         {posts.length > 0 ? (
-          posts.map((post) => (
-            <BlogCard key={post.slug} post={post} activeTag={tag} />
-          ))
+          <>
+            {posts.map((post) => (
+              <BlogCard key={post.slug} post={post} activeTag={tag} />
+            ))}
+
+            <Pagination
+              totalPages={metadata.totalPages}
+              currentPage={metadata.currentPage}
+              baseUrl="/blog"
+              searchParams={{ tag }}
+            />
+          </>
         ) : (
           <div className="py-10 text-center">
             <p className="text-xl text-gray-400">
               Không tìm thấy bài viết nào với tag này.
             </p>
             <Link href="/blog" className="mt-4 text-cyan-400 hover:underline">
-              Quay lại danh sách
+              Quay về trang 1
             </Link>
           </div>
         )}

@@ -1,9 +1,46 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
-import { BlogPost, BlogPostSchema } from "../types";
+import { BlogPost, BlogPostSchema, PaginatedResult } from "../types";
+import { cache } from "react";
 
 const postsDir = join(process.cwd(), "contents/posts");
+
+const POSTS_PER_PAGE = 5;
+
+export const getPaginatedPosts = cache(
+  (page = 1, tag?: string): PaginatedResult => {
+    const allPosts = getBlogPosts();
+
+    const filteredPosts = tag
+      ? allPosts.filter((post) => post.tags.includes(tag))
+      : allPosts;
+
+    const totalPosts = filteredPosts.length;
+    const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+    const currentPage = Math.max(
+      1,
+      Math.min(page, totalPages > 0 ? totalPages : 1),
+    );
+
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    const endIndex = startIndex + POSTS_PER_PAGE;
+
+    const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+
+    return {
+      posts: paginatedPosts,
+      metadata: {
+        currentPage,
+        totalPages,
+        totalPosts,
+        hasNextPage: currentPage < totalPages,
+        hasPrevPage: currentPage > 1,
+      },
+    };
+  },
+);
 
 const calculateReadingTime = (content: string): string => {
   const wordsPerMinute = 200;
@@ -13,7 +50,7 @@ const calculateReadingTime = (content: string): string => {
   return `${minutes} phút đọc`;
 };
 
-export const getBlogPosts = (): BlogPost[] => {
+export const getBlogPosts = cache((): BlogPost[] => {
   if (!existsSync(postsDir)) return [];
 
   const fileNames = readdirSync(postsDir);
@@ -41,7 +78,7 @@ export const getBlogPosts = (): BlogPost[] => {
 
   // sort theo bài mới nhất
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
-};
+});
 
 export const getPostBySlug = (slug: string): BlogPost | null => {
   try {

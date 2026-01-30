@@ -1,11 +1,13 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/shared/config/site";
+import { getTranslations } from "next-intl/server";
 
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const t = await getTranslations("HomePage");
   return {
     name: siteConfig.name,
     short_name: siteConfig.name,
-    description: siteConfig.description,
+    description: t("description"),
     start_url: "/",
     display: "standalone",
     background_color: "#000000",
@@ -35,7 +37,8 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Blog",
         url: "/blog",
-        description: "Đọc các bài viết mới nhất của tôi",
+        description:
+          "Chia sẻ kiến thức về lập trình Web, Next.js, React và các công nghệ mới nhất.",
         icons: [{ src: "/icon.png", sizes: "192x192", type: "image/png" }],
       },
     ],

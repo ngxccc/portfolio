@@ -1,4 +1,5 @@
 import z from "zod";
+import { getBlogPosts } from "./lib/blog";
 
 export const BlogPostSchema = z.object({
   title: z.string(),
@@ -15,3 +16,14 @@ export type BlogPost = z.infer<typeof BlogPostSchema> & {
   content: string;
   readingTime: string;
 };
+
+export interface PaginatedResult {
+  posts: ReturnType<typeof getBlogPosts>;
+  metadata: {
+    currentPage: number;
+    totalPages: number;
+    totalPosts: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+  };
+}
