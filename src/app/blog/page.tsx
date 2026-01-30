@@ -1,8 +1,8 @@
-import { getBlogPosts } from "@/shared/lib/blog";
 import Link from "next/link";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { Calendar, Tag, X } from "lucide-react";
 import { Metadata } from "next";
+import { getBlogPosts } from "@/modules/blog";
 
 interface BlogPageProps {
   searchParams: Promise<{ tag: string }>;

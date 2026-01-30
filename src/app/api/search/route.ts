@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@/shared/lib/blog";
+import { getBlogPosts } from "@/modules/blog";
 import { NextResponse } from "next/server";
 
 // Build cái API này thành file tĩnh (static)

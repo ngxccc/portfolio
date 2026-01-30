@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
-import { getPostBySlug } from "@/shared/lib/blog";
 import { siteConfig } from "@/shared/config/site";
+import { getPostBySlug } from "@/modules/blog";
 
 export const alt = "Ngxc Blog Post";
 export const size = {
