@@ -2,70 +2,103 @@
 
 # Ngxc's Portfolio 🚀
 
-[![Website](https://img.shields.io/website?label=Portfolio&style=for-the-badge&url=https%3A%2F%2Fngxc.vercel.app)](https://ngxc.vercel.app)
-[![GitHub followers](https://img.shields.io/github/followers/ngxccc?logo=github&style=for-the-badge)](https://github.com/ngxccc)
+[![Website](https://img.shields.io/website?label=Portfolio&style=for-the-badge&url=https%3A%2F%2Fngxc.vercel.app&logo=vercel&logoColor=white&color=000000)](https://ngxc.vercel.app)
+[![GitHub followers](https://img.shields.io/github/followers/ngxccc?logo=github&style=for-the-badge&color=24292e)](https://github.com/ngxccc)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ngxc)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://ngxc.vercel.app)
-[![Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev)
 
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=react,nextjs,typescript,tailwind" alt="Tech Stack" />
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,bun" alt="Tech Stack" />
+  </p>
+
+  <h3>Full Stack Developer (Fresher/Intern) 👨‍💻</h3>
+  <p>
+    Building modern web experiences with <b>Next.js 16</b>, <b>TypeScript</b> & <b>Modular Architecture</b>.
   </p>
 
-  <h3>Full Stack Developer | MERN Specialist | Database Expert</h3>
-
-[View Live Demo](https://ngxc.vercel.app) · [Report Bug](https://github.com/ngxccc/portfolio/issues) · [Request Feature](https://github.com/ngxccc/portfolio/issues)
+[View Live Demo](https://ngxc.vercel.app) · [Report Bug & Request Feature](https://github.com/ngxccc/portfolio/issues)
 
 </div>
 
+---
+
 ## 🌟 Overview
 
-A modern, responsive portfolio website showcasing my journey as a Full Stack Developer. Built with Next.js and Tailwind CSS, this portfolio demonstrates my expertise in web development through interactive UI components and seamless user experience.
+A cutting-edge, high-performance portfolio website designed to showcase my journey as a Developer. Not just a portfolio, it's a **Digital Garden** where I share knowledge through my technical blog.
+
+Built with the latest **Next.js 16 (App Router)** ecosystem, utilizing a **Modular Monolith** architecture for scalability and maintainability.
 
 ## ✨ Key Features
 
 <div align="center">
 
-| Feature            | Description                               |
-| ------------------ | ----------------------------------------- |
-| 🎨 Modern Design    | Sleek dark theme with beautiful gradients |
-| 📱 Responsive       | Optimized for all devices                 |
-| ⚡ Fast Performance | Optimized loading and rendering           |
-| 🔍 Smart Search     | Real-time search across portfolio         |
-| 🎭 Animations       | Smooth transitions with Framer Motion     |
-| 📊 Analytics        | Built-in performance monitoring           |
-| 🔒 Security Headers | Enhanced security configurations          |
-| 🤖 SEO Optimized    | Search engine friendly structure          |
+| Feature            | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| 🏗️ **Modular Arch** | Scalable folder structure (Domain-driven design)  |
+| ✍️ **MDX Blog**     | Technical blog with Syntax Highlighting & Mermaid |
+| 🌐 **I18n Ready**   | Multi-language support (VI/EN) via `next-intl`    |
+| ⚡ **Performance**  | Server Components (RSC) & Dynamic Imports         |
+| 🎨 **UI/UX**        | Smooth animations with `Framer Motion`            |
+| 🔍 **Command K**    | Fast, accessible search dialog (Cmd+K)            |
+| 📱 **Responsive**   | Mobile-first design with Tailwind CSS             |
+| 🤖 **SEO Ops**      | Dynamic Metadata, Sitemap, JSON-LD & OpenGraph    |
 
 </div>
 
 ## 🚀 Tech Stack
 
-<div align="center">
+**Core:**
 
-| Frontend     | Backend   | Database | Tools   |
-| ------------ | --------- | -------- | ------- |
-| Next.js      | Node.js   | MongoDB  | VS Code |
-| React        | Express   | MySQL    | Git     |
-| TypeScript   | REST API  | Redis    | Vercel  |
-| Tailwind CSS | WebSocket |          | Docker  |
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS, Lucide React
+- **Runtime:** Bun (Super fast!)
 
-</div>
+**Features:**
+
+- **Animations:** Framer Motion
+- **Internationalization:** next-intl
+- **Content:** MDX (Gray-matter, next-mdx-remote)
+- **Diagrams:** Mermaid.js
 
 ## 🛠️ Quick Start
 
-```bash
-# Clone the repository
-git clone https://github.com/ngxccc/portfolio.git
+This project uses **[Bun](https://bun.sh)** for blazing fast package management.
 
-# Install dependencies
+```bash
+# 1. Clone the repository
+git clone [https://github.com/ngxccc/portfolio.git](https://github.com/ngxccc/portfolio.git)
+
+# 2. Install dependencies
 bun install
 
-# Start development server
-bun dev
+# 3. Setup Environment Variables
+cp example.env .env.local
+# (Update .env.local with your own keys)
 
-# Build for production
-bun run build
+# 4. Start development server
+bun dev
+```
+
+Visit `http://localhost:3000` to see the magic happen! ✨
+
+## 📂 Project Structure
+
+I follow a **Modular Monolith** approach to keep things organized:
+
+```text
+src/
+├── app/                  # Next.js App Router (Routing & Layouts)
+├── modules/              # 👈 Feature Modules (The heart of the app)
+│   ├── blog/             # Logic for Blog (MDX, Components)
+│   ├── projects/         # Logic for Projects showcase
+│   ├── home/             # Landing page components
+│   └── ...
+├── shared/               # Shared Utilities, UI Components, Configs
+├── messages/             # I18n translation files (en.json, vi.json)
+├── i18n/                 # I18n config files
+└── ...
 ```
 
 ## 📱 Mobile Features
@@ -80,15 +113,16 @@ bun run build
 
 <div align="center">
 
-| Section         | Description                 |
-| --------------  | --------------------------- |
-| 🏠 Home         | Welcome and introduction    |
-| 👨‍💻 About        | Professional background     |
-| 📂 Projects     | Development portfolio       |
-| 💼 Experience   | Work history                |
-| 🎓 Education    | Academic background         |
-| 🏆 Certificates | Professional certifications |
-| 📞 Contact      | Get in touch                |
+| Section            | Description                    |
+| ------------------ | ------------------------------ |
+| 🏠 **Home**         | Hero section & Introduction    |
+| 📝 **Blog**         | Technical tutorials & insights |
+| 👨‍💻 **About**        | Background, Skills & Bio       |
+| 📂 **Projects**     | Showcase of my best work       |
+| 💼 **Experience**   | Work history                   |
+| 🎓 **Education**    | Education timeline             |
+| 🏆 **Certificates** | Professional certifications    |
+| 📞 **Contact**      | Connection channels            |
 
 </div>
 
@@ -96,7 +130,7 @@ bun run build
 
 <div align="center">
 
-`Ngọc ShinTran` · `Ngxc` · `Software Developer` · `Full Stack Developer` · `MERN Stack` · `Web Developer` · `React Developer` · `Next.js Expert` · `Database Developer` · `Frontend Specialist` · `Backend Developer` · `JavaScript Expert` · `TypeScript Developer` · `Node.js Developer` · `MongoDB Expert` · `SQL Developer`
+`Trần Văn Ngọc` · `Ngxc` · `Next.js Portfolio` · `Fresher Web Developer` · `React Intern` · `Vietnamese Developer` · `MDX Blog` · `Web Development`
 
 </div>
 
