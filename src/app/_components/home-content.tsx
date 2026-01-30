@@ -7,7 +7,7 @@ import { Copy, Check, FileDown, User } from "lucide-react";
 import { VercelLogo } from "@/components/tech-logos";
 import { homeData, socialStatsData } from "./home-data";
 import { heroVariants, statsVariants } from "@/config/animations";
-import { formatCount } from "@/lib/utils";
+import { formatCount } from "@/shared/lib/utils";
 
 interface HomeContentProps {
   initialGithubRepos: number;

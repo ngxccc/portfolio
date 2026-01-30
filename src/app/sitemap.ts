@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/shared/lib/blog";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {

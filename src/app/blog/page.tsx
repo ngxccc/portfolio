@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/shared/lib/blog";
 import Link from "next/link";
 import { ScrollAnimation } from "@/components/scroll-animation";
 import { Calendar, Tag, X } from "lucide-react";

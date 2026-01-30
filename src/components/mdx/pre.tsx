@@ -2,7 +2,7 @@
 
 import { useState, useRef, ComponentProps } from "react";
 import { Copy, Check } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
 interface PreProps extends ComponentProps<"pre"> {
   "data-language"?: string; // Nhận language từ rehype

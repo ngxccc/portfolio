@@ -1,6 +1,6 @@
 import { MDXContent } from "@/components/mdx-content";
 import { TableOfContents } from "@/components/table-of-contents";
-import { getBlogPosts, getPostBySlug } from "@/lib/blog";
+import { getBlogPosts, getPostBySlug } from "@/shared/lib/blog";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "katex/dist/katex.min.css";

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { Move, RotateCcw, ZoomIn, ZoomOut } from "lucide-react";
 import mermaid from "mermaid";
 import { useEffect, useState } from "react";

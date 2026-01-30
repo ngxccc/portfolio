@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import { Code2, Menu, X } from "lucide-react";
 import SearchDialog from "./search-dialog";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { navigationConfig } from "@/config/navigation";
 
 const Navbar = () => {
