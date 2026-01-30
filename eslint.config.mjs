@@ -34,6 +34,27 @@ const eslintConfig = defineConfig([
     rules: {
       "@typescript-eslint/no-explicit-any": "off", // Disable 'no-explicit-any'
       "@typescript-eslint/no-unused-vars": "off", // Disable 'no-unused-vars'
+
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              // Chỉ được import modules/blog
+              // modules/blog/* chặn
+              group: ["@/modules/*/*"],
+              message:
+                "Private internal access! Please import from the public interface (index.ts) of the module.",
+            },
+            {
+              // Ngăn import ngược gây Circular Dependency
+              group: ["@/app/**"],
+              message: "Modules should not import from App layer.",
+            },
+          ],
+        },
+      ],
+
       "prettier/prettier": [
         "warn",
         {
