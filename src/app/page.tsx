@@ -1,4 +1,4 @@
-import { GitHubUser, StatsData } from "@/types/stats";
+import { GitHubUser, StatsData } from "@/shared/types/stats";
 import { HomeContent } from "./_components/home-content";
 import { homeData } from "./_components/home-data";
 
