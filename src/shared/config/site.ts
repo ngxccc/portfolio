@@ -13,6 +13,10 @@ export const siteConfig = {
   phone: "+84857044507",
   address: "Quận 9, TP. Hồ Chí Minh, Việt Nam",
   url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://ngxc.vercel.app",
+  cvLink: "/files/cv-pdf/tran-van-ngoc-cv.pdf",
+  statsUrl:
+    "https://raw.githubusercontent.com/shin-client/my-portfolio-data/main/stats.json",
+  githubApi: "https://api.github.com/users/ngxccc",
 
   social: {
     github: {

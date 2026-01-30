@@ -5,9 +5,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Copy, Check, FileDown, User } from "lucide-react";
 import { VercelLogo } from "@/shared/components/tech-logos";
-import { homeData, socialStatsData } from "../data/home-data";
+import { socialStatsData } from "../data/home-data";
 import { heroVariants, statsVariants } from "@/shared/config/animations";
 import { formatCount } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
+import { siteConfig } from "@/shared/config/site";
 
 interface HomeContentProps {
   initialGithubRepos: number;
@@ -18,6 +20,7 @@ export const HomeContent = ({
   initialGithubRepos,
   initialTiktokFollowers,
 }: HomeContentProps) => {
+  const t = useTranslations("HomePage");
   const [copied, setCopied] = useState(false);
 
   const githubRepos = initialGithubRepos;
@@ -35,7 +38,7 @@ export const HomeContent = ({
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(homeData.email);
+      await navigator.clipboard.writeText(siteConfig.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -46,7 +49,7 @@ export const HomeContent = ({
   const handleEmailClick = async (e: React.MouseEvent) => {
     // Logic này an toàn, không gây lỗi Hydration vì nó chạy sau khi page đã load
     if (typeof window !== "undefined" && window.innerWidth <= 640) {
-      window.location.href = `mailto:${homeData.email}`;
+      window.location.href = `mailto:${siteConfig.email}`;
       e.preventDefault();
     } else {
       await copyToClipboard();
@@ -66,20 +69,20 @@ export const HomeContent = ({
             className="relative mb-4 text-4xl font-bold tracking-tighter sm:mb-6 sm:text-6xl md:text-8xl"
             variants={heroVariants.item}
           >
-            {homeData.name}
+            {t("title")}
           </motion.h1>
           <motion.h1
             className="relative mb-4 text-2xl font-bold tracking-tighter sm:mb-6 sm:text-4xl md:text-6xl"
             variants={heroVariants.item}
           >
-            {homeData.title}
+            {t("role")}
           </motion.h1>
 
           <motion.p
             className="mx-auto mb-4 max-w-2xl px-2 text-lg text-gray-400 sm:mb-5 sm:px-4 sm:text-xl md:text-2xl"
             variants={heroVariants.item}
           >
-            {homeData.description}
+            {t("description")}
           </motion.p>
         </motion.div>
 
@@ -91,20 +94,20 @@ export const HomeContent = ({
         >
           <div className="flex justify-center space-x-3 sm:space-x-4">
             <a
-              href={homeData.cvLink}
+              href={siteConfig.cvLink}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-gray-100 sm:px-6 sm:py-3 sm:text-base"
             >
               <FileDown className="h-4 w-4 sm:h-5 sm:w-5" />
-              Tải xuống CV
+              {t("download")}
             </a>
             <Link
               href="/about"
               className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/20 sm:px-6 sm:py-3 sm:text-base"
             >
               <User className="h-4 w-4 sm:h-5 sm:w-5" />
-              Giới Thiệu
+              {t("about")}
             </Link>
           </div>
 
@@ -126,7 +129,7 @@ export const HomeContent = ({
               </span>
             </div>
             <span className="ml-4 text-gray-400 transition-colors group-hover:text-white sm:text-base">
-              {homeData.email}
+              {siteConfig.email}
             </span>
             <div className="ml-1 hidden opacity-0 transition-opacity group-hover:opacity-100 sm:block">
               {copied ? (

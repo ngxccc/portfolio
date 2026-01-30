@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "Trần Văn Ngọc",
+    "role": "Full Stack Developer (Fresher/Intern)",
+    "description": "Sinh viên năm 2 tại TP.HCM với đam mê xây dựng Web Applications tối ưu. Mình đang đào sâu vào Next.js, Node.js và hệ sinh thái công nghệ hiện đại. Hiện đang tìm kiếm cơ hội Thực tập (Open for Internship).",
+    "download": "Tải xuống CV",
+    "about": "Giới Thiệu"
+  },
+  "Projects": {
+    "title": "Dự án tiêu biểu"
+  }
+}

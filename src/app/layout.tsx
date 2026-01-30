@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/shared/config/site";
 import { BackToTop } from "@/shared/components/back-to-top";
 import { Footer, Navbar } from "@/modules/common";
+import { NextIntlClientProvider } from "next-intl";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -83,14 +84,17 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} bg-black text-gray-100 antialiased`}
       >
-        <div className="flex min-h-screen flex-col">
-          <Background3D />
-          <Navbar />
-          <main className="grow pt-16">{children}</main>
-          <SpeedInsights />
-          <BackToTop />
-          <Footer />
-        </div>
+        <NextIntlClientProvider>
+          <div className="flex min-h-screen flex-col">
+            <Background3D />
+            <Navbar />
+            <main className="grow pt-16">{children}</main>
+            <SpeedInsights />
+            <BackToTop />
+            <Footer />
+          </div>
+        </NextIntlClientProvider>
+
         <Analytics />
       </body>
     </html>

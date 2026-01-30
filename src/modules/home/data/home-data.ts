@@ -2,21 +2,7 @@ import { siteConfig } from "@/shared/config/site";
 import { IconType } from "react-icons";
 import { FaGithub, FaTiktok } from "react-icons/fa";
 
-export const homeData = {
-  name: siteConfig.name,
-  title: siteConfig.title,
-  description: siteConfig.description,
-  email: siteConfig.email,
-
-  cvLink: "/files/cv-pdf/tran-van-ngoc-cv.pdf",
-  githubApi: "https://api.github.com/users/ngxccc",
-  social: { ...siteConfig.social },
-
-  statsUrl:
-    "https://raw.githubusercontent.com/shin-client/my-portfolio-data/main/stats.json",
-};
-
-export interface SocialStatItem {
+interface SocialStatItem {
   id: "github" | "linkedin" | "tiktok";
   href: string;
   icon: IconType;

@@ -1,2 +1,2 @@
 export { HomeContent } from "./components/home-content";
-export { homeData } from "./data/home-data";
+export { getSocialStats } from "./lib/ultis";
