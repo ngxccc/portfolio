@@ -3,7 +3,7 @@
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { motion } from "framer-motion";
 import { Calendar, ExternalLink } from "lucide-react";
-import { certificates } from "./certificates-data";
+import { certificates } from "../data/certificates-data";
 
 export const CertificateList = () => {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import { skillsData } from "./skills-data";
+import { skillsData } from "../data/skills-data";
 
 export const SkillsContent = () => {
   return (

@@ -1,5 +1,5 @@
+import { ExperienceContent } from "@/modules/experience";
 import type { Metadata } from "next";
-import { ExperienceContent } from "./_components/experience-content";
 
 export const metadata: Metadata = {
   title: "Experience",

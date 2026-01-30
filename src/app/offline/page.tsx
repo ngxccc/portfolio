@@ -1,5 +1,5 @@
+import { OfflineContent } from "@/modules/offline";
 import type { Metadata } from "next";
-import { OfflineContent } from "./_components/offline-content";
 
 export const metadata: Metadata = {
   title: "You are Offline",

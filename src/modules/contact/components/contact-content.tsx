@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageSquare } from "lucide-react";
-import { contactInfo, socialLinks } from "./contact-data";
+import { contactInfo, socialLinks } from "../data/contact-data";
 
 export const ContactContent = () => {
   return (

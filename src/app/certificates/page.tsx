@@ -1,7 +1,7 @@
 import { Award } from "lucide-react";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import type { Metadata } from "next";
-import { CertificateList } from "./_components/certificate-list";
+import { CertificateList } from "../../modules/certificates/components/certificate-list";
 
 export const metadata: Metadata = {
   title: "Certificates",

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import { educationData } from "./education-data";
+import { educationData } from "../data/education-data";
 
 export const EducationContent = () => {
   return (

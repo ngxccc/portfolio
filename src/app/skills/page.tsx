@@ -1,5 +1,5 @@
+import { SkillsContent } from "@/modules/skills";
 import type { Metadata } from "next";
-import { SkillsContent } from "./_components/skills-content";
 
 export const metadata: Metadata = {
   title: "Skills & Expertise",

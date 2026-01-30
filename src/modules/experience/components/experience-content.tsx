@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import { experiences } from "./experience-data";
+import { experiences } from "../data/experience-data";
 
 export const ExperienceContent = () => {
   return (

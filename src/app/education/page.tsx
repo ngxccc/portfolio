@@ -1,5 +1,5 @@
+import { EducationContent } from "@/modules/education";
 import type { Metadata } from "next";
-import { EducationContent } from "./_components/education-content";
 
 export const metadata: Metadata = {
   title: "Education",

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import { offlineData } from "./offline-data";
+import { offlineData } from "../data/offline-data";
 
 export const OfflineContent = () => {
   const {
