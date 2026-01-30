@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import { achievements } from "./about-data";
+import { achievements } from "../data/about-data";
 
 export const Achievements = () => {
   return (

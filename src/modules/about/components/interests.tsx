@@ -2,7 +2,7 @@
 
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { Globe } from "lucide-react";
-import { interests } from "./about-data";
+import { interests } from "../data/about-data";
 
 export const Interests = () => {
   return (

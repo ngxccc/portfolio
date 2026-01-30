@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { ProfileSection } from "./_components/profile-section";
-import { Achievements } from "./_components/achievements";
-import { Interests } from "./_components/interests";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
+import { AboutContent } from "@/modules/about";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,9 +16,7 @@ export default function AboutPage() {
         <h2 className="gradient-text mb-8 text-4xl font-bold">About Me</h2>
       </ScrollAnimation>
 
-      <ProfileSection />
-      <Achievements />
-      <Interests />
+      <AboutContent />
     </div>
   );
 }

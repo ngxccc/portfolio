@@ -42,7 +42,7 @@ const eslintConfig = defineConfig([
             {
               // Chỉ được import modules/blog
               // modules/blog/* chặn
-              group: ["@/modules/*/*"],
+              group: ["**/modules/*/*"],
               message:
                 "Private internal access! Please import from the public interface (index.ts) of the module.",
             },
