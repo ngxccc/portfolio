@@ -1,6 +1,6 @@
 import { GitHubUser, StatsData } from "@/shared/types/stats";
-import { HomeContent } from "./_components/home-content";
-import { homeData } from "./_components/home-data";
+import { HomeContent } from "../modules/home/components/home-content";
+import { homeData } from "../modules/home/data/home-data";
 
 async function getSocialStats() {
   const [githubRes, statsRes] = await Promise.all([
