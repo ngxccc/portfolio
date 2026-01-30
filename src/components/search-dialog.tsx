@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Search, Command, ArrowRight } from "lucide-react";
-import { navigationConfig } from "@/config/navigation";
+import { navigationConfig } from "@/shared/config/navigation";
 
 const SearchDialog = () => {
   const [blogPosts, setBlogPosts] = useState<SearchDataType[]>([]);

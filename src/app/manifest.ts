@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/shared/config/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {

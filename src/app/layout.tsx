@@ -6,7 +6,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/footer";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/shared/config/site";
 import { BackToTop } from "@/components/back-to-top";
 
 const inter = Inter({

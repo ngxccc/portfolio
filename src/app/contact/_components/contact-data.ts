@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/shared/config/site";
 
 export const contactInfo = [
   {

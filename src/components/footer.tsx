@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Code2, Mail, Phone } from "lucide-react";
-import { siteConfig } from "@/config/site";
-import { navigationConfig } from "@/config/navigation";
+import { siteConfig } from "@/shared/config/site";
+import { navigationConfig } from "@/shared/config/navigation";
 
 // Split links into columns of 3
 const COLUMN1 = navigationConfig.slice(0, 3);

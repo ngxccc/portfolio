@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/shared/config/site";
 import { IconType } from "react-icons";
 import { FaGithub, FaTiktok } from "react-icons/fa";
 

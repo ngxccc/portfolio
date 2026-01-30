@@ -12,7 +12,7 @@ import {
 import { Code2, Menu, X } from "lucide-react";
 import SearchDialog from "./search-dialog";
 import { cn } from "@/shared/lib/utils";
-import { navigationConfig } from "@/config/navigation";
+import { navigationConfig } from "@/shared/config/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

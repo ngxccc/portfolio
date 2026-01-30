@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollAnimation } from "@/components/scroll-animation";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/shared/config/site";
 import Image from "next/image";
 
 export const ProfileSection = () => {
