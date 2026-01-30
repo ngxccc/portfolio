@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import Background3D from "@/components/background-3d";
-import Navbar from "@/components/navbar";
+import Background3D from "@/shared/components/background-3d";
+import Navbar from "@/shared/components/navbar";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import Footer from "@/components/footer";
+import Footer from "@/shared/components/footer";
 import { siteConfig } from "@/shared/config/site";
-import { BackToTop } from "@/components/back-to-top";
+import { BackToTop } from "@/shared/components/back-to-top";
 
 const inter = Inter({
   subsets: ["latin"],

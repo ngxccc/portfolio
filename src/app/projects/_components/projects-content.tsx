@@ -2,7 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import Image from "next/image";
 import { projects } from "./projects-data";
 

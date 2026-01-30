@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ProfileSection } from "./_components/profile-section";
 import { Achievements } from "./_components/achievements";
 import { Interests } from "./_components/interests";
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 
 export const metadata: Metadata = {
   title: "About",

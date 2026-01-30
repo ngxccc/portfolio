@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Copy, Check, FileDown, User } from "lucide-react";
-import { VercelLogo } from "@/components/tech-logos";
+import { VercelLogo } from "@/shared/components/tech-logos";
 import { homeData, socialStatsData } from "./home-data";
 import { heroVariants, statsVariants } from "@/shared/config/animations";
 import { formatCount } from "@/shared/lib/utils";

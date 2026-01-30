@@ -9,7 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { experiences } from "./experience-data";
 
 export const ExperienceContent = () => {

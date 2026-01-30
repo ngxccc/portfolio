@@ -1,5 +1,5 @@
 import { Award } from "lucide-react";
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import type { Metadata } from "next";
 import { CertificateList } from "./_components/certificate-list";
 

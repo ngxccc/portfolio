@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { siteConfig } from "@/shared/config/site";
 import Image from "next/image";
 

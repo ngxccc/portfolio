@@ -35,7 +35,7 @@ import {
   ExpressLogo,
   ArchLinuxLogo,
   WindowLogo,
-} from "@/components/tech-logos";
+} from "@/shared/components/tech-logos";
 import { ElementType } from "react";
 
 export interface SkillItem {

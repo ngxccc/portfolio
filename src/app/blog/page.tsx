@@ -1,6 +1,6 @@
 import { getBlogPosts } from "@/shared/lib/blog";
 import Link from "next/link";
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { Calendar, Tag, X } from "lucide-react";
 import { Metadata } from "next";
 

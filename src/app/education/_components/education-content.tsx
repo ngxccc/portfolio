@@ -11,7 +11,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { educationData } from "./education-data";
 
 export const EducationContent = () => {

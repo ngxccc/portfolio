@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollAnimation } from "@/components/scroll-animation";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { motion } from "framer-motion";
 import { Calendar, ExternalLink } from "lucide-react";
 import { certificates } from "./certificates-data";
