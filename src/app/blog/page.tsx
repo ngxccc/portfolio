@@ -66,7 +66,7 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
                     <div className="flex items-center gap-1.5">
                       <Calendar className="h-4 w-4 text-cyan-400" />
                       <time dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString("en-US", {
+                        {new Date(post.date).toLocaleDateString("vi-VN", {
                           year: "numeric",
                           month: "long",
                           day: "numeric",

@@ -2,15 +2,20 @@
   "HomePage": {
     "title": "{name}",
     "role": "Full Stack Developer (Fresher/Intern)",
-    "description": "Sinh viên năm 2 tại TP.HCM với đam mê xây dựng Web Applications tối ưu. Mình đang đào sâu vào Next.js, Node.js và hệ sinh thái công nghệ hiện đại. Hiện đang tìm kiếm cơ hội Thực tập (Open for Internship).",
+    "description": "Sinh viên CNTT chuyên về Next.js & Node.js. Hiện đang tìm kiếm cơ hội Thực tập (Internship) tại TP.HCM.",
     "download": "Tải xuống CV",
     "about": "Giới Thiệu",
     "metadata": {
-      "title": "{name} - Portfolio",
-      "description": "Portfolio chính thức của {name}, chuyên về Next.js và Node.js."
+      "title": "{name} - Portfolio | Full Stack Intern",
+      "description": "Portfolio của {name} - Sinh viên CNTT chuyên về Next.js & Node.js. Hiện đang tìm kiếm cơ hội Thực tập (Internship) tại TP.HCM. Xem dự án và CV tại đây."
     }
   },
+
   "Projects": {
     "title": "Dự án tiêu biểu"
+  },
+
+  "MetaData": {
+    "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }
 }

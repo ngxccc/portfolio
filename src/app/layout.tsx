@@ -23,14 +23,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const generateMetadata = async () => {
-  const t = await getTranslations("HomePage.metadata");
+  const [t, s] = await Promise.all([
+    getTranslations("HomePage.metadata"),
+    getTranslations("MetaData"),
+  ]);
+
+  const localizedKeywords = s("keywords")
+    .split(",")
+    .map((k) => k.trim());
+
+  const allKeywords = [...siteConfig.keywords, ...localizedKeywords];
+
   return {
     title: {
       default: t("title", { name: siteConfig.name }),
       template: `%s | ${siteConfig.name}`,
     },
     description: t("description", { name: siteConfig.name }),
-    keywords: siteConfig.keywords,
+    keywords: allKeywords,
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
     manifest: "/manifest.json",
