@@ -89,6 +89,8 @@ I follow a **Modular Monolith** approach to keep things organized:
 
 ```text
 src/
+├── content/
+│   └── post/             # All posts
 ├── app/                  # Next.js App Router (Routing & Layouts)
 ├── modules/              # 👈 Feature Modules (The heart of the app)
 │   ├── blog/             # Logic for Blog (MDX, Components)
