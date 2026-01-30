@@ -1,0 +1,62 @@
+import Link from "next/link";
+import { Calendar, Tag } from "lucide-react";
+import { ScrollAnimation } from "@/shared/components/scroll-animation";
+import { BlogPost } from "../types";
+
+export const BlogCard = ({
+  post,
+  activeTag,
+}: {
+  post: BlogPost;
+  activeTag?: string;
+}) => {
+  return (
+    <ScrollAnimation>
+      <article className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-gray-800/50 p-6 backdrop-blur-sm transition-all hover:border-cyan-500/30 hover:bg-gray-800/80 hover:shadow-lg hover:shadow-cyan-500/5">
+        <Link href={`/blog/${post.slug}`}>
+          <span className="absolute inset-0" />
+        </Link>
+
+        {/* Header */}
+        <div className="mb-4 space-y-2">
+          <div className="flex items-center gap-3 text-sm text-gray-400">
+            <div className="flex items-center gap-1.5">
+              <Calendar className="h-4 w-4 text-cyan-400" />
+              <time dateTime={post.date}>
+                {new Date(post.date).toLocaleDateString("vi-VN", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </div>
+          </div>
+          <h3 className="text-2xl font-bold text-white transition-colors group-hover:text-cyan-400">
+            {post.title}
+          </h3>
+        </div>
+
+        {/* Description */}
+        <p className="mb-6 line-clamp-2 text-gray-400">{post.description}</p>
+
+        {/* Tags */}
+        <div className="relative z-10 flex flex-wrap items-center gap-2">
+          <Tag className="h-4 w-4 text-gray-500" />
+          {post.tags.map((t) => (
+            <Link
+              key={t}
+              href={`/blog?tag=${t}`}
+              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                t === activeTag
+                  ? "border-cyan-500 bg-cyan-500/10 text-cyan-400"
+                  : "border-white/5 bg-white/5 text-gray-300 hover:bg-white/10"
+              }`}
+            >
+              {t}
+            </Link>
+          ))}
+        </div>
+      </article>
+    </ScrollAnimation>
+  );
+};
