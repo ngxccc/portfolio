@@ -4,14 +4,11 @@ import { LuMail } from "react-icons/lu";
 export const siteConfig = {
   name: "Trần Văn Ngọc",
   shortName: "Ngxc",
-  title: "Full Stack Developer (Fresher/Intern)",
-  description:
-    "Sinh viên năm 2 tại TP.HCM với đam mê xây dựng Web Applications tối ưu. Mình đang đào sâu vào Next.js, Node.js và hệ sinh thái công nghệ hiện đại. Hiện đang tìm kiếm cơ hội Thực tập (Open for Internship).",
-  ogImage: "/profile/logo.png",
-
   email: "ngocshintrann@gmail.com",
   phone: "+84857044507",
   address: "Quận 9, TP. Hồ Chí Minh, Việt Nam",
+
+  ogImage: "/profile/logo.png",
   url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://ngxc.vercel.app",
   cvLink: "/files/cv-pdf/tran-van-ngoc-cv.pdf",
   statsUrl:

@@ -69,7 +69,7 @@ export const HomeContent = ({
             className="relative mb-4 text-4xl font-bold tracking-tighter sm:mb-6 sm:text-6xl md:text-8xl"
             variants={heroVariants.item}
           >
-            {t("title")}
+            {t("title", { name: siteConfig.name })}
           </motion.h1>
           <motion.h1
             className="relative mb-4 text-2xl font-bold tracking-tighter sm:mb-6 sm:text-4xl md:text-6xl"

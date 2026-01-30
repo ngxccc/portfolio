@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Background3D from "@/shared/components/background-3d";
 import "./globals.css";
@@ -8,6 +8,7 @@ import { siteConfig } from "@/shared/config/site";
 import { BackToTop } from "@/shared/components/back-to-top";
 import { Footer, Navbar } from "@/modules/common";
 import { NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,45 +22,48 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: `${siteConfig.name} - ${siteConfig.title}`,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
-  creator: siteConfig.name,
-  manifest: "/manifest.json",
-  openGraph: {
-    type: "website",
-    locale: "vi_VN",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-    googleBot: {
+export const generateMetadata = async () => {
+  const t = await getTranslations("HomePage.metadata");
+  return {
+    title: {
+      default: t("title", { name: siteConfig.name }),
+      template: `%s | ${siteConfig.name}`,
+    },
+    description: t("description", { name: siteConfig.name }),
+    keywords: siteConfig.keywords,
+    authors: [{ name: siteConfig.name, url: siteConfig.url }],
+    creator: siteConfig.name,
+    manifest: "/manifest.json",
+    openGraph: {
+      type: "website",
+      locale: "vi_VN",
+      url: siteConfig.url,
+      title: siteConfig.name,
+      description: t("description", { name: siteConfig.name }),
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    robots: {
       index: true,
       follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
-  },
-  metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: "./",
-  },
+    metadataBase: new URL(siteConfig.url),
+    alternates: {
+      canonical: "./",
+    },
+  };
 };
 
 export const viewport: Viewport = {
