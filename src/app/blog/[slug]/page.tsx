@@ -1,10 +1,8 @@
-import { MDXContent } from "@/shared/components/mdx-content";
-import { TableOfContents } from "@/shared/components/table-of-contents";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ChevronDown, List, TableOfContents } from "lucide-react";
+import { getBlogPosts, getPostBySlug, MDXContent } from "@/modules/blog";
 import "katex/dist/katex.min.css";
-import { ChevronDown, List } from "lucide-react";
-import { getBlogPosts, getPostBySlug } from "@/modules/blog";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

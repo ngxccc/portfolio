@@ -9,7 +9,7 @@ interface TocItem {
   level: number;
 }
 
-export function TableOfContents() {
+export const TableOfContents = () => {
   const [headings, setHeadings] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
@@ -83,4 +83,4 @@ export function TableOfContents() {
       </ul>
     </nav>
   );
-}
+};

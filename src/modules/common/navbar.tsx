@@ -10,9 +10,9 @@ import {
   useSpring,
 } from "framer-motion";
 import { Code2, Menu, X } from "lucide-react";
-import SearchDialog from "./search-dialog";
 import { cn } from "@/shared/lib/utils";
 import { navigationConfig } from "@/shared/config/navigation";
+import SearchDialog from "@/shared/components/search-dialog";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -4,12 +4,12 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import Pre from "./mdx/pre";
+import Pre from "./pre";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import MermaidWrapper from "./mdx/mermaid-wrapper";
+import MermaidWrapper from "./mermaid-wrapper";
 
 interface VisitLineNode {
   children: { type: string; value: string }[];
