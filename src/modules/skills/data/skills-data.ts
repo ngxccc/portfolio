@@ -3,11 +3,8 @@ import {
   Layout,
   Server,
   Database,
-  MessageSquare,
   Lightbulb,
-  Users,
   Brain,
-  Cloud,
   Terminal,
   Wrench,
   Zap,
@@ -29,7 +26,6 @@ import {
   TailwindLogo,
   ShadCNLogo,
   NextjsLogo,
-  VirtualBoxLogo,
   VercelLogo,
   CSharpLogo,
   ExpressLogo,
@@ -39,20 +35,21 @@ import {
 import { ElementType } from "react";
 
 export interface SkillItem {
-  name: string;
+  name?: string;
+  id?: string;
   icon: ElementType;
   iconClassName?: string;
 }
 
 export interface SkillCategory {
-  category: string;
+  id: string;
   icon: ElementType;
   items: SkillItem[];
 }
 
 export const skillsData: SkillCategory[] = [
   {
-    category: "Programming Languages",
+    id: "languages",
     icon: Code2,
     items: [
       { name: "JavaScript", icon: JavaScriptLogo },
@@ -63,7 +60,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: "Front-End Development",
+    id: "frontend",
     icon: Layout,
     items: [
       { name: "Next.js", icon: NextjsLogo },
@@ -75,7 +72,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: "Back-End Development",
+    id: "backend",
     icon: Server,
     items: [
       { name: "Node.js", icon: NodeLogo },
@@ -83,7 +80,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: "Databases & Cloud Storage",
+    id: "database",
     icon: Database,
     items: [
       { name: "MySQL", icon: MySQLLogo },
@@ -91,7 +88,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: "Tools & DevOps",
+    id: "tools",
     icon: Wrench,
     items: [
       { name: "Git", icon: GitLogo },
@@ -99,11 +96,10 @@ export const skillsData: SkillCategory[] = [
       { name: "VS Code", icon: VSCodeLogo },
       { name: "Vercel", icon: VercelLogo },
       { name: "Compass", icon: MongoDBLogo },
-      { name: "CI/CD", icon: Code2 },
     ],
   },
   {
-    category: "Operating Systems",
+    id: "os",
     icon: Terminal,
     items: [
       { name: "Linux", icon: ArchLinuxLogo },
@@ -111,12 +107,12 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: "Soft Skills",
+    id: "soft_skills",
     icon: Brain,
     items: [
-      { name: "Adaptability", icon: Lightbulb, iconClassName: "h-5 w-5" },
-      { name: "Hardworking", icon: Zap, iconClassName: "h-5 w-5" },
-      { name: "Open-minded", icon: Globe, iconClassName: "h-5 w-5" },
+      { id: "adaptability", icon: Lightbulb, iconClassName: "h-5 w-5" },
+      { id: "hardworking", icon: Zap, iconClassName: "h-5 w-5" },
+      { id: "open_minded", icon: Globe, iconClassName: "h-5 w-5" },
     ],
   },
 ];

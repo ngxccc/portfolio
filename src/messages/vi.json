@@ -170,6 +170,31 @@
     }
   },
 
+  "Skills": {
+    "title": "Kỹ năng chuyên môn",
+    "subtitle": "Tổng quan về các công cụ, ngôn ngữ và kỹ thuật mà mình sử dụng để xây dựng sản phẩm.",
+    "categories": {
+      "languages": "Ngôn ngữ lập trình",
+      "frontend": "Front-End Development",
+      "backend": "Back-End Development",
+      "database": "Cơ sở dữ liệu & Cloud",
+      "tools": "Công cụ & DevOps",
+      "os": "Hệ điều hành",
+      "soft_skills": "Kỹ năng mềm"
+    },
+    "soft_skills": {
+      "adaptability": "Thích nghi nhanh",
+      "hardworking": "Chăm chỉ / Cần cù",
+      "open_minded": "Tư duy cởi mở",
+      "teamwork": "Làm việc nhóm",
+      "problem_solving": "Giải quyết vấn đề"
+    },
+    "metadata": {
+      "title": "Kỹ năng & Chuyên môn",
+      "description": "Khám phá danh sách kỹ năng kỹ thuật của {name}: Ngôn ngữ lập trình, Frontend, Backend, Database và các công cụ DevOps."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }

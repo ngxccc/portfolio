@@ -1,11 +1,19 @@
 import { SkillsContent } from "@/modules/skills";
-import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { siteConfig } from "@/shared/config/site";
 
-export const metadata: Metadata = {
-  title: "Skills & Expertise",
-  description:
-    "Explore my technical skills and expertise in programming languages, front-end and back-end development, databases, and more.",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("Skills.metadata");
+
+  return {
+    title: t("title"),
+    description: t("description", { name: siteConfig.name }),
+    openGraph: {
+      title: t("title"),
+      description: t("description", { name: siteConfig.name }),
+    },
+  };
+}
 
 export default function SkillsPage() {
   return (
