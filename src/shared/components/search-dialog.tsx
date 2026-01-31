@@ -4,8 +4,17 @@ import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Search, Command, ArrowRight } from "lucide-react";
 import { navigationConfig } from "@/shared/config/navigation";
+import { useTranslations } from "next-intl";
+
+interface SearchDataType {
+  title: string;
+  description: string;
+  path: string;
+  keywords: string[];
+}
 
 const SearchDialog = () => {
+  const t = useTranslations("Search");
   const [blogPosts, setBlogPosts] = useState<SearchDataType[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,7 +31,6 @@ const SearchDialog = () => {
         console.error("Failed to fetch blog posts for search", error);
       }
     };
-
     void fetchPosts();
   }, []);
 
@@ -48,13 +56,10 @@ const SearchDialog = () => {
         e.preventDefault();
         setIsOpen((prev) => !prev);
       }
-
       if (!isOpen) return;
-
       if (e.key === "Escape") {
         setIsOpen(false);
       }
-
       if (e.key === "ArrowDown") {
         e.preventDefault();
         setSelectedIndex((prev) => (prev + 1) % results.length);
@@ -65,14 +70,12 @@ const SearchDialog = () => {
           (prev) => (prev - 1 + results.length) % results.length,
         );
       }
-
       if (e.key === "Enter" && results.length > 0) {
         e.preventDefault();
         router.push(results[selectedIndex].path);
         setIsOpen(false);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, results, selectedIndex, router]);
@@ -85,7 +88,7 @@ const SearchDialog = () => {
         aria-label="Open search dialog"
       >
         <Search className="h-4 w-4" />
-        <span className="hidden text-sm sm:block">Search ...</span>
+        <span className="hidden text-sm sm:block">{t("label")}</span>
         <span className="hidden items-center space-x-1 rounded bg-white/10 px-1.5 py-0.5 text-xs md:flex">
           <Command className="h-3 w-3" />
           <span>K</span>
@@ -108,24 +111,24 @@ const SearchDialog = () => {
               <Search className="h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search documentation..."
+                placeholder={t("placeholder")}
                 className="w-full border-0 bg-transparent px-4 py-4 text-white focus:ring-0 focus:outline-none"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  setSelectedIndex(0); // Reset selection khi gõ
+                  setSelectedIndex(0);
                 }}
                 autoFocus
               />
               <div className="flex items-center space-x-1 rounded bg-white/10 px-1.5 py-0.5 text-xs text-gray-400">
-                <span>Esc</span>
+                <span>{t("esc")}</span>
               </div>
             </div>
 
             <div className="max-h-[60vh] overflow-y-auto">
               {results.length === 0 ? (
                 <div className="p-4 text-sm text-gray-400">
-                  No results found.
+                  {t("no_results")}
                 </div>
               ) : (
                 <div className="py-2">
@@ -141,7 +144,7 @@ const SearchDialog = () => {
                           setIsOpen(false);
                         }}
                         onMouseEnter={() => setSelectedIndex(index)}
-                        aria-label={`Navigate to ${result.title}`}
+                        aria-label={`Maps to ${result.title}`}
                       >
                         <div>
                           <div className="font-medium text-white">

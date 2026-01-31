@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 export const BackToTop = () => {
+  const t = useTranslations("Common");
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -28,7 +30,8 @@ export const BackToTop = () => {
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-10 opacity-0",
       )}
-      aria-label="Về đầu trang"
+      aria-label={t("back_to_top")}
+      title={t("back_to_top")}
     >
       <ArrowUp className="h-5 w-5" />
     </button>

@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const LoadingUI = () => {
+  const t = useTranslations("Common");
+
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-black">
       <motion.div
@@ -46,10 +49,10 @@ const LoadingUI = () => {
             ease: "easeInOut",
           }}
         >
-          Loading...
+          {t("loading")}
         </motion.div>
         <motion.div className="text-sm text-white/50">
-          Please wait while we set things up
+          {t("loading_sub")}
         </motion.div>
       </motion.div>
     </div>

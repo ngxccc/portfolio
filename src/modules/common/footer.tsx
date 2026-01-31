@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-black/50 backdrop-blur-xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 py-4 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-4">
           {/* Branding */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
@@ -58,7 +58,7 @@ const Footer = () => {
           {/* Links - First Column */}
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-white">Liên kết nhanh</h3>
-            <div className="grid grid-cols-3 gap-x-6 gap-y-3">
+            <div className="grid grid-cols-3 gap-x-4 gap-y-3">
               {/* Column 1 */}
               <div>
                 {COLUMN1.map((link) => (

@@ -205,6 +205,26 @@
     }
   },
 
+  "Common": {
+    "back_to_top": "Về đầu trang",
+    "loading": "Đang tải...",
+    "loading_sub": "Vui lòng chờ trong giây lát...",
+    "back_to_home": "Về trang chủ"
+  },
+
+  "NotFound": {
+    "title": "Không tìm thấy trang",
+    "description": "Oops! Trang bạn đang tìm kiếm có vẻ đã bị lỗ đen vũ trụ nuốt chửng hoặc không tồn tại.",
+    "button": "Quay về Trạm chỉ huy"
+  },
+
+  "Search": {
+    "label": "Tìm kiếm...",
+    "placeholder": "Tìm kiếm bài viết, dự án, tài liệu...",
+    "no_results": "Không tìm thấy kết quả nào.",
+    "esc": "Esc"
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }
