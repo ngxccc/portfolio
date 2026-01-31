@@ -12,7 +12,17 @@
   },
 
   "Projects": {
-    "title": "Dự án tiêu biểu"
+    "title": "Dự án tiêu biểu",
+    "list": {
+      "x_clone": {
+        "title": "X Clone (Twitter Backend)",
+        "description": "Hệ thống Backend API mô phỏng mạng xã hội X/Twitter. Xây dựng với kiến trúc Modular Monolith, xử lý Authentication (JWT) và Database NoSQL."
+      },
+      "portfolio": {
+        "title": "Digital Garden Portfolio",
+        "description": "Website cá nhân hiện đại sử dụng Next.js 16 App Router & Kiến trúc Modular Monolith. Tích hợp Blog MDX, SEO Dynamic và đa ngôn ngữ (i18n)."
+      }
+    }
   },
 
   "About": {
