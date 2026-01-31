@@ -1,19 +1,13 @@
 import { WifiOff, Home, LucideIcon } from "lucide-react";
 
-export interface OfflineData {
+export interface OfflineConfig {
   icon: LucideIcon;
-  title: string;
-  message: string;
-  buttonText: string;
   buttonIcon: LucideIcon;
   buttonLink: string;
 }
 
-export const offlineData: OfflineData = {
+export const offlineData: OfflineConfig = {
   icon: WifiOff,
-  title: "No Internet Connection",
-  message: "Please check your internet connection and try again",
-  buttonText: "Try Again",
   buttonIcon: Home,
   buttonLink: "/",
 };

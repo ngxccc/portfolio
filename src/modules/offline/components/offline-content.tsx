@@ -4,24 +4,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { offlineData } from "../data/offline-data";
+import { useTranslations } from "next-intl";
 
 export const OfflineContent = () => {
-  const {
-    icon: Icon,
-    title,
-    message,
-    buttonText,
-    buttonIcon: ButtonIcon,
-    buttonLink,
-  } = offlineData;
+  const t = useTranslations("Offline");
+  const { icon: Icon, buttonIcon: ButtonIcon, buttonLink } = offlineData;
 
   return (
     <div
-      className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4"
+      className="relative flex min-h-[calc(100vh-4rem)] w-full flex-col items-center justify-center overflow-hidden px-4 py-12"
       role="main"
-      aria-label="Offline Page"
+      aria-label={t("title")}
     >
-      <div className="relative z-10 mx-auto max-w-2xl text-center">
+      <div className="relative z-10 mx-auto w-full max-w-2xl text-center">
         {/* Icon Animation */}
         <ScrollAnimation>
           <motion.div
@@ -31,7 +26,7 @@ export const OfflineContent = () => {
             transition={{ duration: 0.5 }}
           >
             <motion.div
-              className="mb-8 flex justify-center"
+              className="mb-6 flex justify-center sm:mb-8"
               animate={{
                 y: [0, -20, 0],
                 rotate: [0, -5, 5, 0],
@@ -43,9 +38,9 @@ export const OfflineContent = () => {
               }}
             >
               <Icon
-                className="h-32 w-32 text-gray-400"
+                className="h-24 w-24 text-gray-400 sm:h-32 sm:w-32"
                 role="img"
-                aria-label="No Internet Connection Icon"
+                aria-label="No Internet Icon"
               />
             </motion.div>
           </motion.div>
@@ -54,24 +49,24 @@ export const OfflineContent = () => {
         {/* Title */}
         <ScrollAnimation>
           <motion.h1
-            className="mb-4 text-3xl font-bold text-white md:text-4xl"
+            className="mb-3 text-2xl font-bold text-white sm:mb-4 sm:text-4xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            {title}
+            {t("title")}
           </motion.h1>
         </ScrollAnimation>
 
         {/* Message */}
         <ScrollAnimation>
           <motion.p
-            className="mb-8 text-lg text-gray-400"
+            className="mx-auto mb-8 max-w-xs text-base text-gray-400 sm:max-w-none sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            {message}
+            {t("message")}
           </motion.p>
         </ScrollAnimation>
 
@@ -84,15 +79,15 @@ export const OfflineContent = () => {
           >
             <Link
               href={buttonLink}
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-gray-200"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-gray-200 sm:text-base"
               role="button"
-              aria-label={buttonText}
+              aria-label={t("button")}
             >
               <ButtonIcon
-                className="h-5 w-5 transition-transform group-hover:scale-110"
+                className="h-4 w-4 transition-transform group-hover:scale-110 sm:h-5 sm:w-5"
                 aria-hidden="true"
               />
-              <span>{buttonText}</span>
+              <span>{t("button")}</span>
             </Link>
           </motion.div>
         </ScrollAnimation>

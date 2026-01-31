@@ -195,6 +195,16 @@
     }
   },
 
+  "Offline": {
+    "title": "Mất kết nối Internet",
+    "message": "Có vẻ như bạn đang offline. Hãy kiểm tra lại đường truyền mạng và thử lại nhé.",
+    "button": "Quay về trang chủ",
+    "metadata": {
+      "title": "Bạn đang Offline",
+      "description": "Vui lòng kiểm tra kết nối internet của bạn."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }
