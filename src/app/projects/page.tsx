@@ -1,8 +1,14 @@
 import { ProjectsContent } from "@/modules/projects";
+import { siteConfig } from "@/shared/config/site";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Projects",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("Projects.metadata");
+  return {
+    title: t("title"),
+    description: t("description", { name: siteConfig.name }),
+  };
 };
 
 export default function ProjectsPage() {

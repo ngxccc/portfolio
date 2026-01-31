@@ -5,6 +5,7 @@
     "description": "Sinh viên CNTT chuyên về Next.js & Node.js. Hiện đang tìm kiếm cơ hội Thực tập (Internship) tại TP.HCM.",
     "download": "Tải xuống CV",
     "about": "Giới Thiệu",
+
     "metadata": {
       "title": "{name} - Portfolio | Full Stack Intern",
       "description": "Portfolio của {name} - Sinh viên CNTT chuyên về Next.js & Node.js. Hiện đang tìm kiếm cơ hội Thực tập (Internship) tại TP.HCM. Xem dự án và CV tại đây."
@@ -18,10 +19,16 @@
         "title": "X Clone (Twitter Backend)",
         "description": "Hệ thống Backend API mô phỏng mạng xã hội X/Twitter. Xây dựng với kiến trúc Modular Monolith, xử lý Authentication (JWT) và Database NoSQL."
       },
+
       "portfolio": {
         "title": "Digital Garden Portfolio",
         "description": "Website cá nhân hiện đại sử dụng Next.js 16 App Router & Kiến trúc Modular Monolith. Tích hợp Blog MDX, SEO Dynamic và đa ngôn ngữ (i18n)."
       }
+    },
+
+    "metadata": {
+      "title": "Dự án tiêu biểu",
+      "description": "Khám phá các dự án của {name} - Lập trình viên Full Stack chuyên xây dựng các ứng dụng web hiện đại với React, Node.js và hệ sinh thái công nghệ mới nhất."
     }
   },
 
@@ -32,6 +39,7 @@
       "p2": "Mình chuyên sâu về Full Stack Development, đặc biệt là <stack>Hệ sinh thái Next.js</stack> (React, Node.js, TypeScript). Mình đam mê xây dựng các ứng dụng web tối ưu và giải quyết các bài toán hệ thống phức tạp.",
       "p3": "Ngoài giờ code, mình thường dành thời gian để tối ưu hóa cấu hình <linux>Arch Linux</linux>."
     },
+
     "Achievements": {
       "title": "Thành tích & Cột mốc",
       "items": {
@@ -61,6 +69,7 @@
         "ai": "Artificial Intelligence"
       }
     },
+
     "metadata": {
       "title": "Giới thiệu",
       "description": "Tìm hiểu về {name} - Lập trình viên Full Stack chuyên xây dựng các ứng dụng web hiện đại với React, Node.js và hệ sinh thái công nghệ mới nhất."
