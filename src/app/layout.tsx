@@ -1,4 +1,4 @@
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Background3D from "@/shared/components/background-3d";
 import "./globals.css";
@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (): Promise<Metadata> => {
   const [t, s] = await Promise.all([
     getTranslations("HomePage.metadata"),
     getTranslations("MetaData"),

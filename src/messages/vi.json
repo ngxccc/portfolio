@@ -15,6 +15,48 @@
     "title": "Dự án tiêu biểu"
   },
 
+  "About": {
+    "title": "Giới thiệu",
+    "Profile": {
+      "p1": "Mình là <highlight>{name}</highlight>. Một Lập trình viên <highlight>cần cù bù siêng năng, có làm thì mới có ăn</highlight>, hiện đang theo học chuyên ngành Web tại <school>Trường Cao đẳng Kỹ thuật Cao Thắng</school>.",
+      "p2": "Mình chuyên sâu về Full Stack Development, đặc biệt là <stack>Hệ sinh thái Next.js</stack> (React, Node.js, TypeScript). Mình đam mê xây dựng các ứng dụng web tối ưu và giải quyết các bài toán hệ thống phức tạp.",
+      "p3": "Ngoài giờ code, mình thường dành thời gian để tối ưu hóa cấu hình <linux>Arch Linux</linux>."
+    },
+    "Achievements": {
+      "title": "Thành tích & Cột mốc",
+      "items": {
+        "projects": {
+          "title": "1+ Dự án",
+          "description": "Ứng dụng Backend hoàn chỉnh"
+        },
+        "experience": {
+          "title": "Fresher / Intern",
+          "description": "Sẵn sàng làm việc & cống hiến"
+        },
+        "academic": {
+          "title": "GPA 8.2/10",
+          "description": "Thành tích học tập Giỏi"
+        }
+      }
+    },
+
+    "Interests": {
+      "title": "Lĩnh vực quan tâm",
+      "list": {
+        "web": "Phát triển Web",
+        "uiux": "Thiết kế UI/UX",
+        "cloud": "Cloud Computing",
+        "devops": "DevOps",
+        "opensource": "Open Source",
+        "ai": "Artificial Intelligence"
+      }
+    },
+    "metadata": {
+      "title": "Giới thiệu",
+      "description": "Tìm hiểu về {name} - Lập trình viên Full Stack chuyên xây dựng các ứng dụng web hiện đại với React, Node.js và hệ sinh thái công nghệ mới nhất."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }

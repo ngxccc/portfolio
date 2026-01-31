@@ -1,34 +1,44 @@
-import { Briefcase, Code2, GraduationCap, LucideIcon } from "lucide-react";
+import {
+  BrainCircuit,
+  Briefcase,
+  Cloud,
+  Code,
+  Code2,
+  Container,
+  GitFork,
+  GraduationCap,
+  LucideIcon,
+  Palette,
+} from "lucide-react";
 
 export interface AchievementItem {
+  id: string;
   icon: LucideIcon;
-  title: string;
-  description: string;
 }
+
+export type InterestItem = AchievementItem;
 
 export const achievements: AchievementItem[] = [
   {
+    id: "projects",
     icon: Code2,
-    title: "1 Projects",
-    description: "Completed full-stack web applications",
   },
   {
+    id: "experience",
     icon: Briefcase,
-    title: "0 Internships",
-    description: "Professional work experience",
   },
   {
+    id: "academic",
     icon: GraduationCap,
-    title: "8.2/10",
-    description: "Academic excellence",
   },
 ];
 
-export const interests = [
-  "Web Development",
-  "UI/UX Design",
-  "Cloud Computing",
-  "DevOps",
-  "Open Source",
-  "Artificial Intelligence",
+// Thay vì mảng string, giờ là mảng object có Icon xịn
+export const interests: InterestItem[] = [
+  { id: "web", icon: Code },
+  { id: "uiux", icon: Palette },
+  { id: "cloud", icon: Cloud },
+  { id: "devops", icon: Container },
+  { id: "opensource", icon: GitFork },
+  { id: "ai", icon: BrainCircuit },
 ];
