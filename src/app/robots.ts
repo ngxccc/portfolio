@@ -7,9 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       disallow: [
-        "/api/",
         "/offline",
-        "/_next/",
         "/admin/", // để cho có
       ],
     },
