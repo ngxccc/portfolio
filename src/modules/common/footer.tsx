@@ -1,148 +1,132 @@
 "use client";
 
 import Link from "next/link";
-import { Code2, Mail, Phone } from "lucide-react";
+import { Code2, Mail, Phone, ExternalLink } from "lucide-react";
 import { siteConfig } from "@/shared/config/site";
 import { navigationConfig } from "@/shared/config/navigation";
-
-// Split links into columns of 3
-const COLUMN1 = navigationConfig.slice(0, 3);
-const COLUMN2 = navigationConfig.slice(3, 6);
-const COLUMN3 = navigationConfig.slice(6, 9);
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("Footer");
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-4">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-xl" />
+    <footer className="relative mt-12 border-t border-white/10">
+      {/* Background Blur Effect */}
+      <div className="absolute inset-0 -z-10 bg-black/40 backdrop-blur-xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-4">
-          {/* Branding */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="my-4 grid grid-cols-1 gap-6 md:gap-12 lg:grid-cols-4">
+          {/* Column 1: Branding */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-3">
-              <Code2 className="h-8 w-8 text-white" />
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="rounded-lg bg-cyan-500/10 p-2">
+                <Code2 className="h-6 w-6 text-cyan-400" />
+              </div>
               <span className="text-xl font-bold text-white">
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="text-sm text-gray-400">{siteConfig.address}.</p>
+            <p className="max-w-xs text-sm leading-relaxed text-gray-400">
+              {siteConfig.address}
+            </p>
           </div>
 
-          {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-white">Liện hệ</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+          {/* Column 2: Quick Links */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+              {t("quick_links")}
+            </h3>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {navigationConfig.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className="group flex items-center text-sm text-gray-400 transition-colors hover:text-cyan-400"
                 >
-                  <Mail className="h-4 w-4" />
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phone}`}
-                  className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
-                >
-                  <Phone className="h-4 w-4" />
-                  {siteConfig.phone}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Links - First Column */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-white">Liên kết nhanh</h3>
-            <div className="grid grid-cols-3 gap-x-4 gap-y-3">
-              {/* Column 1 */}
-              <div>
-                {COLUMN1.map((link) => (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
-                  >
-                    {link.title}
-                  </Link>
-                ))}
-              </div>
-              {/* Column 2 */}
-              <div>
-                {COLUMN2.map((link) => (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
-                  >
-                    {link.title}
-                  </Link>
-                ))}
-              </div>
-              {/* Column 3 */}
-              <div>
-                {COLUMN3.map((link) => (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className="mb-2 block text-sm text-gray-400 transition-colors hover:text-white"
-                  >
-                    {link.title}
-                  </Link>
-                ))}
-              </div>
+                  <span className="h-1 w-1 rounded-full bg-cyan-500 opacity-0 transition-all group-hover:mr-2 group-hover:opacity-100" />
+                  {link.title}
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Social */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-white">Mạng xã hội</h3>
-            <div className="flex space-x-4">
-              {Object.values(siteConfig.social).map((social) => {
-                const Icon = social.icon;
-                return (
+          {/* Column 3: Contact & Social */}
+          <div className="space-y-8">
+            {/* Contact Info */}
+            <div>
+              <h3 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+                {t("contact")}
+              </h3>
+              <ul className="space-y-3">
+                <li>
                   <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 transition-colors hover:text-white"
-                    aria-label={social.label}
+                    href={`mailto:${siteConfig.email}`}
+                    className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
                   >
-                    <Icon className="h-5 w-5" />
+                    <Mail className="h-4 w-4 text-cyan-500" />
+                    {siteConfig.email}
                   </a>
-                );
-              })}
+                </li>
+                <li>
+                  <a
+                    href={`tel:${siteConfig.phone}`}
+                    className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+                  >
+                    <Phone className="h-4 w-4 text-cyan-500" />
+                    {siteConfig.phone}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Social Icons */}
+            <div>
+              <h3 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+                {t("social")}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {Object.values(siteConfig.social).map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-400 transition-all hover:bg-cyan-500/20 hover:text-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20"
+                      aria-label={social.label}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 py-3">
-          <div className="flex flex-col items-center justify-between md:flex-row">
-            <p className="text-sm text-gray-400">
-              © {currentYear} {siteConfig.name}. Mọi quyền đã được bảo lưu.
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-center text-sm text-gray-500 md:text-left">
+              {t("copyright", {
+                year: currentYear,
+                name: siteConfig.shortName,
+              })}
             </p>
-            <div className="mt-4 flex space-x-6 md:mt-0">
-              <a
-                href=""
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
-              >
-                <svg
-                  className="h-3 w-3"
-                  fill="currentColor"
-                  viewBox="0 0 32 32"
-                >
-                  <path d="M12 1L24 22H0L12 1Z" />
-                </svg>
-                Ngxc&apos;s Portfolio
-              </a>
-            </div>
+
+            <a
+              href={siteConfig.social.github.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-white"
+            >
+              {t.rich("built_with", {
+                name: siteConfig.shortName,
+              })}
+              <ExternalLink className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
+            </a>
           </div>
         </div>
       </div>

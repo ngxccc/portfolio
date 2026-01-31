@@ -205,6 +205,14 @@
     }
   },
 
+  "Footer": {
+    "contact": "Liên hệ",
+    "quick_links": "Liên kết nhanh",
+    "social": "Mạng xã hội",
+    "copyright": "© {year} {name}. Mọi quyền được bảo lưu.",
+    "built_with": "Built with ❤️ by {name}"
+  },
+
   "Common": {
     "back_to_top": "Về đầu trang",
     "loading": "Đang tải...",

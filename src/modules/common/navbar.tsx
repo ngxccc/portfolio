@@ -13,6 +13,7 @@ import { Code2, Menu, X } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import { navigationConfig } from "@/shared/config/navigation";
 import SearchDialog from "@/shared/components/search-dialog";
+import { siteConfig } from "@/shared/config/site";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,7 +63,9 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
               <Code2 className="h-8 w-8 text-white" />
-              <span className="text-xl font-bold text-white">Ngxc</span>
+              <span className="text-xl font-bold text-white">
+                {siteConfig.shortName}
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
