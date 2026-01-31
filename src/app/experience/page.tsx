@@ -1,11 +1,20 @@
 import { ExperienceContent } from "@/modules/experience";
-import type { Metadata } from "next";
+import { siteConfig } from "@/shared/config/site";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Experience",
-  description:
-    "My professional experience as a Software Developer, including internships and projects at various companies.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Education.metadata");
+
+  return {
+    title: t("title"),
+    description: t("description", { name: siteConfig.name }),
+    openGraph: {
+      title: t("title"),
+      description: t("description", { name: siteConfig.name }),
+    },
+  };
+}
 
 export default function ExperiencePage() {
   return (

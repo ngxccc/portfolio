@@ -104,6 +104,31 @@
     }
   },
 
+  "Experience": {
+    "title": "Kinh nghiệm làm việc",
+    "list": {
+      "code_alpha": {
+        "title": "Software Engineering Intern",
+        "company": "Code Alpha",
+        "location": "Remote",
+        "period": "06/2024 - 08/2024",
+        "description": [
+          "Tối ưu hóa hiệu năng ứng dụng web với JavaScript và React.js, đạt tỷ lệ không lỗi 98%.",
+          "Triển khai các tính năng nâng cao, giúp tăng 40% tương tác người dùng."
+        ]
+      }
+    },
+    "empty_state": {
+      "title": "Đang tìm kiếm cơ hội mới",
+      "description": "Mình hiện là sinh viên năm 2 và đang tích cực tìm kiếm cơ hội Thực tập (Internship) về Web Development. Sẵn sàng học hỏi và cống hiến!",
+      "cta": "Liên hệ ngay"
+    },
+    "metadata": {
+      "title": "Kinh nghiệm làm việc",
+      "description": "Kinh nghiệm làm việc và thực tập của {name} trong lĩnh vực Công nghệ phần mềm."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }

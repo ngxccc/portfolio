@@ -33,8 +33,6 @@ export const EducationContent = () => {
 
       <div className="space-y-12">
         {educationData.map((edu, index) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          const itemT = t.raw(`list.${edu.id}` as any);
           const school = t(`list.${edu.id}.school` as any);
           const location = t(`list.${edu.id}.location` as any);
           const duration = t(`list.${edu.id}.duration` as any);

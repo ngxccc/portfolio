@@ -1,3 +1,4 @@
+// src/modules/experience/components/experience-content.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -7,108 +8,152 @@ import {
   Building2,
   ExternalLink,
   ArrowRight,
+  Send,
 } from "lucide-react";
 import Image from "next/image";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { experiences } from "../data/experience-data";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export const ExperienceContent = () => {
+  const t = useTranslations("Experience");
+
   return (
     <>
       <ScrollAnimation>
         <h2 className="gradient-text mb-8 flex items-center gap-3 text-3xl font-bold sm:mb-12 sm:text-4xl">
           <Briefcase className="h-7 w-7 text-cyan-400 sm:h-8 sm:w-8" />
-          Professional Experience
+          {t("title")}
         </h2>
       </ScrollAnimation>
 
       <div className="space-y-8 sm:space-y-12">
-        {experiences.map((exp) => (
-          <ScrollAnimation key={exp.title}>
-            <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-gray-800/50 backdrop-blur-sm transition-all hover:bg-gray-800/70 sm:rounded-2xl">
-              <div className="grid grid-cols-1 md:grid-cols-[1fr,300px]">
-                <div className="p-6 sm:p-8">
-                  {/* Header: Icon + Title + Company */}
-                  <div className="mb-4 flex items-center gap-3 sm:mb-6">
-                    <div className="rounded-lg bg-white/10 p-2 transition-colors group-hover:bg-white/20 sm:rounded-xl sm:p-3">
-                      <Building2 className="h-6 w-6 text-cyan-400 sm:h-7 sm:w-7" />
+        {experiences.length > 0 ? (
+          experiences.map((exp) => {
+            const title = t(`list.${exp.id}.title` as any);
+            const company = t(`list.${exp.id}.company` as any);
+            const location = t(`list.${exp.id}.location` as any);
+            const period = t(`list.${exp.id}.period` as any);
+            const description = t.raw(
+              `list.${exp.id}.description` as any,
+            ) as string[];
+
+            return (
+              <ScrollAnimation key={exp.id}>
+                <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-gray-800/50 backdrop-blur-sm transition-all hover:bg-gray-800/70 sm:rounded-2xl">
+                  <div className="grid grid-cols-1 md:grid-cols-[1fr,300px]">
+                    <div className="p-6 sm:p-8">
+                      {/* Header */}
+                      <div className="mb-4 flex items-center gap-3 sm:mb-6">
+                        <div className="rounded-lg bg-white/10 p-2 transition-colors group-hover:bg-white/20 sm:rounded-xl sm:p-3">
+                          <Building2 className="h-6 w-6 text-cyan-400 sm:h-7 sm:w-7" />
+                        </div>
+                        <div>
+                          <h3 className="mb-1 text-xl font-bold text-white sm:text-2xl">
+                            {title}
+                          </h3>
+                          <p className="text-base text-gray-400 sm:text-lg">
+                            {company}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Metadata */}
+                      <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-gray-300 sm:mb-6 sm:text-base">
+                        <MapPin className="h-4 w-4 text-gray-500" />
+                        <span>{location}</span>
+                        <span className="text-gray-600">•</span>
+                        <span className="text-gray-400">{period}</span>
+                      </div>
+
+                      {/* Description List */}
+                      <ul className="space-y-3 sm:space-y-4">
+                        {Array.isArray(description) &&
+                          description.map((item, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-3 text-sm text-gray-300 sm:text-base"
+                            >
+                              <ArrowRight className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
+                              <span className="leading-relaxed">{item}</span>
+                            </li>
+                          ))}
+                      </ul>
+
+                      {/* Mobile Button */}
+                      {exp.certificateUrl && (
+                        <motion.a
+                          href={exp.certificateUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white/10 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:text-cyan-400 md:hidden"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          Xem chứng chỉ
+                          <ExternalLink className="h-4 w-4" />
+                        </motion.a>
+                      )}
                     </div>
-                    <div>
-                      <h3 className="mb-1 text-xl font-bold text-white sm:text-2xl">
-                        {exp.title}
-                      </h3>
-                      <p className="text-base text-gray-400 sm:text-lg">
-                        {exp.company}
-                      </p>
+
+                    {/* Desktop Image Section */}
+                    <div className="relative hidden h-full min-h-75 md:block">
+                      <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
+                        <Image
+                          src={exp.image}
+                          alt={company}
+                          className="object-cover"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 300px"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-l from-transparent to-gray-900/90 transition-opacity duration-500 group-hover:opacity-80" />
+                      </div>
+
+                      {/* Hover Button Center */}
+                      {exp.certificateUrl && (
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          <motion.a
+                            href={exp.certificateUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 rounded-xl border border-white/20 bg-black/50 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:border-cyan-400 hover:text-cyan-400"
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            Xem chứng chỉ
+                            <ExternalLink className="h-4 w-4" />
+                          </motion.a>
+                        </div>
+                      )}
                     </div>
                   </div>
-
-                  {/* Metadata: Location + Period */}
-                  <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-gray-300 sm:mb-6 sm:text-base">
-                    <MapPin className="h-4 w-4 text-gray-500" />
-                    <span>{exp.location}</span>
-                    <span className="text-gray-600">•</span>
-                    <span className="text-gray-400">{exp.period}</span>
-                  </div>
-
-                  {/* Description List */}
-                  <ul className="space-y-3 sm:space-y-4">
-                    {exp.description.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-sm text-gray-300 sm:text-base"
-                      >
-                        <ArrowRight className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
-                        <span className="leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Mobile Button */}
-                  <motion.a
-                    href={exp.certificateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white/10 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:text-cyan-400 md:hidden"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    View Certificate
-                    <ExternalLink className="h-4 w-4" />
-                  </motion.a>
                 </div>
-
-                {/* Desktop Image Section */}
-                <div className="relative hidden h-full min-h-75 md:block">
-                  <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
-                    <Image
-                      src={exp.image}
-                      alt={exp.company}
-                      className="object-cover"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 300px"
-                    />
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-linear-to-l from-transparent to-gray-900/90 transition-opacity duration-500 group-hover:opacity-80" />
-                  </div>
-
-                  {/* Hover Button Center */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <motion.a
-                      href={exp.certificateUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 rounded-xl border border-white/20 bg-black/50 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:border-cyan-400 hover:text-cyan-400"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      View Certificate
-                      <ExternalLink className="h-4 w-4" />
-                    </motion.a>
-                  </div>
+              </ScrollAnimation>
+            );
+          })
+        ) : (
+          /* Empty State - Hiển thị khi chưa có kinh nghiệm */
+          <ScrollAnimation>
+            <div className="rounded-2xl border border-dashed border-white/20 bg-white/5 p-12 text-center">
+              <div className="mb-4 flex justify-center">
+                <div className="rounded-full bg-cyan-500/10 p-4">
+                  <Briefcase className="h-8 w-8 text-cyan-400" />
                 </div>
               </div>
+              <h3 className="mb-2 text-xl font-bold text-white">
+                {t("empty_state.title")}
+              </h3>
+              <p className="mx-auto mb-6 max-w-lg text-gray-400">
+                {t("empty_state.description")}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-gray-200"
+              >
+                {t("empty_state.cta")} <Send className="h-4 w-4" />
+              </Link>
             </div>
           </ScrollAnimation>
-        ))}
+        )}
       </div>
     </>
   );
