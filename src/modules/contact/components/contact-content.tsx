@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { MessageSquare } from "lucide-react";
 import { contactInfo, socialLinks } from "../data/contact-data";
+import { useTranslations } from "next-intl";
 
 export const ContactContent = () => {
+  const t = useTranslations("Contact");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -19,7 +22,7 @@ export const ContactContent = () => {
       >
         <MessageSquare className="h-7 w-7 text-cyan-400 sm:h-8 sm:w-8" />
         <h2 className="gradient-text text-3xl font-bold sm:text-4xl">
-          Get in Touch
+          {t("title")}
         </h2>
       </motion.div>
 
@@ -33,14 +36,20 @@ export const ContactContent = () => {
             className="rounded-xl border border-white/5 bg-gray-800/50 p-5 backdrop-blur-sm sm:p-6"
           >
             <h3 className="mb-4 text-lg font-semibold text-white sm:mb-6 sm:text-xl">
-              Contact Information
+              {t("info.title")}
             </h3>
             <div className="space-y-3 sm:space-y-4">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
+                const label = t(`info.${info.id}` as any);
+                const displayValue =
+                  info.value === "timezone_value"
+                    ? t(`info.${info.value}`)
+                    : info.value;
+
                 return (
                   <motion.div
-                    key={info.label}
+                    key={info.id}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -56,10 +65,10 @@ export const ContactContent = () => {
                         </div>
                         <div>
                           <p className="text-xs text-gray-400 sm:text-sm">
-                            {info.label}
+                            {label}
                           </p>
                           <p className="text-sm text-white transition-colors group-hover:text-cyan-400 sm:text-base">
-                            {info.value}
+                            {displayValue}
                           </p>
                         </div>
                       </a>
@@ -70,10 +79,10 @@ export const ContactContent = () => {
                         </div>
                         <div>
                           <p className="text-xs text-gray-400 sm:text-sm">
-                            {info.label}
+                            {label}
                           </p>
                           <p className="text-sm text-white sm:text-base">
-                            {info.value}
+                            {displayValue}
                           </p>
                         </div>
                       </div>
@@ -84,6 +93,7 @@ export const ContactContent = () => {
             </div>
           </motion.div>
 
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -91,7 +101,7 @@ export const ContactContent = () => {
             className="rounded-xl border border-white/5 bg-gray-800/50 p-5 backdrop-blur-sm sm:p-6"
           >
             <h3 className="mb-4 text-lg font-semibold text-white sm:mb-6 sm:text-xl">
-              Connect with Me
+              {t("social.title")}
             </h3>
             <div className="flex flex-wrap gap-3 sm:gap-4">
               {socialLinks.map((social, index) => {

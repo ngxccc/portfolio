@@ -1,11 +1,19 @@
 import { ContactContent } from "@/modules/contact";
-import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { siteConfig } from "@/shared/config/site";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Get in touch with me, a Software Developer specializing in full-stack development.",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("Contact.metadata");
+
+  return {
+    title: t("title"),
+    description: t("description", { name: siteConfig.name }),
+    openGraph: {
+      title: t("title"),
+      description: t("description", { name: siteConfig.name }),
+    },
+  };
+}
 
 export default function ContactPage() {
   return (

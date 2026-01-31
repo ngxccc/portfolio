@@ -151,6 +151,25 @@
     }
   },
 
+  "Contact": {
+    "title": "Liên hệ",
+    "info": {
+      "title": "Thông tin liên hệ",
+      "email": "Email",
+      "phone": "Điện thoại",
+      "location": "Địa chỉ",
+      "timezone": "Múi giờ",
+      "timezone_value": "Giờ Đông Dương (UTC+7)"
+    },
+    "social": {
+      "title": "Kết nối mạng xã hội"
+    },
+    "metadata": {
+      "title": "Liên hệ",
+      "description": "Kết nối với {name} - Lập trình viên Full Stack. Sẵn sàng trao đổi về cơ hội hợp tác và dự án công nghệ."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }

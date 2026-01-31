@@ -3,26 +3,26 @@ import { siteConfig } from "@/shared/config/site";
 
 export const contactInfo = [
   {
+    id: "email",
     icon: Mail,
-    label: "Email",
     value: siteConfig.email,
     link: `mailto:${siteConfig.email}`,
   },
   {
+    id: "phone",
     icon: Phone,
-    label: "Phone",
     value: siteConfig.phone,
     link: `tel:${siteConfig.phone}`,
   },
   {
+    id: "location",
     icon: MapPin,
-    label: "Location",
     value: siteConfig.address,
   },
   {
+    id: "timezone",
     icon: Clock,
-    label: "Time Zone",
-    value: "ICT (UTC+7)",
+    value: "timezone_value",
   },
 ];
 
