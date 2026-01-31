@@ -1,4 +1,3 @@
-// src/modules/experience/components/experience-content.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -131,7 +130,6 @@ export const ExperienceContent = () => {
             );
           })
         ) : (
-          /* Empty State - Hiển thị khi chưa có kinh nghiệm */
           <ScrollAnimation>
             <div className="rounded-2xl border border-dashed border-white/20 bg-white/5 p-12 text-center">
               <div className="mb-4 flex justify-center">

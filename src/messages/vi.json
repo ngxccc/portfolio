@@ -129,6 +129,28 @@
     }
   },
 
+  "Certificates": {
+    "title": "Chứng chỉ & Bằng cấp",
+    "list": {
+      "typescript": {
+        "title": "Lập trình TypeScript",
+        "issuer": "Geekster",
+        "date": "22/04/2025",
+        "description": "Nắm vững kiến thức nền tảng TypeScript, cú pháp, kiểu dữ liệu. Áp dụng vào dự án thực tế Frontend và Backend.",
+        "skills": "TypeScript, JavaScript, Frontend, Backend"
+      }
+    },
+    "empty_state": {
+      "title": "Đang cập nhật...",
+      "description": "Các chứng chỉ và thành tích mới sẽ sớm được cập nhật tại đây. Hãy quay lại sau nhé!",
+      "cta": "Về trang chủ"
+    },
+    "metadata": {
+      "title": "Chứng chỉ",
+      "description": "Danh sách các chứng chỉ và thành tích kỹ thuật của {name}."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }
