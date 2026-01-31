@@ -31,6 +31,7 @@ import {
   ExpressLogo,
   ArchLinuxLogo,
   WindowLogo,
+  GithubLogo,
 } from "@/shared/components/tech-logos";
 import { ElementType } from "react";
 
@@ -92,7 +93,7 @@ export const skillsData: SkillCategory[] = [
     icon: Wrench,
     items: [
       { name: "Git", icon: GitLogo },
-      { name: "GitHub", icon: GitLogo },
+      { name: "GitHub", icon: GithubLogo },
       { name: "VS Code", icon: VSCodeLogo },
       { name: "Vercel", icon: VercelLogo },
       { name: "Compass", icon: MongoDBLogo },
