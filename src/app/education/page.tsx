@@ -1,8 +1,18 @@
 import { EducationContent } from "@/modules/education";
+import { siteConfig } from "@/shared/config/site";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Education",
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("Education.metadata");
+  return {
+    title: t("title"),
+    description: t("description", { name: siteConfig.name }),
+    openGraph: {
+      title: t("title"),
+      description: t("description", { name: siteConfig.name }),
+    },
+  };
 };
 
 export default function EducationPage() {

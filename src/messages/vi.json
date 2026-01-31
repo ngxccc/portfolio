@@ -76,6 +76,34 @@
     }
   },
 
+  "Education": {
+    "title": "Học vấn",
+    "list": {
+      "caothang": {
+        "school": "Trường Cao Đẳng Kỹ Thuật Cao Thắng",
+        "location": "65 Huỳnh Thúc Kháng, Q.1, TP.HCM",
+        "duration": "08/2024 - Hiện tại",
+        "degree": "Cao đẳng (Associate Degree)",
+        "grade": "Trạng thái: Đang cày cuốc 🚜",
+        "description": "Đang 'tu luyện' tại lò Cao Thắng danh tiếng. 🛠️ Chuyển hệ sang Software để 'bào' code thay vì vặn ốc. Phương châm: Code ít bug, ngủ nhiều hơn! 🦉",
+        "tags": "DSA, OOPs, DBMS, System Design"
+      },
+      "hbxl": {
+        "school": "Trường CĐ Hòa Bình Xuân Lộc",
+        "location": "Trảng Bom, Đồng Nai",
+        "duration": "2021 - 2024",
+        "degree": "Chứng chỉ nghề",
+        "grade": "Xếp loại: Giỏi (8.2/10)",
+        "description": "Từ 'người dùng' thành 'pháp sư' phần cứng sau 3 năm tu luyện. 🧙‍♂️ Biết cách biến đống linh kiện rời rạc thành bộ PC chạy mượt mà. Sở trường: Tối ưu hiệu năng máy tính. Đam mê công nghệ từ trong máu!",
+        "tags": "Phần Cứng Máy Tính, Lắp ráp, Bảo trì"
+      }
+    },
+    "metadata": {
+      "title": "Học vấn",
+      "description": "Hành trình học tập của {name} - Từ chàng trai phần cứng tại Đồng Nai đến Lập trình viên Full Stack tương lai tại Cao Thắng."
+    }
+  },
+
   "MetaData": {
     "keywords": "Thực tập sinh IT, Tìm việc Front-end, Lập trình viên Full Stack, Lập trình viên React, Lập trình viên Web, Sinh viên Cao đẳng, Fresher Developer, TP.HCM"
   }
