@@ -55,6 +55,14 @@ const eslintConfig = defineConfig([
         },
       ],
 
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          prefer: "type-imports", // Bắt buộc dùng import type
+          fixStyle: "separate-type-imports", // Tự động fix thành: import type { Metadata } ...
+        },
+      ],
+
       "prettier/prettier": [
         "warn",
         {

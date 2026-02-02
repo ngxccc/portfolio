@@ -1,6 +1,6 @@
 import { ExperienceContent } from "@/modules/experience";
 import { siteConfig } from "@/shared/config/site";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -1,7 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
-import { BlogPost, BlogPostSchema, PaginatedResult } from "../types";
+import type { BlogPost, PaginatedResult } from "../types";
+import { BlogPostSchema } from "../types";
 import { cache } from "react";
 
 const postsDir = join(process.cwd(), "contents/posts");

@@ -1,5 +1,5 @@
 import z from "zod";
-import { getBlogPosts } from "./lib/blog";
+import type { getBlogPosts } from "./lib/blog";
 
 export const BlogPostSchema = z.object({
   title: z.string(),

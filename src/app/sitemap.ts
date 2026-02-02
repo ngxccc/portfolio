@@ -1,6 +1,6 @@
 import { getBlogPosts } from "@/modules/blog";
 import { siteConfig } from "@/shared/config/site";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;

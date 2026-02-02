@@ -33,7 +33,7 @@ import {
   WindowLogo,
   GithubLogo,
 } from "@/shared/components/tech-logos";
-import { ElementType } from "react";
+import type { ElementType } from "react";
 
 export interface SkillItem {
   name?: string;

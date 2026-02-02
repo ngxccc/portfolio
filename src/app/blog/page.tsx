@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
 import { X } from "lucide-react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { BlogCard, getPaginatedPosts } from "@/modules/blog";
 import { Pagination } from "@/shared/components/pagination";
 

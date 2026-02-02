@@ -1,4 +1,5 @@
-import { WifiOff, Home, LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { WifiOff, Home } from "lucide-react";
 
 export interface OfflineConfig {
   icon: LucideIcon;

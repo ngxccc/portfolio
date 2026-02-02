@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { siteConfig } from "@/shared/config/site";
 import { getTranslations } from "next-intl/server";
 

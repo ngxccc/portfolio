@@ -1,5 +1,5 @@
 import { siteConfig } from "@/shared/config/site";
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 import { FaGithub, FaTiktok } from "react-icons/fa";
 
 interface SocialStatItem {

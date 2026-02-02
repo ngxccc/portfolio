@@ -1,6 +1,6 @@
-import { routing } from "@/i18n/routing";
-import { formats } from "@/i18n/request";
-import vi from "./messages/vi.json";
+import type { routing } from "@/i18n/routing";
+import type { formats } from "@/i18n/request";
+import type vi from "./messages/vi.json";
 
 declare module "next-intl" {
   interface AppConfig {

@@ -1,5 +1,5 @@
 import { siteConfig } from "@/shared/config/site";
-import { GitHubUser, StatsData } from "@/shared/types/stats";
+import type { GitHubUser, StatsData } from "@/shared/types/stats";
 
 export async function getSocialStats() {
   const [githubRes, statsRes] = await Promise.all([

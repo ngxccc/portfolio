@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Calendar, Tag } from "lucide-react";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import { BlogPost } from "../types";
+import type { BlogPost } from "../types";
 
 export const BlogCard = ({
   post,

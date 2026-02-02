@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, ComponentProps } from "react";
+import type { ComponentProps } from "react";
+import { useState, useRef } from "react";
 import { Copy, Check } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 

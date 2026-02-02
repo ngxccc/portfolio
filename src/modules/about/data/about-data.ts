@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   BrainCircuit,
   Briefcase,
@@ -7,7 +8,6 @@ import {
   Container,
   GitFork,
   GraduationCap,
-  LucideIcon,
   Palette,
 } from "lucide-react";
 
