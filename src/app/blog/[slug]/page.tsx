@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChevronDown, List, TableOfContents } from "lucide-react";
-import { getBlogPosts, getPostBySlug, MDXContent } from "@/modules/blog";
+import { ChevronDown, List } from "lucide-react";
+import {
+  getBlogPosts,
+  getPostBySlug,
+  MDXContent,
+  TableOfContents,
+} from "@/modules/blog";
 import "katex/dist/katex.min.css";
+import { siteConfig } from "@/shared/config/site";
+import { getTranslations } from "next-intl/server";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -31,13 +38,14 @@ export const generateMetadata = async ({
       description: post.description,
       type: "article",
       publishedTime: post.date,
-      authors: ["Trần Văn Ngọc"],
+      authors: [siteConfig.name],
     },
   };
 };
 
 const BlogPost = async ({ params }: PageProps) => {
   const { slug } = await params;
+  const t = await getTranslations("Blog.post");
   const post = getPostBySlug(slug);
 
   if (!post) {
@@ -86,7 +94,7 @@ const BlogPost = async ({ params }: PageProps) => {
               <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-gray-200">
                 <div className="flex items-center gap-2">
                   <List className="h-5 w-5 text-cyan-400" />
-                  Mục lục
+                  {t("table_of_contents")}
                 </div>
                 <ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" />
               </summary>
@@ -116,7 +124,7 @@ const BlogPost = async ({ params }: PageProps) => {
             description: post.description,
             author: {
               "@type": "Person",
-              name: "Ngxc",
+              name: siteConfig.name,
             },
           }),
         }}

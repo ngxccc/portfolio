@@ -12,6 +12,30 @@
     }
   },
 
+  "Blog": {
+    "title": "Blog",
+    "description": "Chia sẻ kiến thức về lập trình Web, Next.js, React và các công nghệ mới nhất.",
+    "meta": {
+      "tag_title": "Tag: {tag} (Trang {page})",
+      "page_title": "Blog - Trang {page}",
+      "tag_desc": "Tổng hợp các bài viết hướng dẫn, thủ thuật về {tag} mới nhất."
+    },
+    "listing": {
+      "latest_title": "Bài viết mới nhất",
+      "tag_title": "Chủ đề: \"{tag}\"",
+      "found_result": "Tìm thấy <bold>{count}</bold> bài viết",
+      "clear_filter": "Xóa bộ lọc",
+      "pagination_info": "Hiển thị {count} / {total} bài viết",
+      "empty_title": "Không tìm thấy bài viết nào với tag này.",
+      "back_to_start": "Quay về trang 1"
+    },
+    "post": {
+      "table_of_contents": "Mục lục",
+      "on_this_page": "Trên trang này",
+      "published_at": "Đăng ngày {date}"
+    }
+  },
+
   "Projects": {
     "title": "Dự án tiêu biểu",
     "list": {
@@ -217,7 +241,9 @@
     "back_to_top": "Về đầu trang",
     "loading": "Đang tải...",
     "loading_sub": "Vui lòng chờ trong giây lát...",
-    "back_to_home": "Về trang chủ"
+    "back_to_home": "Về trang chủ",
+    "drawing": "Đang vẽ sơ đồ...",
+    "mermaind_error": "Lỗi hiển thị biểu đồ"
   },
 
   "NotFound": {

@@ -3,6 +3,7 @@
 import { cn } from "@/shared/lib/utils";
 import { Move, RotateCcw, ZoomIn, ZoomOut } from "lucide-react";
 import mermaid from "mermaid";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
@@ -22,6 +23,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
   const [svgContent, setSvgContent] = useState<string>("");
   const [isRendered, setIsRendered] = useState(false);
   const [error, setError] = useState(false);
+  const t = useTranslations("Common");
 
   useEffect(() => {
     const initAndRender = async () => {
@@ -35,7 +37,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
           fontFamily: "inherit",
         });
 
-        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+        const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
         const { svg } = await mermaid.render(id, chart);
 
         setSvgContent(svg);
@@ -51,7 +53,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
     }
   }, [chart]);
 
-  if (error) return <div className="text-red-500">Lỗi hiển thị biểu đồ</div>;
+  if (error) return <div className="text-red-500">{t("mermaind_error")}</div>;
 
   return (
     <div
@@ -123,7 +125,7 @@ const Mermaid = ({ chart, className }: MermaidProps) => {
       ) : (
         <div className="flex h-75 w-full animate-pulse flex-col items-center justify-center gap-2">
           <div className="h-12 w-12 animate-spin rounded-full border-2 border-white/10 border-t-white" />
-          <p className="text-sm text-gray-500">Đang vẽ sơ đồ...</p>
+          <p className="text-sm text-gray-500">{t("drawing")}</p>
         </div>
       )}
     </div>

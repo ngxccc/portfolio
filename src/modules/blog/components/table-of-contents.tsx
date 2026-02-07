@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface TocItem {
   id: string;
@@ -12,6 +13,7 @@ interface TocItem {
 export const TableOfContents = () => {
   const [headings, setHeadings] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
+  const t = useTranslations("Blog.post");
 
   useEffect(() => {
     const elements = Array.from(
@@ -55,7 +57,7 @@ export const TableOfContents = () => {
   return (
     <nav className="space-y-2">
       <h3 className="mb-4 text-sm font-semibold tracking-wider text-gray-400 uppercase">
-        On this page
+        {t("on_this_page")}
       </h3>
       <ul className="space-y-2 text-sm">
         {headings.map((item) => (
