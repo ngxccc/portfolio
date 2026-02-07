@@ -5,13 +5,7 @@ import { useRouter } from "next/navigation";
 import { Search, Command, ArrowRight } from "lucide-react";
 import { navigationConfig } from "@/shared/config/navigation";
 import { useTranslations } from "next-intl";
-
-interface SearchDataType {
-  title: string;
-  description: string;
-  path: string;
-  keywords: string[];
-}
+import type { SearchDataType } from "../types/common";
 
 const SearchDialog = () => {
   const t = useTranslations("Search");

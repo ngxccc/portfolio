@@ -1,4 +1,4 @@
-interface SearchDataType {
+export interface SearchDataType {
   title: string;
   description: string;
   path: string;

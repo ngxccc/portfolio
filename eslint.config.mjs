@@ -4,6 +4,7 @@ import nextTs from "eslint-config-next/typescript";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 const eslintConfig = defineConfig([
   eslint.configs.recommended,
@@ -32,8 +33,13 @@ const eslintConfig = defineConfig([
       },
     },
     rules: {
+      ...eslintConfigPrettier.rules,
+
       "@typescript-eslint/no-explicit-any": "off", // Disable 'no-explicit-any'
-      "@typescript-eslint/no-unused-vars": "off", // Disable 'no-unused-vars'
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
 
       "no-restricted-imports": [
         "error",
@@ -63,18 +69,7 @@ const eslintConfig = defineConfig([
         },
       ],
 
-      "prettier/prettier": [
-        "warn",
-        {
-          // When you change here, also change sync at .prettierrc
-          arrowParens: "always", // Always include parens. Example: (x) => x
-          tabWidth: 2,
-          endOfLine: "auto",
-          useTabs: false, // Use space instead of tab
-          printWidth: 80,
-          semi: true, // Add a semicolon at the end of every statement
-        },
-      ],
+      "prettier/prettier": "warn",
     },
   },
 ]);

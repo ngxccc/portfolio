@@ -98,6 +98,7 @@ export const getPostBySlug = (slug: string): BlogPost | null => {
       readingTime: calculateReadingTime(content),
     } as BlogPost;
   } catch (error) {
+    console.log(error);
     return null;
   }
 };

@@ -18,7 +18,7 @@ import { siteConfig } from "@/shared/config/site";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const { scrollYProgress, scrollY } = useScroll();
+  const { scrollYProgress } = useScroll();
   const pathname = usePathname();
 
   const showProgressBar = pathname.startsWith("/blog/") && pathname !== "/blog";
