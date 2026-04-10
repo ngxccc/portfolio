@@ -7,9 +7,9 @@ import {
   MDXContent,
   TableOfContents,
 } from "@/modules/blog";
-import "katex/dist/katex.min.css";
 import { siteConfig } from "@/shared/config/site";
 import { getTranslations } from "next-intl/server";
+import AsyncKatexCSS from "@/modules/blog/components/mdx/async-katex-css";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -112,6 +112,8 @@ const BlogPost = async ({ params }: PageProps) => {
           </article>
         </div>
       </div>
+
+      <AsyncKatexCSS />
 
       <script
         type="application/ld+json"
