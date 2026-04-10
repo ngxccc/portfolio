@@ -1,0 +1,19 @@
+name: Revalidate Blog Cache
+
+on:
+  push:
+    paths:
+      - "contents/**"
+  workflow_dispatch:
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Revalidate blog posts tag
+        env:
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+        run: |
+          curl -X POST "https://ngxc.vercel.app/api/revalidate?tag=blog-posts" \
+            -H "x-webhook-secret: ${REVALIDATE_SECRET}"
