@@ -20,6 +20,8 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  display: "swap",
+  preload: false,
 });
 
 export const generateMetadata = async (): Promise<Metadata> => {
