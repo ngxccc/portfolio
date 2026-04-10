@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { cache } from "react";
 import type { BlogPost, BlogPostSummary, PaginatedResult } from "../types";
 import { BlogPostSchema } from "../types";
+import { unstable_cache } from "next/cache";
 
 const postsDir = join(process.cwd(), "contents/posts");
 const POSTS_PER_PAGE = 5;
@@ -15,35 +16,42 @@ const calculateReadingTime = (content: string): string => {
   return `${Math.ceil(words / 200)} phút đọc`;
 };
 
-// PERF: Non-blocking I/O Event Loop implementation.
-// Time Complexity: O(N log N) | Space Complexity: O(N) (Dropping body content early).
-export const getBlogPostsMetadata = cache(
-  async (): Promise<BlogPostSummary[]> => {
-    if (!existsSync(postsDir)) return [];
+// WHY: Raw data fetcher separated from caching wrapper to maintain pure testability.
+const fetchMetadataFromFS = async (): Promise<Omit<BlogPost, "content">[]> => {
+  if (!existsSync(postsDir)) return [];
 
-    const fileNames = await readdir(postsDir);
-    const mdxFiles = fileNames.filter((fileName) => fileName.endsWith(".mdx"));
+  const fileNames = await readdir(postsDir);
+  const mdxFiles = fileNames.filter((fileName) => fileName.endsWith(".mdx"));
 
-    const postsPromises = mdxFiles.map(async (fileName) => {
-      const slug = fileName.replace(/\.mdx$/, "");
-      const fullPath = join(postsDir, fileName);
+  const postsPromises = mdxFiles.map(async (fileName) => {
+    const slug = fileName.replace(/\.mdx$/, "");
+    const fullPath = join(postsDir, fileName);
 
-      // FIXME: gray-matter parses the whole file. For massive files, consider a custom stream parser.
-      const fileContents = await readFile(fullPath, "utf8");
-      const { data, content } = matter(fileContents);
+    const fileContents = await readFile(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
 
-      const parsedData = BlogPostSchema.parse(data);
+    const parsedData = BlogPostSchema.parse(data);
 
-      return {
-        slug,
-        ...parsedData,
-        // HACK: Extract reading time here to store in metadata, avoiding re-parsing later.
-        readingTime: calculateReadingTime(content),
-      };
-    });
+    return {
+      slug,
+      ...parsedData,
+      readingTime: calculateReadingTime(content),
+    };
+  });
 
-    const allPostsMetadata = await Promise.all(postsPromises);
-    return allPostsMetadata.sort((a, b) => (a.date < b.date ? 1 : -1));
+  const allPostsMetadata = await Promise.all(postsPromises);
+  return allPostsMetadata.sort((a, b) => (a.date < b.date ? 1 : -1));
+};
+
+// PERF: Global Data Cache layer.
+// Time Complexity: O(1) on cache hit.
+// HACK: Array ["global-blog-metadata"] acts as a unique namespace key across the entire distributed network.
+export const getBlogPostsMetadata = unstable_cache(
+  fetchMetadataFromFS,
+  ["global-blog-metadata"],
+  {
+    tags: ["blog-posts"], // HACK: Tagging enables targeted On-Demand Revalidation.
+    revalidate: 3600, // FIXME: Hardcoded TTL (1 hour). Should decouple to environment configs.
   },
 );
 
