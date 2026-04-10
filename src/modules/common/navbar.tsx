@@ -93,6 +93,7 @@ const Navbar = () => {
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="p-2 text-gray-400 hover:text-white"
+                  aria-label="Open Menu Button"
                 >
                   {isMenuOpen ? <X /> : <Menu />}
                 </button>
