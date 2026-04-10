@@ -3,7 +3,7 @@ import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import matter from "gray-matter";
 import { cache } from "react";
-import type { BlogPost, BlogPostSummary, PaginatedResult } from "../types";
+import type { BlogPost, PaginatedResult } from "../types";
 import { BlogPostSchema } from "../types";
 import { unstable_cache } from "next/cache";
 
