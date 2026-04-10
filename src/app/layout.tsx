@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import Background3D from "@/shared/components/background-3d";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/shared/config/site";
 import { BackToTop } from "@/shared/components/back-to-top";
+import Background3DLazy from "@/shared/components/background-3d-lazy";
 import { Footer, Navbar } from "@/modules/common";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -100,7 +100,7 @@ export default function RootLayout({
       >
         <NextIntlClientProvider>
           <div className="flex min-h-screen flex-col">
-            <Background3D />
+            <Background3DLazy />
             <Navbar />
             <main className="grow pt-16">{children}</main>
             <SpeedInsights />
