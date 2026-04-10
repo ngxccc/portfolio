@@ -1,8 +1,8 @@
-import { getBlogPosts } from "@/modules/blog";
+import { getBlogPostsMetadata } from "@/modules/blog";
 import { siteConfig } from "@/shared/config/site";
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
 
   const routes = [
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }));
 
-  const posts = getBlogPosts().map((post) => ({
+  const posts = (await getBlogPostsMetadata()).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "weekly" as const,

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Calendar, Tag } from "lucide-react";
 import { ScrollAnimation } from "@/shared/components/scroll-animation";
-import type { BlogPost } from "../types";
+import type { BlogPostSummary } from "../types";
 
 export const BlogCard = ({
   post,
   activeTag,
 }: {
-  post: BlogPost;
+  post: BlogPostSummary;
   activeTag?: string;
 }) => {
   return (

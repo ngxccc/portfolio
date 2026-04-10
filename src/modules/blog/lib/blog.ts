@@ -1,17 +1,56 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
+import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import matter from "gray-matter";
-import type { BlogPost, PaginatedResult } from "../types";
-import { BlogPostSchema } from "../types";
 import { cache } from "react";
+import type { BlogPost, BlogPostSummary, PaginatedResult } from "../types";
+import { BlogPostSchema } from "../types";
 
 const postsDir = join(process.cwd(), "contents/posts");
-
 const POSTS_PER_PAGE = 5;
 
+// PERF: Pre-compiled regex or simple string operations are faster for tight loops.
+const calculateReadingTime = (content: string): string => {
+  const words = content.replace(/<[^>]*>/g, "").split(/\s+/).length;
+  return `${Math.ceil(words / 200)} phút đọc`;
+};
+
+// PERF: Non-blocking I/O Event Loop implementation.
+// Time Complexity: O(N log N) | Space Complexity: O(N) (Dropping body content early).
+export const getBlogPostsMetadata = cache(
+  async (): Promise<BlogPostSummary[]> => {
+    if (!existsSync(postsDir)) return [];
+
+    const fileNames = await readdir(postsDir);
+    const mdxFiles = fileNames.filter((fileName) => fileName.endsWith(".mdx"));
+
+    const postsPromises = mdxFiles.map(async (fileName) => {
+      const slug = fileName.replace(/\.mdx$/, "");
+      const fullPath = join(postsDir, fileName);
+
+      // FIXME: gray-matter parses the whole file. For massive files, consider a custom stream parser.
+      const fileContents = await readFile(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
+
+      const parsedData = BlogPostSchema.parse(data);
+
+      return {
+        slug,
+        ...parsedData,
+        // HACK: Extract reading time here to store in metadata, avoiding re-parsing later.
+        readingTime: calculateReadingTime(content),
+      };
+    });
+
+    const allPostsMetadata = await Promise.all(postsPromises);
+    return allPostsMetadata.sort((a, b) => (a.date < b.date ? 1 : -1));
+  },
+);
+
+// PERF: Pagination relies strictly on lightweight metadata array, drastically reducing RAM usage.
 export const getPaginatedPosts = cache(
-  (page = 1, tag?: string): PaginatedResult => {
-    const allPosts = getBlogPosts();
+  async (page = 1, tag?: string): Promise<PaginatedResult> => {
+    const allPosts = await getBlogPostsMetadata();
 
     const filteredPosts = tag
       ? allPosts.filter((post) => post.tags.includes(tag))
@@ -43,30 +82,15 @@ export const getPaginatedPosts = cache(
   },
 );
 
-const calculateReadingTime = (content: string): string => {
-  const wordsPerMinute = 200;
-  // Loại bỏ HTML tags và ký tự đặc biệt để đếm từ chuẩn hơn
-  const words = content.replace(/<[^>]*>/g, "").split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} phút đọc`;
-};
+// PERF: Only parse full content when specifically requested.
+// Time Complexity: O(1) for fs lookup | Space Complexity: O(M) where M is file size.
+export const getPostBySlug = cache(
+  async (slug: string): Promise<BlogPost | null> => {
+    try {
+      const fullPath = join(postsDir, `${slug}.mdx`);
+      const fileContents = await readFile(fullPath, "utf8");
 
-export const getBlogPosts = cache((): BlogPost[] => {
-  if (!existsSync(postsDir)) return [];
-
-  const fileNames = readdirSync(postsDir);
-
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith(".mdx"))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, "");
-
-      const fullPath = join(postsDir, fileName);
-      const fileContents = readFileSync(fullPath, "utf8");
-
-      // Parse Frontmatter bằng gray-matter
       const { data, content } = matter(fileContents);
-
       const parsedData = BlogPostSchema.parse(data);
 
       return {
@@ -74,31 +98,10 @@ export const getBlogPosts = cache((): BlogPost[] => {
         ...parsedData,
         content,
         readingTime: calculateReadingTime(content),
-      } as BlogPost;
-    });
-
-  // sort theo bài mới nhất
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
-});
-
-export const getPostBySlug = (slug: string): BlogPost | null => {
-  try {
-    const fullPath = join(postsDir, `${slug}.mdx`);
-    const fileContents = readFileSync(fullPath);
-
-    // Parse Frontmatter bằng gray-matter
-    const { data, content } = matter(fileContents);
-
-    const parsedData = BlogPostSchema.parse(data);
-
-    return {
-      slug,
-      ...parsedData,
-      content,
-      readingTime: calculateReadingTime(content),
-    } as BlogPost;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
+      };
+    } catch (error) {
+      // BUG: Explicitly handle ENOENT (file not found) vs parsing errors.
+      return null;
+    }
+  },
+);

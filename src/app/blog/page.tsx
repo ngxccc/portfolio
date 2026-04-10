@@ -17,7 +17,7 @@ export async function generateMetadata({
   const currentPage = Number(page) || 1;
   const t = await getTranslations("Blog.meta");
   const tMain = await getTranslations("Blog");
-  const { posts } = getPaginatedPosts(currentPage, tag);
+  const { posts } = await getPaginatedPosts(currentPage, tag);
 
   const isEmptyPage = posts.length === 0 && currentPage > 1;
 
@@ -55,7 +55,7 @@ const Blog = async ({ searchParams }: BlogPageProps) => {
   const currentPage = Number(page) || 1;
   const t = await getTranslations("Blog.listing");
 
-  const { posts, metadata } = getPaginatedPosts(currentPage, tag);
+  const { posts, metadata } = await getPaginatedPosts(currentPage, tag);
 
   return (
     <div className="mx-auto my-2 min-h-screen max-w-4xl px-4">

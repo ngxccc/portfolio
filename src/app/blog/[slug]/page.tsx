@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ChevronDown, List } from "lucide-react";
 import {
-  getBlogPosts,
+  getBlogPostsMetadata,
   getPostBySlug,
   MDXContent,
   TableOfContents,
@@ -15,8 +15,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const generateStaticParams = () => {
-  const posts = getBlogPosts();
+export const generateStaticParams = async () => {
+  const posts = await getBlogPostsMetadata();
 
   return posts.map((post) => ({ slug: post.slug }));
 };
@@ -25,7 +25,7 @@ export const generateMetadata = async ({
   params,
 }: PageProps): Promise<Metadata> => {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) return {};
 
@@ -46,7 +46,7 @@ export const generateMetadata = async ({
 const BlogPost = async ({ params }: PageProps) => {
   const { slug } = await params;
   const t = await getTranslations("Blog.post");
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
