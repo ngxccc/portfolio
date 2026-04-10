@@ -62,7 +62,7 @@ const Footer = () => {
                 <li>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+                    className="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-white"
                   >
                     <Mail className="h-4 w-4 text-cyan-500" />
                     {siteConfig.email}
@@ -71,7 +71,7 @@ const Footer = () => {
                 <li>
                   <a
                     href={`tel:${siteConfig.phone}`}
-                    className="flex items-center gap-2 text-sm text-gray-400 transition-colors hover:text-white"
+                    className="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-white"
                   >
                     <Phone className="h-4 w-4 text-cyan-500" />
                     {siteConfig.phone}
@@ -109,7 +109,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-white/10 py-3">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-center text-sm text-gray-500 md:text-left">
+            <p className="text-center text-sm md:text-left">
               {t("copyright", {
                 year: currentYear,
                 name: siteConfig.shortName,
@@ -120,7 +120,7 @@ const Footer = () => {
               href={siteConfig.social.github.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-white"
+              className="group flex items-center gap-2 text-sm font-medium text-gray-300 transition-colors hover:text-white"
             >
               {t.rich("built_with", {
                 name: siteConfig.shortName,
