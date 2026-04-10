@@ -20,29 +20,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.rewrite(new URL("/not-found-trigger", request.url));
   }
 
-  // const cspHeader = `
-  //   default-src 'self';
-  //   script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-  //   style-src 'self' 'unsafe-inline';
-  //   img-src 'self' blob: data: https:;
-  //   connect-src 'self' https:;
-  //   font-src 'self';
-  //   object-src 'none';
-  //   base-uri 'self';
-  //   form-action 'self';
-  //   frame-ancestors 'none';
-  //   block-all-mixed-content;
-  //   upgrade-insecure-requests;
-  // `;
-
-  // Security Headers
-  // const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const requestHeaders = new Headers(request.headers);
-  // requestHeaders.set("x-nonce", nonce);
-  // requestHeaders.set(
-  //   "Content-Security-Policy",
-  //   cspHeader.replace(/\s{2,}/g, " ").trim(),
-  // );
 
   const response = NextResponse.next({
     request: {
@@ -50,10 +28,6 @@ export function proxy(request: NextRequest) {
     },
   });
 
-  // response.headers.set(
-  //   "Content-Security-Policy",
-  //   cspHeader.replace(/\s{2,}/g, " ").trim(),
-  // );
   response.headers.set("X-XSS-Protection", "1; mode=block");
   response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("X-Content-Type-Options", "nosniff");
