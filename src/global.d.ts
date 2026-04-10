@@ -2,6 +2,11 @@ import type { routing } from "@/i18n/routing";
 import type { formats } from "@/i18n/request";
 import type vi from "./messages/vi.json";
 
+declare module "*.css" {
+  const content: string;
+  export default content;
+}
+
 declare module "next-intl" {
   interface AppConfig {
     Locale: (typeof routing.locales)[number];
