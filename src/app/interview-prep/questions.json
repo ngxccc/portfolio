@@ -1,0 +1,2497 @@
+[
+  {
+    "id": "backend_1",
+    "category": "Backend",
+    "title": "REST API và GraphQL khác nhau như thế nào, khi nào bạn chọn cái nào?",
+    "intro": "Interviewer muốn biết bạn hiểu trade-off thực tế chứ không chỉ biết định nghĩa.",
+    "bullets": [
+      "Trình bày được điểm mạnh của REST trong các hệ thống đơn giản, ít thay đổi và dễ cache.",
+      "Giải thích GraphQL phù hợp khi client cần linh hoạt trong việc lấy đúng dữ liệu mình cần.",
+      "Đưa ví dụ thực tế từ dự án hoặc hệ thống bạn đã làm để minh họa lựa chọn của mình."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_2",
+    "category": "Backend",
+    "title": "Bạn thiết kế API versioning như thế nào và tại sao cần làm vậy?",
+    "intro": "Câu này đánh giá tư duy về khả năng bảo trì và backward compatibility trong dài hạn.",
+    "bullets": [
+      "Trình bày các cách versioning phổ biến như URI versioning, header versioning hoặc query param.",
+      "Giải thích tại sao cần versioning để không làm vỡ client cũ khi API thay đổi.",
+      "Nêu quan điểm về khi nào nên tạo version mới và khi nào chỉ cần deprecate dần."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_3",
+    "category": "Backend",
+    "title": "Idempotency trong API là gì và tại sao quan trọng?",
+    "intro": "Interviewer kiểm tra xem bạn có hiểu rõ hành vi của các HTTP method hay chỉ biết dùng chúng theo thói quen.",
+    "bullets": [
+      "Giải thích idempotency nghĩa là gọi nhiều lần vẫn cho kết quả như gọi một lần.",
+      "Phân biệt các method idempotent như GET, PUT, DELETE với POST thường không idempotent.",
+      "Nêu ứng dụng thực tế trong việc xử lý retry logic khi network gặp sự cố."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_4",
+    "category": "Backend",
+    "title": "Làm thế nào để xử lý rate limiting trong API của bạn?",
+    "intro": "Câu này đánh giá khả năng thiết kế API có tính ổn định và bảo vệ hệ thống trước tải cao bất thường.",
+    "bullets": [
+      "Trình bày các thuật toán rate limiting phổ biến như token bucket, sliding window hay fixed window.",
+      "Giải thích cách trả về HTTP 429 và header thông báo để client biết khi nào thử lại.",
+      "Đề cập đến việc lưu trạng thái rate limit ở đâu, ví dụ Redis, khi hệ thống có nhiều instance."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_5",
+    "category": "Backend",
+    "title": "Sự khác nhau giữa authentication và authorization là gì?",
+    "intro": "Câu mở đầu điển hình nhưng nhiều ứng viên vẫn trả lời lẫn lộn hoặc dừng ở mức định nghĩa.",
+    "bullets": [
+      "Giải thích rõ authentication xác nhận bạn là ai, authorization xác nhận bạn được làm gì.",
+      "Đưa ví dụ cụ thể như JWT cho authentication và RBAC hay ABAC cho authorization.",
+      "Nêu các lỗi phổ biến như chỉ kiểm tra authentication mà bỏ qua authorization ở một số endpoint."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_6",
+    "category": "Backend",
+    "title": "Bạn xử lý lỗi trong API như thế nào để client dễ hiểu và dễ xử lý?",
+    "intro": "Interviewer muốn biết bạn quan tâm đến developer experience của người dùng API.",
+    "bullets": [
+      "Trình bày cách dùng HTTP status code đúng ngữ nghĩa thay vì trả về 200 cho mọi trường hợp.",
+      "Đề xuất format error response nhất quán với error code, message và có thể kèm field validation.",
+      "Nêu tầm quan trọng của việc log lỗi phía server nhưng không lộ thông tin nhạy cảm ra response."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_7",
+    "category": "Backend",
+    "title": "CORS là gì và bạn xử lý nó như thế nào trong backend?",
+    "intro": "Câu này kiểm tra xem bạn hiểu vấn đề ở mức browser security hay chỉ biết thêm header cho qua.",
+    "bullets": [
+      "Giải thích CORS là cơ chế bảo mật của browser ngăn request từ origin khác không được phép.",
+      "Trình bày cách cấu hình Access-Control headers đúng, bao gồm preflight request với OPTIONS.",
+      "Nhấn mạnh việc không dùng wildcard cho production và chỉ whitelist những origin thực sự cần."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_8",
+    "category": "Backend",
+    "title": "Bạn document API như thế nào và tại sao điều đó quan trọng?",
+    "intro": "Câu này phản ánh thái độ của bạn với teamwork và khả năng bảo trì lâu dài.",
+    "bullets": [
+      "Đề cập đến OpenAPI hay Swagger như tiêu chuẩn phổ biến hiện nay cho API documentation.",
+      "Nêu tầm quan trọng của việc giữ document đồng bộ với code, tránh doc bị lỗi thời.",
+      "Chia sẻ kinh nghiệm về việc document tốt giúp giảm thời gian onboarding cho thành viên mới."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_9",
+    "category": "Backend",
+    "title": "Webhook khác gì so với polling và khi nào dùng cái nào?",
+    "intro": "Câu này đánh giá khả năng chọn đúng pattern cho bài toán tích hợp hệ thống.",
+    "bullets": [
+      "Giải thích polling là client chủ động hỏi định kỳ, webhook là server chủ động gửi khi có sự kiện.",
+      "Trình bày polling phù hợp khi số lượng event thưa thớt, webhook hiệu quả hơn khi event nhiều và realtime.",
+      "Nêu các lưu ý khi dùng webhook như cần xác thực nguồn gửi và xử lý retry khi endpoint không phản hồi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_10",
+    "category": "Backend",
+    "title": "Bạn thiết kế API để hỗ trợ pagination như thế nào?",
+    "intro": "Câu này kiểm tra khả năng tư duy về hiệu suất và trải nghiệm khi làm việc với tập dữ liệu lớn. Cơ sở dữ liệu là nơi mọi quyết định thiết kế sai lầm đều để lại hậu quả lâu dài và khó sửa nhất. Đây cũng là lý do nhà tuyển dụng dành nhiều thời gian cho nhóm câu hỏi này, đặc biệt với các vị trí cần xử lý dữ liệu ở quy mô lớn. Không chỉ kiểm tra kiến thức SQL hay NoSQL, interviewer muốn biết bạn có tư duy về performance, consistency và khả năng thiết kế schema phù hợp với yêu cầu nghiệp vụ thực tế hay không.",
+    "bullets": [
+      "Trình bày sự khác nhau giữa offset-based pagination và cursor-based pagination.",
+      "Giải thích cursor-based phù hợp hơn với dữ liệu thay đổi liên tục để tránh bỏ sót hay trùng lặp.",
+      "Đề cập đến việc trả về metadata như total count, next cursor để client dễ xử lý."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_11",
+    "category": "Backend",
+    "title": "SQL và NoSQL khác nhau như thế nào, bạn chọn loại nào cho bài toán nào?",
+    "intro": "Câu này không có đáp án đúng tuyệt đối, interviewer muốn nghe lý luận của bạn.",
+    "bullets": [
+      "Trình bày SQL phù hợp khi dữ liệu có cấu trúc rõ ràng, cần transaction và quan hệ phức tạp.",
+      "Giải thích NoSQL phù hợp khi schema linh hoạt, cần scale ngang hoặc làm việc với dữ liệu phi cấu trúc.",
+      "Đưa ví dụ thực tế về trường hợp bạn đã cân nhắc và chọn một trong hai, kèm lý do cụ thể."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_12",
+    "category": "Backend",
+    "title": "Index trong database hoạt động như thế nào và khi nào không nên dùng?",
+    "intro": "Nhiều developer biết index giúp query nhanh hơn nhưng ít ai biết mặt trái của nó.",
+    "bullets": [
+      "Giải thích index tạo cấu trúc dữ liệu phụ giúp tìm kiếm nhanh hơn nhưng tốn thêm storage và làm chậm write.",
+      "Nêu các trường hợp không nên index như cột có cardinality thấp hoặc bảng thường xuyên được write nhiều.",
+      "Đề cập đến composite index và thứ tự cột trong index ảnh hưởng đến hiệu quả query như thế nào."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_13",
+    "category": "Backend",
+    "title": "Transaction là gì và các thuộc tính ACID có ý nghĩa gì trong thực tế?",
+    "intro": "Câu này kiểm tra độ sâu hiểu biết về database, không chỉ dừng ở mức gọi được transaction.",
+    "bullets": [
+      "Giải thích bốn thuộc tính Atomicity, Consistency, Isolation và Durability bằng ví dụ cụ thể.",
+      "Trình bày isolation level khác nhau như Read Committed, Repeatable Read ảnh hưởng đến performance và concurrency.",
+      "Nêu ví dụ thực tế như chuyển tiền giữa hai tài khoản để minh họa tại sao transaction quan trọng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_14",
+    "category": "Backend",
+    "title": "N+1 query problem là gì và bạn xử lý như thế nào?",
+    "intro": "Đây là vấn đề phổ biến mà nhiều developer gặp nhưng không nhận ra cho đến khi hệ thống chậm.",
+    "bullets": [
+      "Giải thích N+1 xảy ra khi một query gốc trả về N bản ghi và mỗi bản ghi lại trigger thêm một query.",
+      "Trình bày cách khắc phục bằng eager loading, JOIN hoặc batch query tùy ORM và ngôn ngữ đang dùng.",
+      "Đề cập đến việc dùng query profiler để phát hiện N+1 trước khi ảnh hưởng đến production."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_15",
+    "category": "Backend",
+    "title": "Database sharding là gì và khi nào cần áp dụng?",
+    "intro": "Câu này dành cho những vị trí mid đến senior, đánh giá tư duy về scalability ở tầng dữ liệu.",
+    "bullets": [
+      "Giải thích sharding là chia dữ liệu nằm trên nhiều database instance theo một sharding key.",
+      "Nêu các thách thức của sharding như cross-shard query, rebalancing và distributed transaction.",
+      "Trình bày khi nào nên cân nhắc sharding và các giải pháp thay thế nên thử trước như read replica hay caching."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_16",
+    "category": "Backend",
+    "title": "Sự khác nhau giữa optimistic locking và pessimistic locking là gì?",
+    "intro": "Câu này đánh giá hiểu biết về concurrency control trong môi trường nhiều user cùng thao tác dữ liệu.",
+    "bullets": [
+      "Giải thích pessimistic locking khóa record ngay khi đọc, optimistic locking chỉ kiểm tra xung đột khi ghi.",
+      "Trình bày optimistic phù hợp với hệ thống ít xung đột, pessimistic phù hợp khi xung đột xảy ra thường xuyên.",
+      "Nêu cách implement optimistic locking bằng version column hoặc timestamp trong thực tế."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_17",
+    "category": "Backend",
+    "title": "Connection pooling hoạt động như thế nào và tại sao quan trọng?",
+    "intro": "Nhiều developer dùng connection pool mà không thực sự hiểu hoạt động ra sao.",
+    "bullets": [
+      "Giải thích connection pool tái sử dụng database connection thay vì tạo mới mỗi lần request đến.",
+      "Trình bày các thông số quan trọng như pool size, timeout ảnh hưởng đến hiệu suất và độ ổn định.",
+      "Đề cập đến triệu chứng của pool exhaustion và cách monitor để phát hiện sớm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_18",
+    "category": "Backend",
+    "title": "Bạn migrate database schema như thế nào mà không gây downtime?",
+    "intro": "Câu này kiểm tra kinh nghiệm làm việc với hệ thống production thực tế.",
+    "bullets": [
+      "Trình bày các kỹ thuật như expand-contract pattern để thêm cột mới mà không ảnh hưởng code cũ.",
+      "Nêu tầm quan trọng của việc tách migration thành nhiều bước nhỏ thay vì một thay đổi lớn.",
+      "Đề cập đến việc rollback plan cần được chuẩn bị trước mỗi lần deploy schema thay đổi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_19",
+    "category": "Backend",
+    "title": "Read replica được dùng để làm gì và có những lưu ý gì khi sử dụng?",
+    "intro": "Câu này đánh giá hiểu biết về cách scale database và những đánh đổi đi kèm.",
+    "bullets": [
+      "Giải thích read replica giúp phân tải read query sang instance phụ, giảm tải cho primary.",
+      "Trình bày replication lag là vấn đề cần chú ý, đặc biệt với nghiệp vụ đòi hỏi dữ liệu nhất quán ngay lập tức.",
+      "Nêu cách quyết định query nào nên đi đến replica và query nào cần đọc từ primary."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_20",
+    "category": "Backend",
+    "title": "Bạn thiết kế schema cho hệ thống có dữ liệu lịch sử và audit log như thế nào?",
+    "intro": "Câu này đánh giá tư duy thiết kế khi yêu cầu lưu trữ không chỉ trạng thái hiện tại mà còn lịch sử thay đổi. Vấn đề hiệu suất thường chỉ lộ ra khi hệ thống đã có người dùng thực tế, lúc đó áp lực sửa chữa rất lớn và chi phí cũng cao hơn nhiều so với thiết kế đúng từ đầu. Nhóm câu hỏi này đánh giá khả năng tư duy có hệ thống về performance, từ cách phát hiện vấn đề, phân tích nguyên nhân đến áp dụng đúng giải pháp trong từng tình huống cụ thể, thay vì tối ưu ngẫu nhiên theo cảm tính.",
+    "bullets": [
+      "Trình bày các pattern như soft delete, versioning table hoặc event sourcing tùy mức độ phức tạp.",
+      "Giải thích audit log cần lưu ai thay đổi, thay đổi gì và lúc nào, không chỉ lưu trạng thái cuối.",
+      "Nêu cân nhắc về storage và query performance khi dữ liệu lịch sử tích lũy theo thời gian."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_21",
+    "category": "Backend",
+    "title": "Bạn xác định và xử lý bottleneck trong hệ thống như thế nào?",
+    "intro": "Câu này đánh giá quy trình tư duy có hệ thống khi gặp vấn đề hiệu suất, không phải thử ngẫu nhiên.",
+    "bullets": [
+      "Trình bày cách dùng profiling và monitoring để xác định đúng vị trí bottleneck trước khi tối ưu.",
+      "Nêu nguyên tắc không optimize sớm và phải đo đạc trước khi kết luận.",
+      "Chia sẻ kinh nghiệm về một bottleneck thực tế bạn đã tìm ra và giải quyết như thế nào."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_22",
+    "category": "Backend",
+    "title": "Caching hoạt động như thế nào và bạn quyết định cache gì, không cache gì?",
+    "intro": "Interviewer muốn thấy bạn cân nhắc thực tế chứ không cache mọi thứ một cách mù quáng.",
+    "bullets": [
+      "Giải thích các tầng cache phổ biến như in-memory, distributed cache với Redis và CDN cho static asset.",
+      "Trình bày cache invalidation là vấn đề khó nhất, cần có chiến lược rõ ràng cho từng loại dữ liệu.",
+      "Nêu các trường hợp không nên cache như dữ liệu thay đổi liên tục hoặc yêu cầu tính nhất quán cao."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_23",
+    "category": "Backend",
+    "title": "Cache invalidation strategy nào bạn thường dùng và tại sao?",
+    "intro": "Câu hỏi đào sâu vào điểm khó nhất của caching, đánh giá ứng viên có kinh nghiệm thực tế hay không.",
+    "bullets": [
+      "Trình bày các chiến lược như TTL-based expiry, event-driven invalidation và cache-aside pattern.",
+      "Giải thích write-through và write-behind cache khác nhau về consistency và performance.",
+      "Nêu kinh nghiệm xử lý cache stampede hoặc thundering herd khi cache hết hạn đồng loạt."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_24",
+    "category": "Backend",
+    "title": "Bạn tối ưu hóa một query SQL chậm như thế nào?",
+    "intro": "Câu này kiểm tra kỹ năng phân tích và debug database, không phải chỉ biết lý thuyết.",
+    "bullets": [
+      "Trình bày quy trình dùng EXPLAIN hoặc EXPLAIN ANALYZE để hiểu query execution plan.",
+      "Nêu các dấu hiệu cần chú ý như full table scan, temporary table hoặc filesort trong execution plan.",
+      "Chia sẻ ví dụ cụ thể về một query bạn đã tối ưu và kết quả cải thiện đo được như thế nào."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_25",
+    "category": "Backend",
+    "title": "Message queue được dùng để giải quyết vấn đề gì và bạn đã dùng trong trường hợp nào?",
+    "intro": "Câu này đánh giá khả năng thiết kế hệ thống xử lý bất đồng bộ và tăng khả năng chịu tải.",
+    "bullets": [
+      "Giải thích message queue giúp decoupling producer và consumer, xử lý tải không đều và tăng fault tolerance.",
+      "Trình bày sự khác nhau giữa Kafka và RabbitMQ trong cách tiếp cận và trường hợp phù hợp.",
+      "Nêu các vấn đề cần xử lý như at-least-once delivery, message ordering và dead letter queue."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_26",
+    "category": "Backend",
+    "title": "Horizontal scaling và vertical scaling khác nhau thế nào, khi nào dùng cái nào?",
+    "intro": "Câu hỏi cơ bản nhưng interviewer muốn nghe tư duy thực tế chứ không phải định nghĩa đơn thuần.",
+    "bullets": [
+      "Giải thích vertical scaling tăng resource cho một server, horizontal scaling thêm nhiều server vào cluster.",
+      "Trình bày horizontal scaling phức tạp hơn vì cần xử lý stateless, session sharing và load balancing.",
+      "Nêu khi nào nên scale vertical trước và khi nào cần thiết kế từ đầu để scale horizontal."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_27",
+    "category": "Backend",
+    "title": "Làm thế nào bạn giảm latency cho một API endpoint đang chậm?",
+    "intro": "Câu này đánh giá khả năng tiếp cận vấn đề hiệu suất một cách có hệ thống từ nhiều góc độ khác nhau.",
+    "bullets": [
+      "Trình bày quy trình từ đo đạc và xác định nguồn gốc latency trước khi áp dụng bất kỳ giải pháp nào.",
+      "Nêu các hướng tối ưu như tối ưu query, thêm cache, giảm số lượng external call hoặc dùng async processing.",
+      "Đề cập đến async và background job cho các tác vụ không cần trả kết quả ngay trong cùng request."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_28",
+    "category": "Backend",
+    "title": "Bạn theo dõi và đo lường hiệu suất hệ thống backend như thế nào?",
+    "intro": "Câu này đánh giá tư duy về observability, điều ngày càng được coi trọng trong môi trường production hiện đại. Bảo mật không phải là tính năng có thể thêm vào sau khi hệ thống đã xây xong. Đây là thứ cần được tư duy từ giai đoạn thiết kế và duy trì liên tục trong suốt vòng đời của sản phẩm. Nhóm câu hỏi này kiểm tra không chỉ kiến thức kỹ thuật về các lỗ hổng phổ biến mà còn đánh giá ý thức bảo mật chủ động, tức là liệu bạn có thói quen nghĩ đến rủi ro trước khi vấn đề xảy ra hay không.",
+    "bullets": [
+      "Trình bày bộ ba trụ cột của observability gồm metrics, logs và traces với vai trò của từng loại.",
+      "Nêu các chỉ số quan trọng cần theo dõi như response time, error rate, throughput và resource utilization.",
+      "Đề cập đến các công cụ phổ biến như Prometheus, Grafana, Datadog hoặc OpenTelemetry trong thực tế."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_29",
+    "category": "Backend",
+    "title": "SQL injection là gì và bạn phòng chống như thế nào?",
+    "intro": "Câu kinh điển nhưng interviewer muốn biết bạn hiểu bản chất chứ không chỉ biết dùng ORM.",
+    "bullets": [
+      "Giải thích SQL injection xảy ra khi input của user được đưa trực tiếp vào câu query mà không được sanitize.",
+      "Trình bày parameterized query và prepared statement là cách phòng chống hiệu quả nhất ở tầng code.",
+      "Nêu thêm các lớp bảo vệ bổ sung như WAF và principle of least privilege cho database user."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_30",
+    "category": "Backend",
+    "title": "JWT hoạt động như thế nào và có những rủi ro bảo mật nào cần lưu ý?",
+    "intro": "Câu này phổ biến trong phỏng vấn vì JWT được dùng rộng rãi nhưng cũng hay bị implement sai.",
+    "bullets": [
+      "Giải thích cấu trúc JWT gồm header, payload và signature, và ai có thể đọc được phần nào.",
+      "Trình bày các lỗi phổ biến như lưu JWT trong localStorage, không kiểm tra expiry hoặc dùng algorithm none.",
+      "Nêu cách xử lý token revocation vì JWT stateless không thể invalidate trước khi hết hạn một cách đơn giản."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_31",
+    "category": "Backend",
+    "title": "HTTPS hoạt động như thế nào và tại sao không đủ để bảo mật hoàn toàn?",
+    "intro": "Câu này kiểm tra xem bạn hiểu HTTPS ở mức nào và biết những gì nằm ngoài phạm vi bảo vệ của nó.",
+    "bullets": [
+      "Giải thích HTTPS mã hóa dữ liệu trong transit bằng TLS, bảo vệ khỏi man-in-the-middle attack.",
+      "Trình bày HTTPS không bảo vệ được dữ liệu sau khi đến server và không ngăn được logic lỗi trong ứng dụng.",
+      "Nêu các lớp bảo mật bổ sung cần có như input validation, authentication, authorization và data encryption at rest."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_32",
+    "category": "Backend",
+    "title": "Bạn lưu trữ và xử lý thông tin nhạy cảm của người dùng như thế nào?",
+    "intro": "Câu này đánh giá ý thức về data protection và hiểu biết về các thực hành tốt trong bảo mật dữ liệu.",
+    "bullets": [
+      "Trình bày password phải được hash với algorithm chậm như bcrypt, không được lưu dạng plain text hay MD5.",
+      "Nêu nguyên tắc data minimization, chỉ thu thập và lưu trữ những gì thực sự cần thiết.",
+      "Đề cập đến encryption at rest cho dữ liệu nhạy cảm và kiểm soát ai trong team được quyền truy cập vào production data."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_33",
+    "category": "Backend",
+    "title": "OWASP Top 10 là gì và bạn phòng chống những lỗ hổng phổ biến nhất như thế nào?",
+    "intro": "Câu này đánh giá ý thức bảo mật chủ động, không phải chỉ biết fix lỗi khi bị báo cáo.",
+    "bullets": [
+      "Trình bày một số lỗ hổng quan trọng trong OWASP Top 10 mà bạn thực sự hiểu và đã xử lý.",
+      "Nêu cách tích hợp security check vào quy trình phát triển như SAST, dependency scanning trong CI/CD.",
+      "Chia sẻ kinh nghiệm về lần bạn phát hiện hoặc xử lý một lỗ hổng bảo mật trong dự án thực tế."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_34",
+    "category": "Backend",
+    "title": "API key và OAuth 2.0 khác nhau như thế nào và khi nào dùng cái nào?",
+    "intro": "Câu này kiểm tra hiểu biết về authentication mechanism phù hợp cho từng loại client và use case.",
+    "bullets": [
+      "Giải thích API key đơn giản hơn nhưng không có cơ chế revoke granular và thường có quyền truy cập rộng.",
+      "Trình bày OAuth 2.0 phù hợp khi cần delegate quyền truy cập với scope giới hạn và có thể revoke.",
+      "Nêu khi nào API key đủ dùng như internal service-to-service và khi nào cần OAuth như third-party integration."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_35",
+    "category": "Backend",
+    "title": "Bạn xử lý secret và config nhạy cảm như database credential như thế nào trong môi trường thực tế?",
+    "intro": "Câu này đánh giá thói quen làm việc an toàn với thông tin nhạy cảm trong quá trình phát triển và vận hành. Kiến trúc hệ thống là chủ đề phân hóa rõ nhất giữa ứng viên junior và mid đến senior. Nhóm câu hỏi này không có đáp án đúng duy nhất mà đánh giá khả năng phân tích vấn đề, hiểu rõ trade-off giữa các lựa chọn kiến trúc và khả năng bảo vệ quan điểm kỹ thuật của mình bằng lý luận có căn cứ. Đây cũng là phần nhiều ứng viên chuẩn bị thiếu nhất dù lại là phần interviewer dành nhiều thời gian nhất.",
+    "bullets": [
+      "Trình bày không được hardcode secret vào code hay commit vào git repository dù là private repo.",
+      "Nêu các giải pháp như environment variable, secret manager như AWS Secrets Manager hay HashiCorp Vault.",
+      "Đề cập đến việc rotate secret định kỳ và có cơ chế phát hiện khi secret bị lộ ra ngoài."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_36",
+    "category": "Backend",
+    "title": "Monolithic và Microservices khác nhau thế nào và bạn chọn cái nào cho dự án mới?",
+    "intro": "Câu này không có đáp án đúng duy nhất, interviewer muốn thấy bạn hiểu trade-off của từng hướng.",
+    "bullets": [
+      "Trình bày monolithic đơn giản hơn để bắt đầu, dễ debug và phù hợp với team nhỏ hoặc dự án còn thăm dò.",
+      "Giải thích microservices phù hợp khi cần scale độc lập từng phần, có nhiều team làm việc song song.",
+      "Nêu quan điểm về việc bắt đầu từ monolith và tách dần khi đã hiểu rõ domain thay vì microservices ngay từ đầu."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_37",
+    "category": "Backend",
+    "title": "Khi nào bạn quyết định tách module hoặc service, và khi nào thì không cần?",
+    "intro": "Interviewer dùng câu này để đánh giá khả năng thiết kế và giữ hệ thống ở mức vừa đủ.",
+    "bullets": [
+      "Trình bày các dấu hiệu cho thấy code bắt đầu khó maintain như coupling cao, deploy ảnh hưởng lẫn nhau.",
+      "Nhấn mạnh việc tránh tách quá sớm khi chưa có nhu cầu rõ ràng vì tăng độ phức tạp vận hành.",
+      "Cho thấy bạn cân nhắc chi phí kỹ thuật và operational overhead khi thay đổi kiến trúc."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_38",
+    "category": "Backend",
+    "title": "Các service trong hệ thống microservices giao tiếp với nhau như thế nào?",
+    "intro": "Câu này kiểm tra hiểu biết về các pattern giao tiếp và khi nào dùng synchronous hay asynchronous.",
+    "bullets": [
+      "Trình bày hai hướng chính là synchronous qua REST hoặc gRPC và asynchronous qua message queue.",
+      "Giải thích asynchronous phù hợp khi không cần kết quả ngay, giúp tăng resilience và giảm coupling.",
+      "Nêu vấn đề của synchronous chain như latency cộng dồn và cascade failure khi một service chậm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_39",
+    "category": "Backend",
+    "title": "Circuit breaker pattern là gì và tại sao cần thiết trong microservices?",
+    "intro": "Đây là câu hỏi về resilience pattern, đánh giá ứng viên có tư duy về hệ thống fault-tolerant hay không.",
+    "bullets": [
+      "Giải thích circuit breaker tự động ngừng gọi service bị lỗi để tránh làm hỏng lan rộng toàn hệ thống.",
+      "Trình bày ba trạng thái closed, open và half-open của circuit breaker và cách chuyển đổi giữa chúng.",
+      "Nêu ví dụ cụ thể về tình huống không có circuit breaker dẫn đến cascade failure như thế nào."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_40",
+    "category": "Backend",
+    "title": "Distributed transaction trong microservices được xử lý như thế nào?",
+    "intro": "Câu này đánh giá ứng viên hiểu rằng transaction kiểu truyền thống không dễ áp dụng trong môi trường phân tán.",
+    "bullets": [
+      "Giải thích tại sao không thể dùng ACID transaction thông thường khi dữ liệu nằm trên nhiều service.",
+      "Trình bày Saga pattern như một giải pháp phổ biến với choreography và orchestration approach.",
+      "Nêu tầm quan trọng của compensating transaction để rollback khi một bước trong saga thất bại."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_41",
+    "category": "Backend",
+    "title": "Service discovery hoạt động như thế nào trong môi trường microservices?",
+    "intro": "Câu này kiểm tra hiểu biết về cách các service tìm thấy nhau khi địa chỉ IP thay đổi liên tục.",
+    "bullets": [
+      "Giải thích client-side và server-side discovery là hai hướng tiếp cận chính với trade-off khác nhau.",
+      "Trình bày các công cụ phổ biến như Consul, Eureka hoặc Kubernetes native service discovery.",
+      "Nêu health check đóng vai trò quan trọng như thế nào để service registry luôn phản ánh đúng trạng thái."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_42",
+    "category": "Backend",
+    "title": "API Gateway đóng vai trò gì trong kiến trúc microservices?",
+    "intro": "Câu này đánh giá hiểu biết về single entry point pattern và những gì có thể delegate cho gateway.",
+    "bullets": [
+      "Giải thích API Gateway là điểm vào duy nhất cho client, xử lý routing, authentication và rate limiting tập trung.",
+      "Trình bày các lợi ích như client không cần biết địa chỉ từng service và dễ áp dụng cross-cutting concerns.",
+      "Nêu rủi ro của gateway như single point of failure và cách xử lý bằng redundancy và health check."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_43",
+    "category": "Backend",
+    "title": "Bạn đảm bảo data consistency như thế nào trong hệ thống phân tán?",
+    "intro": "Câu này kiểm tra hiểu biết về CAP theorem và sự đánh đổi giữa consistency và availability. Ranh giới giữa Backend Developer và DevOps đang ngày càng mờ nhạt hơn trong các công ty công nghệ hiện đại. Developer được kỳ vọng hiểu đủ để tự deploy, tự debug môi trường và tự chịu trách nhiệm với hệ thống đang chạy, không phải chỉ viết code rồi đẩy sang cho bộ phận khác. Nhóm câu hỏi này đánh giá mức độ sẵn sàng của bạn với những trách nhiệm đó trong thực tế.",
+    "bullets": [
+      "Trình bày eventual consistency là gì và tại sao nhiều hệ thống chấp nhận để đổi lấy availability và performance.",
+      "Giải thích strong consistency cần thiết ở đâu như thanh toán và cách đạt được với chi phí nào.",
+      "Nêu kinh nghiệm thiết kế hệ thống chấp nhận được với eventual consistency và những trường hợp không chấp nhận được."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_44",
+    "category": "Backend",
+    "title": "CI/CD pipeline của bạn thường được thiết lập như thế nào?",
+    "intro": "Câu này đánh giá mức độ quen thuộc với quy trình phát triển hiện đại, không chỉ là viết code rồi đưa cho DevOps.",
+    "bullets": [
+      "Trình bày các giai đoạn cơ bản trong pipeline như build, test, static analysis, staging deploy và production deploy.",
+      "Nêu tầm quan trọng của automated testing ở nhiều tầng để phát hiện lỗi sớm trước khi lên production.",
+      "Chia sẻ kinh nghiệm về việc xử lý failed pipeline và quy trình rollback khi deploy có vấn đề."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_45",
+    "category": "Backend",
+    "title": "Docker và container hóa mang lại lợi ích gì cho quy trình phát triển backend?",
+    "intro": "Câu này kiểm tra hiểu biết thực tế về containerization, không phải chỉ biết dùng Docker run.",
+    "bullets": [
+      "Trình bày lợi ích về môi trường nhất quán giữa development, staging và production giúp giảm vấn đề môi trường.",
+      "Nêu khả năng scale nhanh và deploy độc lập từng service trong kiến trúc microservices.",
+      "Đề cập đến image size optimization và security best practices như không chạy container với root user."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_46",
+    "category": "Backend",
+    "title": "Zero downtime deployment được thực hiện như thế nào?",
+    "intro": "Câu này đánh giá kinh nghiệm làm việc với hệ thống production thực tế và ý thức về trải nghiệm người dùng.",
+    "bullets": [
+      "Trình bày các kỹ thuật như blue-green deployment, canary release và rolling update với ưu nhược điểm từng loại.",
+      "Nêu database migration cần được tách riêng và backward compatible với code cũ trong quá trình chuyển đổi.",
+      "Đề cập đến health check và automatic rollback trigger khi phát hiện error rate tăng sau deploy."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_47",
+    "category": "Backend",
+    "title": "Bạn xử lý secret và environment configuration như thế nào khi deploy lên nhiều môi trường?",
+    "intro": "Câu này đánh giá thực hành quản lý configuration an toàn và có tổ chức khi quy mô hệ thống tăng lên.",
+    "bullets": [
+      "Trình bày nguyên tắc tách configuration khỏi code và không commit secret vào repository.",
+      "Nêu các giải pháp như environment variable qua CI/CD, secret manager hoặc Kubernetes secrets.",
+      "Đề cập đến việc có strategy rõ ràng cho mỗi môi trường và audit trail khi secret được thay đổi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_48",
+    "category": "Backend",
+    "title": "Logging trong hệ thống phân tán cần được thiết lập như thế nào để có thể debug hiệu quả?",
+    "intro": "Câu này kiểm tra ứng viên có hiểu thách thức của distributed tracing và structured logging hay không.",
+    "bullets": [
+      "Trình bày tầm quan trọng của correlation ID để trace một request đi qua nhiều service.",
+      "Nêu structured logging với format JSON giúp dễ dàng query và phân tích hơn so với plain text log.",
+      "Đề cập đến log aggregation tool như ELK stack hay Loki và cách thiết lập alert dựa trên log pattern."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "backend_49",
+    "category": "Backend",
+    "title": "Kubernetes giải quyết vấn đề gì và bạn đã làm việc với nó như thế nào?",
+    "intro": "Câu này không bắt buộc ứng viên phải là Kubernetes expert, nhưng cần hiểu được bức tranh tổng thể. [Showing lines 1-483 of 682 (49.9KB limit). Use :484 to continue]",
+    "bullets": [
+      "Giải thích Kubernetes giải quyết vấn đề orchestration container ở scale lớn, bao gồm scheduling, scaling và self-healing.",
+      "Trình bày các khái niệm cơ bản như Pod, Deployment, Service và Ingress theo cách bạn thực sự hiểu chứ không phải đọc lại docs."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_1",
+    "category": "Frontend",
+    "title": "Scope trong JavaScript ảnh hưởng gì tới bug UI?",
+    "intro": "Câu hỏi này giúp interviewer đánh giá khả năng bạn kiểm soát phạm vi biến và tránh lỗi khó debug.",
+    "bullets": [
+      "Phân biệt phạm vi của biến trong function và block khi viết logic UI.",
+      "Nhận diện các bug do biến bị ghi đè hoặc dùng sai phạm vi.",
+      "Thể hiện thói quen đặt biến và cấu trúc code rõ ràng để tránh side effect."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_2",
+    "category": "Frontend",
+    "title": "Closure là gì và bạn đã từng dùng nó trong Frontend ra sao?",
+    "intro": "Interviewer muốn biết bạn không chỉ hiểu khái niệm mà còn biết áp dụng vào UI thực tế.",
+    "bullets": [
+      "Mô tả cách closure giữ lại trạng thái giữa các lần render hoặc tương tác.",
+      "Nêu tình huống thường gặp như handler, debounce, hoặc custom hook.",
+      "Nhận diện rủi ro giữ reference không cần thiết gây memory leak."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_3",
+    "category": "Frontend",
+    "title": "Hoisting hay gây lỗi khó debug ở những tình huống nào?",
+    "intro": "Câu này nhằm kiểm tra khả năng đọc và dự đoán hành vi code trước khi chạy.",
+    "bullets": [
+      "Phân biệt hành vi hoisting của var so với let và const.",
+      "Nêu các bug thường gặp khi biến hoặc hàm được dùng trước khi khai báo.",
+      "Thể hiện thói quen viết code giúp tránh hiểu nhầm thứ tự thực thi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_4",
+    "category": "Frontend",
+    "title": "Event loop liên quan gì tới UI bị delay hoặc click không ăn?",
+    "intro": "Interviewer muốn xem bạn hiểu mối liên hệ giữa bất đồng bộ và phản hồi UI.",
+    "bullets": [
+      "Mô tả cách task được đưa vào hàng đợi và thực thi.",
+      "Nhận diện tình huống main thread bị block khiến UI không phản hồi.",
+      "Thể hiện cách tránh chạy tác vụ nặng trên luồng chính của trình duyệt."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_5",
+    "category": "Frontend",
+    "title": "Promise và async/await khác nhau ở cách xử lý lỗi?",
+    "intro": "Câu hỏi này kiểm tra khả năng bạn kiểm soát lỗi bất đồng bộ một cách rõ ràng.",
+    "bullets": [
+      "Nêu cách bắt lỗi trong promise chain và async/await.",
+      "Nhận diện những lỗi dễ bị bỏ sót khi không bao bọc đúng phạm vi.",
+      "Thể hiện cách viết code giúp luồng xử lý dễ đọc và dễ debug hơn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_6",
+    "category": "Frontend",
+    "title": "Race condition trong Frontend thường xảy ra khi nào?",
+    "intro": "Interviewer muốn biết bạn có từng gặp lỗi do nhiều tác vụ bất đồng bộ chạy chồng chéo.",
+    "bullets": [
+      "Nhận diện tình huống nhiều request cập nhật cùng một state UI.",
+      "Thể hiện cách kiểm soát thứ tự cập nhật dữ liệu.",
+      "Nêu cách tránh hiển thị dữ liệu cũ hoặc sai trên giao diện."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_7",
+    "category": "Frontend",
+    "title": "Tham chiếu và giá trị gây bug state như thế nào?",
+    "intro": "Câu này giúp phân biệt người hiểu cách dữ liệu thay đổi và người chỉ update cho chạy.",
+    "bullets": [
+      "Phân biệt truyền tham chiếu và truyền giá trị trong JavaScript.",
+      "Nhận diện bug UI khi mutate object hoặc array trực tiếp.",
+      "Thể hiện thói quen sao chép dữ liệu trước khi cập nhật state."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_8",
+    "category": "Frontend",
+    "title": "Immutability quan trọng ra sao trong render UI?",
+    "intro": "Interviewer dùng câu này để đánh giá tư duy quản lý state ổn định.",
+    "bullets": [
+      "Nêu mối liên hệ giữa immutability và việc phát hiện thay đổi.",
+      "Thể hiện cách immutability giúp tránh render sai hoặc thiếu render.",
+      "Nhận diện trade-off khi dữ liệu lớn và cần tối ưu."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_9",
+    "category": "Frontend",
+    "title": "Shallow copy và deep copy khác nhau ở đâu khi update state?",
+    "intro": "Câu hỏi này kiểm tra khả năng bạn tránh bug liên quan cấu trúc dữ liệu lồng nhau.",
+    "bullets": [
+      "Phân biệt phạm vi sao chép của từng cách.",
+      "Nhận diện bug khi chỉ copy bề mặt nhưng mutate bên trong.",
+      "Thể hiện cách chọn phương án phù hợp với độ phức tạp của state."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_10",
+    "category": "Frontend",
+    "title": "== và === có thể gây lỗi gì trong Frontend?",
+    "intro": "Interviewer muốn biết bạn hiểu so sánh kiểu dữ liệu ảnh hưởng logic UI ra sao.",
+    "bullets": [
+      "Nêu sự khác biệt trong so sánh giá trị và kiểu.",
+      "Nhận diện bug do ép kiểu ngầm định.",
+      "Thể hiện nguyên tắc nhất quán khi viết điều kiện trong UI."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_11",
+    "category": "Frontend",
+    "title": "Khi nào nên tránh mutate object hoặc array trực tiếp?",
+    "intro": "Câu hỏi này đánh giá khả năng bạn giữ logic UI dễ đoán.",
+    "bullets": [
+      "Nêu các tình huống mutate gây side effect khó lường.",
+      "Thể hiện cách cập nhật dữ liệu an toàn hơn.",
+      "Nhận diện trường hợp mutate có thể chấp nhận được nếu kiểm soát rõ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_12",
+    "category": "Frontend",
+    "title": "Bạn debug lỗi JavaScript trên trình duyệt theo hướng nào?",
+    "intro": "Interviewer muốn nghe quy trình debug rõ ràng, không mò mẫm. Nhiều ứng viên Frontend trả lời React rất ổn nhưng lại hụt hơi ở phần browser, DOM và cơ chế render, đơn giản vì họ quen làm qua framework nên ít khi phải gọi tên đúng vấn đề. Tuy nhiên, với interviewer, đây lại là nhóm câu hỏi cực quan trọng để xác định bạn có hiểu giao diện chạy thật sự ra sao, cũng như có đủ nền để xử lý các bug khó chịu như lag UI, click không ăn, layout nhảy hoặc memory tăng dần.",
+    "bullets": [
+      "Bắt đầu từ việc tái hiện lỗi và quan sát hành vi UI.",
+      "Sử dụng log, breakpoint và công cụ devtools một cách có mục tiêu.",
+      "Thu hẹp phạm vi nguyên nhân thay vì sửa thử nhiều chỗ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_13",
+    "category": "Frontend",
+    "title": "Browser render một trang web theo các bước nào?",
+    "intro": "Câu này kiểm tra bạn có tư duy tổng quan về luồng render, không cần quá chi tiết nhưng phải có mạch.",
+    "bullets": [
+      "Nêu trình tự ở mức high-level từ parse HTML/CSS tới layout và paint.",
+      "Thể hiện bạn hiểu vì sao thay đổi CSS hoặc DOM có thể làm UI chậm.",
+      "Nối được kiến thức này với cách bạn debug hoặc tối ưu trong dự án."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_14",
+    "category": "Frontend",
+    "title": "Reflow và repaint là gì, và khi nào chúng làm UI chậm thấy rõ?",
+    "intro": "Interviewer muốn biết bạn hiểu nguyên nhân lag UI ở những tình huống rất đời thường.",
+    "bullets": [
+      "Phân biệt reflow liên quan layout và repaint liên quan vẽ lại.",
+      "Nhận diện các thao tác thường gây reflow nhiều: đo kích thước, thay đổi layout liên tục.",
+      "Thể hiện cách bạn giảm reflow bằng cách gom thay đổi hoặc hạn chế đo layout trong vòng lặp."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_15",
+    "category": "Frontend",
+    "title": "DOM và Virtual DOM khác nhau ở góc nhìn thực dụng của Frontend?",
+    "intro": "Câu hỏi này không nhằm bắt bạn thuộc định nghĩa, mà để xem bạn hiểu hiệu ứng thực tế.",
+    "bullets": [
+      "Nêu DOM là cấu trúc thật trong browser, còn Virtual DOM là cách framework tối ưu cập nhật.",
+      "Thể hiện bạn hiểu Virtual DOM không tự động làm mọi thứ nhanh, vẫn có thể chậm nếu render quá nhiều.",
+      "Liên hệ tới việc tối ưu render ở component hoặc danh sách lớn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_16",
+    "category": "Frontend",
+    "title": "Event bubbling và capturing là gì, và bạn đã từng gặp bug liên quan chưa?",
+    "intro": "Interviewer muốn nghe bạn hiểu event propagation và biết dùng nó để xử lý UI.",
+    "bullets": [
+      "Giải thích mạch lan truyền event theo hai chiều.",
+      "Nêu tình huống thực tế như click trong modal, dropdown, nested component.",
+      "Thể hiện bạn biết khi nào cần stopPropagation và khi nào không nên lạm dụng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_17",
+    "category": "Frontend",
+    "title": "Khi addEventListener nhiều lần, rủi ro nào dễ xảy ra nhất?",
+    "intro": "Câu này giúp đánh giá ý thức về memory leak và hành vi lặp event khó chịu.",
+    "bullets": [
+      "Nêu nguy cơ handler bị gắn trùng khiến một thao tác chạy nhiều lần.",
+      "Thể hiện bạn biết cần cleanup khi component unmount hoặc khi effect chạy lại.",
+      "Nhắc tới cách kiểm tra nhanh bằng devtools hoặc log để xác nhận handler bị nhân đôi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_18",
+    "category": "Frontend",
+    "title": "Debounce và throttle khác nhau thế nào, bạn dùng trong tình huống UI nào?",
+    "intro": "Interviewer kiểm tra khả năng kiểm soát tần suất xử lý sự kiện trong UI.",
+    "bullets": [
+      "Phân biệt debounce phù hợp input search, throttle phù hợp scroll/resize.",
+      "Thể hiện bạn hiểu mục tiêu là giảm số lần chạy logic nặng và giảm call API.",
+      "Nhắc tới việc chọn thời gian trễ hợp lý để không làm UX tệ đi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_19",
+    "category": "Frontend",
+    "title": "requestAnimationFrame khác setTimeout ở điểm nào khi làm animation?",
+    "intro": "Câu này nhằm đánh giá bạn hiểu cách browser vẽ frame và tối ưu chuyển động.",
+    "bullets": [
+      "Nêu requestAnimationFrame đồng bộ theo frame render của browser.",
+      "Thể hiện bạn hiểu setTimeout có thể lệch nhịp khiến animation giật.",
+      "Liên hệ tới việc dùng requestAnimationFrame để cập nhật UI mượt hơn khi có animation hoặc hiệu ứng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_20",
+    "category": "Frontend",
+    "title": "Khi DOM update rồi nhưng UI vẫn không phản ánh như bạn mong đợi, bạn nghi ngờ gì?",
+    "intro": "Interviewer muốn nghe cách bạn khoanh vùng thay vì đoán ngẫu nhiên.",
+    "bullets": [
+      "Xem lại CSS: visibility, display, z-index, overflow, specificity.",
+      "Kiểm tra xem state UI và dữ liệu hiển thị có bị stale hoặc update sai thời điểm không.",
+      "Thể hiện cách bạn dùng devtools để xác nhận DOM thực tế đã đổi hay chưa."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_21",
+    "category": "Frontend",
+    "title": "Browser cache ảnh hưởng tới trải nghiệm người dùng và bug sau deploy như thế nào?",
+    "intro": "Câu này kiểm tra hiểu biết về vấn đề rất hay gặp khi release.",
+    "bullets": [
+      "Nêu tình huống người dùng thấy giao diện cũ do cache static assets.",
+      "Thể hiện bạn biết cách xử lý bằng versioning hoặc cache-control phù hợp.",
+      "Nhắc tới việc khi debug cần kiểm tra hard reload hoặc kiểm tra network cache."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_22",
+    "category": "Frontend",
+    "title": "Bạn debug bug liên quan browser theo trình tự nào để không bị lan man?",
+    "intro": "Interviewer muốn thấy bạn có quy trình rõ ràng khi gặp lỗi UI chỉ xảy ra ở một môi trường. HTML và CSS là phần nhiều ứng viên nghĩ rằng dễ, nên thường chủ quan, tới lúc phỏng vấn lại trả lời khá cảm tính. Trong khi đó, interviewer thường dùng nhóm này để kiểm tra bạn có từng làm UI thật hay chưa: có hiểu layout hoạt động ra sao, có biết vì sao giao diện vỡ, và quan trọng nhất là có biết cách debug CSS nhanh gọn trong tình huống thực tế.",
+    "bullets": [
+      "Xác định môi trường lỗi: browser nào, thiết bị nào, điều kiện nào tái hiện được.",
+      "So sánh khác biệt: kích thước màn hình, extension, chế độ private, cache.",
+      "Thu hẹp phạm vi bằng cách kiểm tra log, devtools, và thử cô lập phần UI gây lỗi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_23",
+    "category": "Frontend",
+    "title": "Box model gồm những gì và nó ảnh hưởng layout ra sao?",
+    "intro": "Câu này giúp interviewer đánh giá nền tảng layout của bạn có chắc không.",
+    "bullets": [
+      "Nêu các lớp chính và cách chúng cộng dồn kích thước.",
+      "Liên hệ với bug thường gặp: element bị tràn, canh lệch, không đúng kích thước mong muốn.",
+      "Thể hiện thói quen kiểm tra bằng devtools để nhìn đúng box model thay vì đoán."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_24",
+    "category": "Frontend",
+    "title": "display: block, inline, inline-block khác nhau thế nào trong thực tế?",
+    "intro": "Interviewer muốn xem bạn hiểu hành vi hiển thị và cách chúng ảnh hưởng bố cục.",
+    "bullets": [
+      "Phân biệt cách mỗi loại chiếm chỗ và nhận kích thước.",
+      "Nêu tình huống thực tế: canh icon với text, button, menu ngang.",
+      "Thể hiện bạn biết khi nào nên chuyển sang flex thay vì cố xử lý bằng inline-block."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_25",
+    "category": "Frontend",
+    "title": "Flexbox và Grid: bạn chọn cái nào trong trường hợp nào?",
+    "intro": "Câu này nhằm đánh giá bạn biết chọn công cụ phù hợp thay vì dùng một thứ cho mọi layout.",
+    "bullets": [
+      "Nêu flex phù hợp layout một chiều, grid phù hợp layout hai chiều.",
+      "Liên hệ với các bài toán UI: card list, dashboard, form nhiều cột.",
+      "Thể hiện bạn ưu tiên đơn giản và dễ maintain thay vì layout quá phức tạp."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_26",
+    "category": "Frontend",
+    "title": "position: relative, absolute, fixed, sticky khác nhau ra sao?",
+    "intro": "Interviewer thường hỏi để xem bạn có từng xử lý overlay, dropdown, header cố định.",
+    "bullets": [
+      "Nêu cách mỗi position định vị theo bối cảnh nào.",
+      "Nhận diện bug hay gặp: absolute bị lệch do thiếu parent có relative, sticky không hoạt động do overflow.",
+      "Thể hiện cách bạn debug bằng cách kiểm tra stacking context và container."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_27",
+    "category": "Frontend",
+    "title": "CSS specificity là gì và vì sao nó hay gây bug khó chịu?",
+    "intro": "Câu hỏi này kiểm tra khả năng bạn hiểu xung đột style thay vì chỉ thêm !important.",
+    "bullets": [
+      "Nêu nguyên tắc ưu tiên và vì sao selector phức tạp dễ “đè” style khác.",
+      "Nhận diện dấu hiệu: sửa CSS đúng file nhưng UI không đổi.",
+      "Thể hiện cách xử lý bền vững: đơn giản selector, chuẩn hoá quy ước, hạn chế lạm dụng !important."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_28",
+    "category": "Frontend",
+    "title": "Khi CSS bị override sai, bạn debug theo hướng nào?",
+    "intro": "Interviewer muốn nghe một quy trình debug CSS rõ, vì đây là kỹ năng đi làm dùng hằng ngày.",
+    "bullets": [
+      "Dùng devtools để xem rule nào đang thắng và đến từ đâu.",
+      "Kiểm tra thứ tự load CSS, scope (module), và specificity.",
+      "Thu hẹp phạm vi bằng cách tắt từng rule hoặc cô lập component."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_29",
+    "category": "Frontend",
+    "title": "Responsive design bạn thường làm theo cách nào để UI không vỡ?",
+    "intro": "Câu này đánh giá tư duy xây UI chạy tốt trên nhiều thiết bị, không chỉ chỉnh cho đẹp trên một màn hình.",
+    "bullets": [
+      "Nêu cách tiếp cận: mobile-first hoặc breakpoints theo layout.",
+      "Thể hiện bạn quan tâm tới kích thước thật của nội dung: text dài, ảnh lớn, button nhiều.",
+      "Nhắc tới việc test trên nhiều kích thước và dùng devtools responsive mode thay vì đoán."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_30",
+    "category": "Frontend",
+    "title": "Accessibility cơ bản trong HTML/CSS gồm những gì?",
+    "intro": "Interviewer hỏi để xem bạn có ý thức về trải nghiệm người dùng và chuẩn UI tối thiểu. React gần như là nội dung xuất hiện thường xuyên nhất trong phỏng vấn Frontend hiện đại, nhưng điều thú vị là interviewer hiếm khi hỏi bạn thuộc API. Họ muốn nghe cách bạn tổ chức component, quản lý state và kiểm soát re-render, bởi những thứ này mới quyết định codebase có dễ mở rộng, dễ sửa và ít bug hay không.",
+    "bullets": [
+      "Nêu các điểm cơ bản: semantic HTML, label cho form, focus state, contrast.",
+      "Thể hiện bạn hiểu accessibility không chỉ là thêm aria cho có.",
+      "Liên hệ với việc làm UI dễ dùng bằng bàn phím và screen reader ở mức tối thiểu."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_31",
+    "category": "Frontend",
+    "title": "React giải quyết vấn đề gì so với JavaScript thuần?",
+    "intro": "Câu này giúp interviewer biết bạn hiểu React là một cách tổ chức UI, không chỉ là công cụ dựng giao diện.",
+    "bullets": [
+      "Nêu vấn đề React giải quyết: tách UI thành component, quản lý trạng thái và cập nhật giao diện theo dữ liệu.",
+      "Thể hiện bạn hiểu sự khác biệt giữa thao tác DOM trực tiếp và tư duy declarative.",
+      "Liên hệ với trải nghiệm: UI lớn, nhiều trạng thái, nhiều tương tác thì React giúp code dễ quản lý hơn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_32",
+    "category": "Frontend",
+    "title": "State và props khác nhau thế nào trong dự án thật?",
+    "intro": "Interviewer muốn biết bạn hiểu cách dữ liệu chảy trong UI và biết đặt dữ liệu đúng chỗ.",
+    "bullets": [
+      "Nêu props là dữ liệu truyền xuống, state là dữ liệu nằm trong component hoặc scope quản lý.",
+      "Thể hiện bạn biết tránh nhét mọi thứ vào state nếu không cần.",
+      "Liên hệ với tình huống: dữ liệu dùng chung giữa nhiều component thì nên đặt ở cấp cao hơn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_33",
+    "category": "Frontend",
+    "title": "Khi nào component bị re-render?",
+    "intro": "Câu hỏi này nhằm đánh giá tư duy về hiệu năng và dự đoán hành vi của UI.",
+    "bullets": [
+      "Nêu các nguyên nhân phổ biến: state đổi, props đổi, parent re-render kéo theo child.",
+      "Thể hiện bạn hiểu re-render không luôn xấu, chỉ cần kiểm soát khi nó gây vấn đề.",
+      "Nhắc tới cách nhận diện bằng devtools hoặc profiling khi UI chậm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_34",
+    "category": "Frontend",
+    "title": "useState và useRef khác nhau trong trường hợp nào?",
+    "intro": "Interviewer muốn xem bạn phân biệt được dữ liệu dùng để render và dữ liệu dùng để lưu tham chiếu.",
+    "bullets": [
+      "Nêu useState làm UI cập nhật, useRef giữ giá trị qua render nhưng không kích hoạt render.",
+      "Liên hệ tình huống: lưu timer id, DOM node, hoặc giá trị tạm không cần render lại.",
+      "Thể hiện bạn tránh dùng useRef để “lách” state khiến UI khó đoán."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_35",
+    "category": "Frontend",
+    "title": "useEffect hay bị dùng sai ở đâu?",
+    "intro": "Câu này kiểm tra trải nghiệm thật vì useEffect là nơi nhiều bug Frontend xảy ra.",
+    "bullets": [
+      "Nhận diện lỗi phổ biến: chạy quá nhiều lần, dependency sai, gọi API lặp.",
+      "Thể hiện bạn hiểu effect nên dùng cho side-effect, không phải để thay thế logic render.",
+      "Nhắc tới việc tách effect theo mục tiêu để dễ đọc và dễ kiểm soát."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_36",
+    "category": "Frontend",
+    "title": "Dependency array ảnh hưởng gì tới bug logic?",
+    "intro": "Interviewer muốn thấy bạn hiểu stale data và vòng lặp vô hạn trong effect.",
+    "bullets": [
+      "Nêu dependency quyết định khi nào effect chạy lại.",
+      "Nhận diện bug: dùng biến trong effect nhưng không đưa vào dependency khiến dữ liệu cũ.",
+      "Thể hiện bạn biết cân nhắc giữa đúng logic và tránh chạy lại không cần thiết."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_37",
+    "category": "Frontend",
+    "title": "Cleanup function trong useEffect dùng khi nào?",
+    "intro": "Câu này đánh giá bạn có ý thức dọn dẹp tài nguyên và tránh memory leak.",
+    "bullets": [
+      "Nêu các trường hợp: unsubscribe, clear timer, remove event listener, abort request.",
+      "Liên hệ với bug thực tế: component unmount nhưng event vẫn chạy.",
+      "Thể hiện bạn dùng cleanup để đảm bảo UI không bị cập nhật sau khi đã rời màn hình."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_38",
+    "category": "Frontend",
+    "title": "Controlled và uncontrolled component khác nhau thế nào?",
+    "intro": "Interviewer muốn biết bạn quản lý form và input một cách ổn định.",
+    "bullets": [
+      "Nêu controlled: value do state điều khiển, uncontrolled: value nằm trong DOM.",
+      "Liên hệ tình huống: form validation, realtime update, submit dữ liệu.",
+      "Thể hiện bạn chọn cách phù hợp với độ phức tạp của form và yêu cầu UX."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_39",
+    "category": "Frontend",
+    "title": "Lifting state up là gì và trade-off của nó?",
+    "intro": "Câu này kiểm tra tư duy thiết kế UI khi nhiều component cần chia sẻ dữ liệu.",
+    "bullets": [
+      "Nêu mục tiêu: đưa state lên component cha để chia sẻ cho các con.",
+      "Trade-off: component cha phình to, props truyền nhiều, dễ props drilling.",
+      "Thể hiện bạn biết khi nào nên dừng và cân nhắc context hoặc state management."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_40",
+    "category": "Frontend",
+    "title": "Key trong list render quan trọng ra sao? Dùng index có rủi ro gì?",
+    "intro": "Interviewer dùng câu này để kiểm tra hiểu biết về reconciliation và bug UI khó chịu.",
+    "bullets": [
+      "Nêu key giúp React nhận diện item giữa các lần render.",
+      "Nhận diện rủi ro dùng index khi list thay đổi thứ tự: input nhảy focus, state bị lệch.",
+      "Thể hiện bạn ưu tiên id ổn định và hiểu vì sao nó quan trọng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_41",
+    "category": "Frontend",
+    "title": "Bạn tổ chức component thế nào để dễ maintain?",
+    "intro": "Câu này đánh giá tư duy kiến trúc ở mức codebase, không phải chỉ viết cho chạy.",
+    "bullets": [
+      "Nêu cách chia component theo trách nhiệm: presentational và container hoặc theo feature.",
+      "Thể hiện bạn quan tâm tới tái sử dụng nhưng không lạm dụng trừu tượng hoá.",
+      "Nhắc tới naming, folder structure và cách đặt boundary để team đọc code dễ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_42",
+    "category": "Frontend",
+    "title": "Bạn debug bug React theo hướng nào khi UI không đúng như mong đợi?",
+    "intro": "Interviewer muốn thấy cách bạn suy luận, không chỉ thử sửa ngẫu nhiên. Nhóm câu hỏi này thường là nơi phân biệt rõ ứng viên đã từng làm sản phẩm thật với người chỉ làm demo. Interviewer không chỉ nghe bạn kể tên công cụ, mà sẽ chú ý cách bạn tổ chức luồng dữ liệu, xử lý trạng thái loading, error, đồng thời kiểm soát các bug UI khó chịu như dữ liệu hiển thị sai, flicker, hoặc giao diện chậm khi tương tác.",
+    "bullets": [
+      "Xác định dữ liệu đầu vào: props/state hiện tại có đúng không.",
+      "Kiểm tra luồng update: effect chạy lúc nào, setState có bị gọi nhiều lần không.",
+      "Dùng devtools để xem component tree, props, state và xác nhận điểm sai."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_43",
+    "category": "Frontend",
+    "title": "Local state và global state khác nhau thế nào?",
+    "intro": "Câu này kiểm tra bạn hiểu đặt state ở đâu để UI dễ quản lý và ít rối.",
+    "bullets": [
+      "Nêu local state phù hợp cho trạng thái gói gọn trong một màn hình hoặc một component.",
+      "Nêu global state phù hợp cho dữ liệu dùng chung nhiều nơi như user session, cart, theme.",
+      "Thể hiện bạn tránh biến mọi thứ thành global chỉ vì tiện."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_44",
+    "category": "Frontend",
+    "title": "Props drilling gây vấn đề gì trong dự án lớn?",
+    "intro": "Interviewer muốn nghe bạn đã từng “đụng” cảm giác khó chịu khi truyền props qua nhiều tầng.",
+    "bullets": [
+      "Nhận diện dấu hiệu: component trung gian không dùng props nhưng vẫn phải truyền.",
+      "Nêu tác động: code khó đọc, khó refactor, dễ truyền sai hoặc thiếu.",
+      "Thể hiện bạn biết các hướng xử lý phù hợp theo độ phức tạp, không nhất thiết phải kéo framework vào ngay."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_45",
+    "category": "Frontend",
+    "title": "Context API nên dùng trong trường hợp nào?",
+    "intro": "Câu hỏi này đánh giá bạn biết dùng context đúng mục đích, tránh lạm dụng.",
+    "bullets": [
+      "Nêu context hợp cho dữ liệu ổn định và dùng rộng như auth, theme, locale.",
+      "Nhận diện rủi ro nếu context chứa dữ liệu thay đổi liên tục có thể làm nhiều component re-render.",
+      "Thể hiện bạn cân nhắc phạm vi context và chia nhỏ nếu cần."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_46",
+    "category": "Frontend",
+    "title": "Derived state là gì và vì sao dễ gây bug?",
+    "intro": "Interviewer muốn biết bạn tránh được kiểu state bị lệch so với nguồn dữ liệu thật.",
+    "bullets": [
+      "Nêu derived state là state được tính từ props hoặc state khác.",
+      "Nhận diện bug thường gặp: dữ liệu cập nhật một nơi nhưng derived state không cập nhật theo.",
+      "Thể hiện bạn ưu tiên tính toán khi render hoặc dùng memo khi cần, thay vì lưu mọi thứ thành state."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_47",
+    "category": "Frontend",
+    "title": "Bạn xử lý loading và error state ra sao để UX tốt?",
+    "intro": "Câu này kiểm tra khả năng bạn biến trạng thái kỹ thuật thành trải nghiệm dễ chịu cho người dùng.",
+    "bullets": [
+      "Nêu rõ các trạng thái nên có: loading, success, empty, error.",
+      "Thể hiện bạn tránh UI nhảy loạn bằng cách giữ layout ổn định hoặc dùng skeleton hợp lý.",
+      "Nhắc tới việc hiển thị lỗi có ngữ cảnh và hướng dẫn người dùng làm gì tiếp theo."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_48",
+    "category": "Frontend",
+    "title": "Khi nhiều component cập nhật state cùng lúc, bạn tránh bug thế nào?",
+    "intro": "Interviewer muốn nghe cách bạn kiểm soát race condition và cập nhật chồng chéo.",
+    "bullets": [
+      "Nêu tình huống thường gặp: nhiều request về không theo thứ tự, UI bị “lật” qua lật lại.",
+      "Thể hiện bạn biết cách khoá luồng cập nhật hoặc bỏ qua response cũ nếu cần.",
+      "Nhắc tới việc đảm bảo mỗi cập nhật có tiêu chí rõ ràng, tránh setState theo cảm giác."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_49",
+    "category": "Frontend",
+    "title": "UI bị lag khi scroll hoặc nhập liệu, bạn kiểm tra gì trước?",
+    "intro": "Câu này đánh giá phản xạ xử lý performance UI ở mức thực dụng.",
+    "bullets": [
+      "Kiểm tra xem có đang render quá nhiều item hoặc logic chạy nặng trong event handler không.",
+      "Thể hiện bạn biết dùng debounce/throttle hoặc tối ưu render cho danh sách dài.",
+      "Nhắc tới việc dùng profiling để xác định điểm nghẽn thay vì đoán."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "frontend_50",
+    "category": "Frontend",
+    "title": "Sau deploy UI bị vỡ layout hoặc hiển thị sai dữ liệu, bạn ưu tiên làm gì?",
+    "intro": "Interviewer muốn thấy bạn có tư duy giảm rủi ro khi sự cố xảy ra trên production. Với phỏng vấn Frontend, đọc danh sách câu hỏi chỉ là bước khởi động. Thứ làm bạn tiến bộ nhanh thường nằm ở cách bạn luyện trả lời: bạn có biến mỗi câu hỏi thành một mạch suy nghĩ rõ ràng, bám sát trải nghiệm của mình hay không. Nếu bạn chỉ cố nhớ khái niệm, tới lúc phỏng vấn thật rất dễ rơi vào kiểu nói đúng nhưng không thuyết phục, vì người nghe không nhìn thấy cách bạn làm việc. Một cách luyện hiệu quả là chọn lọc theo vị trí bạn ứng tuyển. Nếu bạn là fresher, hãy tập trung nhóm JavaScript nền tảng, browser, HTML/CSS và những câu về state, vì đây là nơi bạn dễ bị hỏi nhất. Nếu bạn đã lên mid-level, hãy ưu tiên nhóm React, data flow, debug UI và các tình huống thực tế, bởi interviewer thường muốn nghe cách bạn kiểm soát lỗi và giữ trải nghiệm người dùng ổn định hơn là nghe bạn kể framework. Khi luyện từng câu, bạn có thể giữ một trình tự đơn giản để câu trả lời không bị lan man: bạn hiểu vấn đề gì, bạn kiểm tra gì trước, và bạn chọn hướng xử lý dựa trên dấu hiệu nào. Chỉ cần bạn nói được trình tự đó một cách mạch lạc, câu trả lời tự nhiên sẽ chắc hơn, đồng thời giúp người nghe cảm nhận được bạn làm việc có phương pháp chứ không xử lý theo cảm tính. Cuối cùng, hãy chuẩn bị sẵn vài câu chuyện nhỏ từ dự án thật, kể cả là dự án cá nhân. Chỉ cần bạn mô tả được bối cảnh, lỗi nằm ở đâu, bạn tìm nguyên nhân thế nào và bạn rút ra điều gì, bạn đã có chất liệu rất mạnh để “kết nối” với gần như mọi câu hỏi trong bài này. Đi phỏng vấn Frontend không khó ở việc nhớ kiến thức, mà khó ở chỗ bạn phải chứng minh được **cách bạn tư duy, tổ chức code và xử lý vấn đề trong tình huống thật**. Đây cũng là lý do nhiều Frontend Developer dù đã học qua React hoặc làm dự án nhỏ vẫn cảm thấy thiếu tự tin khi bước vào vòng technical. [**Onschool Bootcamp**](https://onschoolbootcamp.edu.vn/) tập trung giải quyết đúng điểm này. Thay vì học rời rạc từng kỹ thuật, chương trình được thiết kế xoay quanh **làm sản phẩm hoàn chỉnh** theo chuẩn Frontend hiện đại. Người học không chỉ viết được component chạy, mà còn luyện cách quản lý state, xử lý data flow, debug UI, tối ưu trải nghiệm người dùng và trình bày lại quá trình làm việc một cách mạch lạc. Khi bạn đã từng tự tay xử lý bug UI, tối ưu render, hay refactor component để dễ maintain, bạn sẽ không cần học thuộc câu trả lời phỏng vấn mà bạn chỉ đang nói lại cách mình đã làm, với ví dụ rõ ràng và logic thuyết phục. Đây chính là lợi thế rất lớn khi cạnh tranh với các ứng viên khác trong vòng technical. 50 câu hỏi trong bài viết này được xây theo đúng những nhóm thường xuất hiện trong vòng technical của Frontend Developer: từ JavaScript nền tảng, browser và DOM, HTML/CSS thực chiến, React và tư duy component, cho tới state, data flow và các tình huống UI ngoài đời. Nếu bạn luyện có chọn lọc và luyện theo trình tự suy nghĩ rõ ràng, bạn sẽ thấy phỏng vấn Frontend bớt đáng sợ hơn rất nhiều, vì bạn luôn biết mình đang nói điều gì và vì sao điều đó quan trọng. Nếu bạn đang chuẩn bị phỏng vấn Frontend trong thời gian tới, hãy chọn khoảng 15–20 câu phù hợp nhất với vị trí bạn ứng tuyển, luyện nói theo đúng mạch ưu tiên và gắn với dự án của bạn. Và nếu bạn muốn có lộ trình học thực hành dự án kèm mentor phản hồi để đi phỏng vấn tự tin hơn, tham khảo ngay Onschool Bootcamp để xem chương trình phù hợp và bắt đầu từ một roadmap rõ ràng ngay hôm nay. Onschool Bootcamp tự hào chỉ trong 120 ngày, đào tạo thế hệ lập trình viên kiến tạo thế giới số - bắt đầu từ con số 0 [Tìm hiểu thêmSVG Image](/) Đừng quên chia sẻ bài viết này! [Showing lines 1-519 of 681 (49.0KB limit). Use :520 to continue]",
+    "bullets": [
+      "Xác định mức độ ảnh hưởng và phạm vi: trình duyệt nào, thiết bị nào, màn hình nào.",
+      "Thể hiện bạn kiểm tra nhanh thay đổi liên quan và quan sát lỗi qua log hoặc monitoring nếu có.",
+      "Nhắc tới phương án an toàn: rollback hoặc tắt tính năng nếu ảnh hưởng lớn và có cơ chế hỗ trợ.",
+      "Kết luận**"
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_1",
+    "category": "Fullstack Phần 1",
+    "title": "Thế nào là một lập trình viên Fullstack “đúng nghĩa” trong dự án thật?",
+    "intro": "Câu hỏi này nhằm đánh giá bạn có tư duy end-to-end và hiểu rõ phạm vi trách nhiệm của mình trong một feature hay không.",
+    "bullets": [
+      "Thể hiện cách bạn nhìn một tính năng từ giao diện người dùng cho tới xử lý phía server và lưu trữ dữ liệu.",
+      "Cho thấy bạn hiểu sự phụ thuộc giữa frontend, backend và database, thay vì coi chúng là các phần tách rời.",
+      "Nhấn mạnh vai trò chịu trách nhiệm cho chất lượng feature, không chỉ viết code xong là xong."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_2",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn mô tả flow của một request từ UI tới database và phản hồi ngược lại như thế nào?",
+    "intro": "Câu này giúp interviewer đánh giá mức độ hiểu biết của bạn về luồng xử lý cơ bản trong một ứng dụng web.",
+    "bullets": [
+      "Trình bày các bước chính từ khi người dùng thao tác đến khi nhận được kết quả.",
+      "Nhắc tới các điểm dễ phát sinh lỗi như validate dữ liệu, xử lý lỗi hoặc timeout.",
+      "Cho thấy bạn hiểu rõ vai trò của từng tầng trong hệ thống."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_3",
+    "category": "Fullstack Phần 1",
+    "title": "Khi xảy ra bug “mất dữ liệu”, bạn thường khoanh vùng và kiểm tra từ đâu trước?",
+    "intro": "Đây là câu hỏi kiểm tra khả năng debug và tư duy ưu tiên.",
+    "bullets": [
+      "Nêu cách bạn xác định phạm vi ảnh hưởng của bug trước khi đi sâu.",
+      "Giải thích thứ tự kiểm tra giữa frontend, backend và database.",
+      "Thể hiện bạn không vội kết luận mà dựa trên dấu hiệu thực tế."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_4",
+    "category": "Fullstack Phần 1",
+    "title": "Khi làm MVP, bạn ưu tiên tốc độ hay chất lượng? Vì sao?",
+    "intro": "Câu hỏi này nhằm xem bạn có hiểu trade-off trong phát triển sản phẩm hay không.",
+    "bullets": [
+      "Nêu rõ tiêu chí ưu tiên trong từng giai đoạn.",
+      "Giải thích rủi ro nếu nghiêng hẳn về một phía.",
+      "Cho thấy bạn biết điều chỉnh cách làm theo mục tiêu sản phẩm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_5",
+    "category": "Fullstack Phần 1",
+    "title": "Khi nào bạn quyết định tách module hoặc service, và khi nào thì không cần?",
+    "intro": "Interviewer dùng câu này để đánh giá khả năng thiết kế và giữ hệ thống ở mức vừa đủ.",
+    "bullets": [
+      "Trình bày các dấu hiệu cho thấy code bắt đầu khó maintain.",
+      "Nhấn mạnh việc tránh tách quá sớm khi chưa có nhu cầu rõ ràng.",
+      "Cho thấy bạn cân nhắc chi phí kỹ thuật khi thay đổi kiến trúc."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_6",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn xử lý thay đổi requirement giữa chừng như thế nào để không làm vỡ kế hoạch?",
+    "intro": "Câu hỏi này kiểm tra khả năng thích nghi và giao tiếp trong dự án thật.",
+    "bullets": [
+      "Nêu cách bạn làm rõ lại yêu cầu trước khi chỉnh sửa.",
+      "Thể hiện việc đánh giá ảnh hưởng tới các phần khác của hệ thống.",
+      "Cho thấy bạn chủ động trao đổi thay vì âm thầm sửa code."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_7",
+    "category": "Fullstack Phần 1",
+    "title": "Khi debug, bạn thường dựa vào những nguồn thông tin nào?",
+    "intro": "Câu này giúp interviewer hiểu cách bạn tiếp cận vấn đề.",
+    "bullets": [
+      "Nhắc tới việc đọc log, kiểm tra dữ liệu đầu vào/đầu ra.",
+      "Cho thấy bạn không phụ thuộc hoàn toàn vào cảm giác hay đoán mò.",
+      "Thể hiện tư duy kiểm chứng trước khi kết luận."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_8",
+    "category": "Fullstack Phần 1",
+    "title": "Hãy kể một quyết định kỹ thuật bạn từng đưa ra vì lý do trade-off",
+    "intro": "Đây là câu hỏi để đánh giá kinh nghiệm và mức độ chín trong tư duy.",
+    "bullets": [
+      "Nêu bối cảnh khiến bạn phải chọn giữa các phương án.",
+      "Giải thích tiêu chí bạn dùng để quyết định.",
+      "Nhấn mạnh bài học rút ra sau khi triển khai."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_9",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn hiểu thế nào về “end-to-end ownership” trong một feature?",
+    "intro": "Câu hỏi này dùng để phân biệt người “làm theo task” và người chịu trách nhiệm thực sự. 👉 *Khám phá thêm 100 câu hỏi phỏng vấn cho* [*lập trình viên Java*](https://onschoolbootcamp.edu.vn/100-cau-hoi-ky-nang-phong-van-java-dev-nao-cung-nen-biet-p1/)*tại đây!* Ở nhóm câu hỏi frontend, interviewer thường không quá quan tâm bạn dùng framework nào, mà muốn biết bạn xử lý các vấn đề giao diện và trải nghiệm người dùng trong dự án thật ra sao. Cách bạn nói về state, render, performance hay lỗi UI sẽ cho thấy bạn có thực sự làm frontend hay chỉ “đụng tới cho có”.",
+    "bullets": [
+      "Trình bày cách bạn theo dõi feature từ lúc bắt đầu đến khi chạy ổn.",
+      "Nhắc tới việc kiểm tra sau deploy và xử lý phản hồi.",
+      "Cho thấy bạn không chỉ dừng lại ở việc hoàn thành code."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_10",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn tổ chức component như thế nào để dễ maintain khi ứng dụng lớn dần?",
+    "intro": "Câu hỏi này nhằm đánh giá cách bạn kiểm soát độ phức tạp của UI theo thời gian.",
+    "bullets": [
+      "Nêu nguyên tắc chia component theo trách nhiệm, tránh component “ôm đồm”.",
+      "Cho thấy bạn quan tâm tới khả năng tái sử dụng và khả năng đọc hiểu code.",
+      "Nhắc tới việc tách logic và phần hiển thị để dễ chỉnh sửa, test."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_11",
+    "category": "Fullstack Phần 1",
+    "title": "Khi nào state nên nằm ở local component, và khi nào cần đưa lên global?",
+    "intro": "Interviewer muốn xem bạn hiểu bản chất của state, không chỉ dùng theo thói quen.",
+    "bullets": [
+      "Phân biệt state chỉ phục vụ một component với state dùng chung cho nhiều nơi.",
+      "Nêu rủi ro khi lạm dụng global state khiến code khó theo dõi.",
+      "Cho thấy bạn cân nhắc phạm vi ảnh hưởng trước khi quyết định."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_12",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn xử lý form phức tạp (validation, submit bất đồng bộ) như thế nào?",
+    "intro": "Câu hỏi này đánh giá khả năng xử lý các tình huống rất thường gặp trong sản phẩm thật.",
+    "bullets": [
+      "Nêu cách kiểm soát dữ liệu đầu vào và phản hồi lỗi cho người dùng.",
+      "Thể hiện việc tách validation phía frontend và backend.",
+      "Cho thấy bạn quan tâm tới trải nghiệm khi submit thất bại hoặc chậm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_13",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn quản lý loading, error và empty state ra sao để UX không bị tệ?",
+    "intro": "Câu hỏi nhằm kiểm tra tư duy trải nghiệm người dùng, không chỉ code cho chạy.",
+    "bullets": [
+      "Nhắc tới việc hiển thị trạng thái rõ ràng trong từng tình huống.",
+      "Tránh để giao diện “đứng im” khiến người dùng không hiểu chuyện gì đang xảy ra.",
+      "Cho thấy bạn suy nghĩ về các trường hợp biên, không chỉ happy path."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_14",
+    "category": "Fullstack Phần 1",
+    "title": "Khi UI bị re-render nhiều lần, bạn phát hiện và xử lý như thế nào?",
+    "intro": "Interviewer dùng câu này để xem bạn có hiểu cơ chế render và hiệu năng cơ bản hay không.",
+    "bullets": [
+      "Nêu cách quan sát hành vi re-render trong quá trình phát triển.",
+      "Cho thấy bạn biết khoanh vùng component gây vấn đề trước khi tối ưu.",
+      "Tránh tối ưu sớm khi chưa có dấu hiệu rõ ràng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_15",
+    "category": "Fullstack Phần 1",
+    "title": "Trong những trường hợp nào bạn sử dụng debounce hoặc throttle?",
+    "intro": "Câu hỏi này kiểm tra khả năng tối ưu tương tác người dùng.",
+    "bullets": [
+      "Nêu các tình huống phổ biến như search, scroll hoặc resize.",
+      "Giải thích ngắn gọn sự khác nhau giữa debounce và throttle.",
+      "Cho thấy bạn dùng đúng chỗ, không áp dụng tràn lan."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_16",
+    "category": "Fullstack Phần 1",
+    "title": "Khi xây dựng danh sách dài, bạn chọn pagination hay infinite scroll? Vì sao?",
+    "intro": "Câu hỏi nhằm đánh giá khả năng cân nhắc giữa kỹ thuật và trải nghiệm.",
+    "bullets": [
+      "So sánh ưu và nhược điểm của từng cách tiếp cận.",
+      "Nhắc tới yếu tố hiệu năng và khả năng sử dụng.",
+      "Cho thấy bạn chọn giải pháp theo ngữ cảnh sản phẩm, không theo sở thích cá nhân."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_17",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn cache dữ liệu phía client như thế nào để vừa nhanh vừa tránh sai dữ liệu?",
+    "intro": "Câu hỏi này kiểm tra tư duy về tính nhất quán dữ liệu.",
+    "bullets": [
+      "Nêu mục tiêu của cache là giảm request và cải thiện tốc độ.",
+      "Nhắc tới việc làm mới dữ liệu khi có thay đổi quan trọng.",
+      "Cho thấy bạn hiểu rủi ro của cache stale."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_18",
+    "category": "Fullstack Phần 1",
+    "title": "Khi UI chạy chậm trên thiết bị yếu, bạn đo và cải thiện theo thứ tự nào?",
+    "intro": "Interviewer muốn biết bạn có biết bắt đầu từ đâu khi gặp vấn đề hiệu năng.",
+    "bullets": [
+      "Nêu cách quan sát thực tế thay vì tối ưu theo cảm giác.",
+      "Ưu tiên tìm điểm nghẽn lớn trước khi chỉnh chi tiết nhỏ.",
+      "Cho thấy bạn không đổ lỗi ngay cho backend hay framework."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_19",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn đảm bảo giao diện hoạt động ổn trên nhiều trình duyệt và thiết bị như thế nào?",
+    "intro": "Câu hỏi này nhằm đánh giá mức độ “làm sản phẩm thật” của bạn.",
+    "bullets": [
+      "Nhắc tới việc kiểm tra trên các môi trường phổ biến.",
+      "Cho thấy bạn ý thức được sự khác biệt giữa các trình duyệt.",
+      "Tránh trả lời theo kiểu “chạy được trên máy tôi là đủ”."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_20",
+    "category": "Fullstack Phần 1",
+    "title": "Khi gọi nhiều API song song, bạn xử lý race condition ở frontend ra sao?",
+    "intro": "Câu hỏi này kiểm tra khả năng kiểm soát trạng thái bất đồng bộ. 👉 Tham khảo thêm phần 2 [**tại đây**](https://onschoolbootcamp.edu.vn/70-cau-hoi-phong-van-fullstack-tu-co-ban-den-nang-cao-phan-2/) để nắm trọn bộ câu hỏi chinh phục nhà tuyển dụng! Nhóm câu hỏi backend giúp phân biệt rõ giữa người chỉ viết API cho chạy và người hiểu cách thiết kế một backend ổn định, dễ mở rộng. Interviewer thường lắng nghe cách bạn nói về error handling, hiệu năng, retry hay logging để đánh giá mức độ “chín” khi làm việc với hệ thống phía server.",
+    "bullets": [
+      "Nêu cách bạn đảm bảo dữ liệu hiển thị là dữ liệu mới nhất.",
+      "Nhắc tới việc hủy request cũ hoặc kiểm soát thứ tự phản hồi.",
+      "Cho thấy bạn đã từng gặp và xử lý tình huống này."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_21",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn thiết kế REST API như thế nào để dễ dùng và dễ mở rộng?",
+    "intro": "Câu hỏi này nhằm xem bạn hiểu cách “đóng gói” logic backend thành API rõ ràng, nhất quán, không gây khó cho frontend về sau.",
+    "bullets": [
+      "Nêu cách đặt resource/endpoint có ý nghĩa, nhất quán theo hành vi.",
+      "Thể hiện bạn quan tâm tới chuẩn trả về (status code, payload, thông báo lỗi).",
+      "Nhắc tới versioning/pagination/filters nếu hệ thống có khả năng mở rộng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_22",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn thiết kế error response ra sao để frontend debug dễ hơn?",
+    "intro": "Interviewer muốn biết bạn có tư duy “làm sản phẩm cùng nhau” thay vì backend trả gì cũng được.",
+    "bullets": [
+      "Cho thấy bạn phân biệt lỗi do client (validation) và lỗi do server.",
+      "Nêu cách trả về message/field lỗi đủ rõ để UI hiển thị đúng.",
+      "Tránh trả lời kiểu “quăng stacktrace ra cho nhanh”."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_23",
+    "category": "Fullstack Phần 1",
+    "title": "Khi API chậm, bạn kiểm tra theo thứ tự nào?",
+    "intro": "Câu này kiểm tra khả năng khoanh vùng và ưu tiên, nhất là khi bạn không có thời gian “đào tất cả”.",
+    "bullets": [
+      "Nêu cách xác định API nào chậm, chậm tới mức nào (so với bình thường).",
+      "Thể hiện bạn chia lớp kiểm tra: network → app → database → external service.",
+      "Cho thấy bạn tìm bằng chứng trước khi tối ưu, tránh tối ưu theo cảm giác."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_24",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn phân biệt bottleneck CPU-bound và IO-bound như thế nào?",
+    "intro": "Câu hỏi nhằm đánh giá bạn có hiểu nguyên nhân gốc của chậm, từ đó chọn cách tối ưu phù hợp.",
+    "bullets": [
+      "Nêu dấu hiệu nhận biết qua hành vi (CPU cao, chờ DB, chờ network…).",
+      "Thể hiện cách bạn chọn hướng tối ưu khác nhau cho từng loại.",
+      "Tránh trả lời chung chung kiểu “tối ưu code là xong”."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_25",
+    "category": "Fullstack Phần 1",
+    "title": "Khi nào bạn dùng background job hoặc queue thay vì xử lý ngay trong request?",
+    "intro": "Interviewer muốn biết bạn hiểu cách giữ request nhanh và hệ thống ổn định khi workload tăng.",
+    "bullets": [
+      "Nêu các tình huống phù hợp: gửi email, xử lý file, tính toán nặng, đồng bộ dữ liệu.",
+      "Thể hiện bạn hiểu trade-off: nhanh hơn cho user nhưng tăng độ phức tạp vận hành.",
+      "Nhắc tới cách bạn theo dõi job thất bại và retry."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_26",
+    "category": "Fullstack Phần 1",
+    "title": "Idempotency là gì và bạn áp dụng nó cho endpoint quan trọng ra sao?",
+    "intro": "Câu hỏi này thường xuất hiện khi sản phẩm có thanh toán, đặt hàng, tạo đơn… nơi “bấm hai lần” có thể gây hậu quả.",
+    "bullets": [
+      "Giải thích ngắn gọn idempotency giúp tránh tạo dữ liệu trùng khi retry/multi-click.",
+      "Nêu cách bạn thiết kế key hoặc cơ chế kiểm tra trùng.",
+      "Thể hiện bạn nghĩ tới retry, timeout, và việc client gửi lại request."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_27",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn xử lý rate limiting hoặc throttling như thế nào khi traffic tăng?",
+    "intro": "Interviewer kiểm tra tư duy bảo vệ hệ thống, không để một nhóm request làm sập toàn bộ.",
+    "bullets": [
+      "Nêu mục tiêu: bảo vệ tài nguyên và đảm bảo hệ thống vẫn phục vụ được phần còn lại.",
+      "Thể hiện bạn biết rate limit theo IP/user/token tùy bối cảnh.",
+      "Nhắc tới phản hồi phù hợp để client biết cần giảm tốc."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_28",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn thiết kế logging như thế nào để truy vết lỗi nhanh?",
+    "intro": "Câu hỏi này đánh giá khả năng hỗ trợ vận hành, đặc biệt khi production có sự cố.",
+    "bullets": [
+      "Nêu cách bạn log theo request/context để lần theo luồng xử lý.",
+      "Thể hiện bạn biết log đủ thông tin nhưng không lộ dữ liệu nhạy cảm.",
+      "Nhắc tới việc phân biệt log info/warn/error để không bị “nhiễu”."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_29",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn xử lý retry và backoff như thế nào để tránh “thác request” khi upstream chậm?",
+    "intro": "Câu này nhằm xem bạn hiểu rủi ro của retry, vì retry sai thường làm mọi thứ tệ hơn.",
+    "bullets": [
+      "Thể hiện bạn dùng retry có điều kiện, không retry mọi lỗi.",
+      "Nhắc tới backoff và giới hạn số lần retry.",
+      "Nêu cách bạn kết hợp timeout/circuit breaker ở mức tư duy."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_30",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn xử lý upload/download file thế nào để vừa ổn định vừa an toàn?",
+    "intro": "Interviewer muốn biết bạn hiểu các vấn đề thực tế: size lớn, timeout, quyền truy cập, virus/file type…",
+    "bullets": [
+      "Nêu cách giới hạn dung lượng, loại file, và validate phía server.",
+      "Thể hiện bạn biết tách xử lý nặng ra khỏi request nếu cần.",
+      "Nhắc tới phân quyền truy cập (public/private) và link hết hạn nếu phù hợp."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_31",
+    "category": "Fullstack Phần 1",
+    "title": "Khi cần thay đổi API, bạn đảm bảo backward compatibility như thế nào?",
+    "intro": "Câu hỏi này kiểm tra khả năng phát triển lâu dài mà không “đập” frontend hoặc client cũ.",
+    "bullets": [
+      "Nêu cách thay đổi có kiểm soát: thêm field thay vì đổi field cũ, giữ default.",
+      "Thể hiện bạn biết khi nào cần versioning.",
+      "Nhắc tới việc thông báo/ghi chú thay đổi để team tích hợp không bị bất ngờ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_32",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn tổ chức cấu trúc project backend như thế nào để dễ maintain?",
+    "intro": "Interviewer muốn thấy bạn biết giữ codebase sạch, không để mọi thứ thành “một cục”.",
+    "bullets": [
+      "Nêu cách tách theo layer (controller/service/repo) hoặc theo module theo domain.",
+      "Thể hiện bạn quan tâm tới boundaries và trách nhiệm rõ ràng.",
+      "Tránh trả lời chỉ kể tên folder, tập trung vào nguyên tắc."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_33",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn thiết kế API contract giữa frontend và backend như thế nào để tránh “vỡ tích hợp”?",
+    "intro": "Câu này kiểm tra khả năng phối hợp, vì nhiều dự án chết vì hai bên hiểu khác nhau. Nhóm câu hỏi về database thường khiến ứng viên hụt hơi không phải vì quá khó, mà vì nhiều người chỉ quen viết CRUD mà ít khi để ý vì sao hệ thống chậm hoặc dữ liệu sai. Interviewer hỏi phần này để xem bạn hiểu cách dữ liệu được lưu, được truy vấn và được bảo vệ như thế nào, đồng thời đánh giá khả năng xử lý các vấn đề performance cơ bản khi dữ liệu bắt đầu lớn lên.",
+    "bullets": [
+      "Nêu cách thống nhất payload, error format, và quy ước đặt tên.",
+      "Thể hiện bạn có cách giảm mismatch: mock/contract test/document đơn giản.",
+      "Nhắc tới việc cập nhật khi có thay đổi và kiểm tra lại các màn hình liên quan."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_34",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn chọn SQL hay NoSQL cho một sản phẩm mới dựa trên tiêu chí nào?",
+    "intro": "Câu hỏi này nhằm đánh giá bạn có hiểu nhu cầu dữ liệu và trade-off, thay vì chọn công nghệ theo xu hướng.",
+    "bullets": [
+      "Nêu loại dữ liệu và kiểu truy vấn chính (quan hệ chặt hay linh hoạt, join nhiều hay không).",
+      "Thể hiện bạn cân nhắc tính nhất quán, transaction, và yêu cầu mở rộng.",
+      "Nhắc tới khả năng vận hành và kỹ năng của team như một tiêu chí thực tế."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_35",
+    "category": "Fullstack Phần 1",
+    "title": "Index là gì và dấu hiệu nào cho thấy hệ thống đang thiếu index?",
+    "intro": "Interviewer muốn biết bạn có tư duy hiệu năng cơ bản ở tầng dữ liệu, không chỉ viết query cho ra kết quả.",
+    "bullets": [
+      "Nêu dấu hiệu phổ biến: query chậm, scan nhiều, latency tăng khi data lớn.",
+      "Thể hiện bạn biết index hỗ trợ truy vấn nhưng cũng có chi phí khi ghi.",
+      "Nhắc tới việc ưu tiên index theo query thực tế, không index “cho vui”."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_36",
+    "category": "Fullstack Phần 1",
+    "title": "N+1 query là gì và bạn thường phát hiện nó bằng cách nào?",
+    "intro": "Câu này kiểm tra khả năng nhận diện một lỗi performance rất hay gặp khi có quan hệ dữ liệu.",
+    "bullets": [
+      "Giải thích ngắn gọn hiện tượng: một query chính kéo theo nhiều query phụ lặp lại.",
+      "Nêu dấu hiệu: số query tăng bất thường khi danh sách lớn.",
+      "Thể hiện bạn dựa vào log/query monitor để phát hiện, không chỉ đoán."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_37",
+    "category": "Fullstack Phần 1",
+    "title": "Khi gặp N+1 query, bạn xử lý theo hướng nào?",
+    "intro": "Interviewer muốn xem bạn hiểu nhiều cách xử lý và biết cân nhắc trade-off.",
+    "bullets": [
+      "Nêu các hướng tiếp cận: join/fetch/batch/điều chỉnh cách load dữ liệu.",
+      "Thể hiện bạn quan tâm tới dữ liệu trả về có “phình” quá không.",
+      "Nhắc tới việc kiểm tra lại số query và thời gian sau khi sửa."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_38",
+    "category": "Fullstack Phần 1",
+    "title": "Transaction là gì và bạn đặt transaction boundary thế nào cho hợp lý?",
+    "intro": "Câu hỏi nhằm đánh giá bạn hiểu tính nhất quán dữ liệu và biết giới hạn phạm vi “khóa” để tránh làm chậm hệ thống.",
+    "bullets": [
+      "Nêu mục tiêu: đảm bảo dữ liệu đúng khi có nhiều thao tác liên quan.",
+      "Thể hiện bạn giữ transaction đủ nhỏ, tránh kéo dài do gọi external service.",
+      "Nhắc tới các tình huống cần transaction rõ ràng: tạo đơn + trừ tồn kho, cập nhật nhiều bảng liên quan."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_39",
+    "category": "Fullstack Phần 1",
+    "title": "Khi migration database trên production, bạn làm thế nào để giảm rủi ro downtime?",
+    "intro": "Interviewer kiểm tra tư duy triển khai an toàn, vì đây là phần dễ gây sự cố nhất khi hệ thống đang chạy.",
+    "bullets": [
+      "Nêu cách làm theo bước: thêm cột mới trước, chuyển dần dữ liệu, rồi mới bỏ cột cũ.",
+      "Thể hiện bạn quan tâm tới backward compatibility giữa code và schema.",
+      "Nhắc tới kiểm tra trên staging và kế hoạch rollback khi có sự cố."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_40",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn thiết kế schema cho các tính năng search/filter/sort như thế nào để không “đuối” về sau?",
+    "intro": "Câu hỏi này đánh giá khả năng nhìn xa, vì search/filter/sort thường phát sinh sau khi dữ liệu đã lớn.",
+    "bullets": [
+      "Nêu cách xác định trường nào sẽ được filter/sort thường xuyên.",
+      "Thể hiện bạn cân nhắc index phù hợp cho kiểu truy vấn.",
+      "Nhắc tới giới hạn thực tế: không phải filter nào cũng tối ưu bằng SQL thuần, đôi khi cần giải pháp khác khi dữ liệu lớn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_41",
+    "category": "Fullstack Phần 1",
+    "title": "Khi hệ thống chậm, bạn quyết định tối ưu query, tối ưu code hay tối ưu cache dựa trên gì?",
+    "intro": "Interviewer muốn thấy bạn chọn đúng “điểm đập”, thay vì tối ưu ngẫu nhiên.",
+    "bullets": [
+      "Nêu tiêu chí dựa trên số liệu: query time, số lần gọi, tần suất request.",
+      "Thể hiện bạn ưu tiên điểm nghẽn lớn trước, tránh tối ưu tiểu tiết.",
+      "Nhắc tới việc tối ưu phải đi kèm kiểm tra lại, không sửa xong rồi “cầu may”."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_42",
+    "category": "Fullstack Phần 1",
+    "title": "Caching có thể đặt ở nhiều nơi: bạn chọn cache ở database, ứng dụng hay client?",
+    "intro": "Câu hỏi này đánh giá khả năng cân nhắc vị trí cache và rủi ro sai dữ liệu.",
+    "bullets": [
+      "Nêu mục tiêu: giảm tải nơi đang nghẽn và tăng tốc phần hay lặp lại.",
+      "Thể hiện bạn hiểu cache luôn đi kèm bài toán invalidation, không có “cache miễn phí”.",
+      "Nhắc tới việc chọn TTL và cách làm mới dữ liệu theo mức độ nhạy cảm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_43",
+    "category": "Fullstack Phần 1",
+    "title": "Bạn xử lý validation dữ liệu ở layer nào: frontend, backend hay database?",
+    "intro": "Interviewer muốn xem bạn hiểu “phòng tuyến” dữ liệu và không đặt niềm tin sai chỗ.",
+    "bullets": [
+      "Nêu rõ frontend giúp UX, nhưng backend mới là nơi bắt buộc phải validate.",
+      "Thể hiện bạn dùng constraint/database validation cho các quy tắc cần đảm bảo tính toàn vẹn.",
+      "Nhắc tới thông báo lỗi rõ ràng để client xử lý đúng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_1_44",
+    "category": "Fullstack Phần 1",
+    "title": "Khi dữ liệu tăng nhanh theo thời gian, bạn thay đổi schema/index như thế nào để không phá hệ thống?",
+    "intro": "Câu hỏi này kiểm tra khả năng nâng cấp hệ thống dần dần, thay vì “đập đi làm lại”. Một điểm dễ thấy ở những ứng viên trả lời phỏng vấn Fullstack tốt là họ không nói kiến thức rời rạc, mà luôn gắn câu trả lời với trải nghiệm xây dựng và vận hành sản phẩm thật. Điều này không đến từ việc học thêm vài framework, mà đến từ một lộ trình học có hệ thống, nơi frontend, backend, database và tư duy hệ thống được kết nối ngay từ đầu. Tại Onschool Bootcamp, các chương trình đào tạo Fullstack được thiết kế theo hướng *learning by doing* để người học tới đâu, làm sản phẩm tới đó. Thay vì chỉ dừng ở bài tập nhỏ lẻ, người học sẽ trực tiếp xây dựng các tính năng end-to-end, xử lý các tình huống gần với thực tế như thiết kế API, tối ưu dữ liệu, deploy và theo dõi ứng dụng sau khi chạy. Chính cách học này giúp người học: Bạn có thể tham khảo thêm **lộ trình đào tạo** [**Fullstack Web tại Onschool Bootcamp**](https://onschoolbootcamp.edu.vn/) để hiểu rõ cách chương trình được xây dựng và những kỹ năng nào sẽ hỗ trợ trực tiếp cho quá trình đi phỏng vấn. Phỏng vấn Fullstack ở vòng kỹ thuật hiếm khi đánh trượt ứng viên vì họ không biết code, mà thường vì cách họ trình bày tư duy chưa đủ rõ và chưa thể hiện được bức tranh tổng thể của một tính năng. Khi câu trả lời chỉ dừng lại ở từng mảnh frontend, backend hay database rời rạc, nhà tuyển dụng sẽ rất khó đánh giá khả năng làm việc thực tế của bạn. Trong phần 1 của bài viết này, các nhóm câu hỏi tập trung vào nền tảng tư duy Fullstack, cách làm việc với frontend, backend và dữ liệu. Nếu bạn có thể trả lời tốt những câu hỏi này dựa trên trải nghiệm thật của mình, bạn đã có nền tảng khá vững để vượt qua vòng technical và tạo được sự tin cậy ban đầu với interviewer. Tuy nhiên, Fullstack không chỉ dừng lại ở việc xây dựng tính năng cho chạy đúng. Khi đi sâu hơn, nhà tuyển dụng sẽ quan tâm tới cách bạn thiết kế hệ thống, triển khai ứng dụng, đảm bảo chất lượng, xử lý bảo mật và đặc biệt là phản ứng của bạn khi hệ thống gặp sự cố trong môi trường production. Ở [**Phần 2**](https://onschoolbootcamp.edu.vn/70-cau-hoi-phong-van-fullstack-tu-co-ban-den-nang-cao-phan-2/), bài viết sẽ tiếp tục với các nhóm câu hỏi mang tính phân hoá mạnh hơn, xoay quanh system design, devops, testing, security và các tình huống production thực tế. Đây cũng là phần thường quyết định bạn dừng lại ở mức làm được hay tiến xa hơn trong các vòng phỏng vấn cuối. Onschool Bootcamp tự hào chỉ trong 120 ngày, đào tạo thế hệ lập trình viên kiến tạo thế giới số - bắt đầu từ con số 0 [Tìm hiểu thêmSVG Image](/) Đừng quên chia sẻ bài viết này! Sao chép link Fullstack java web developer [Showing lines 1-485 of 633 (49.3KB limit). Use :486 to continue]",
+    "bullets": [
+      "Nêu cách dựa trên query thực tế và quan sát hệ thống trước khi thay đổi.",
+      "Thể hiện bạn ưu tiên thay đổi an toàn: thêm mới, chuyển dần, theo dõi, rồi mới loại bỏ.",
+      "Nhắc tới việc phối hợp deploy code và migrate theo trình tự để tránh mismatch.",
+      "Hiểu rõ mối liên hệ giữa frontend, backend và dữ liệu, thay vì học từng mảng riêng lẻ.",
+      "Có “chất liệu thật” để trả lời các câu hỏi phỏng vấn về trade-off, debug và vận hành hệ thống.",
+      "Tự tin hơn khi bước vào các vòng technical, vì câu trả lời xuất phát từ trải nghiệm, không phải học thuộc.",
+      "Kết luận**"
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_1",
+    "category": "Fullstack Phần 2",
+    "title": "Thiết kế login và refresh token ở mức tổng quan như thế nào?",
+    "intro": "Câu này đánh giá bạn có hiểu luồng xác thực và các điểm dễ sai khi hệ thống có nhiều phiên đăng nhập.",
+    "bullets": [
+      "Nêu luồng đăng nhập, phát hành token và cơ chế làm mới token.",
+      "Thể hiện bạn nghĩ tới thời hạn token, cách logout và thu hồi khi cần.",
+      "Nhắc tới bảo mật cơ bản: lưu token ở đâu và tránh lộ token ra sao."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_2",
+    "category": "Fullstack Phần 2",
+    "title": "Thiết kế tính năng upload file lớn kèm quyền truy cập public/private như thế nào?",
+    "intro": "Interviewer hỏi để xem bạn hiểu vấn đề thực tế: file nặng, timeout, lưu trữ và phân quyền.",
+    "bullets": [
+      "Nêu cách xử lý upload để không làm API “đuối” (chia nhỏ, upload trực tiếp, xử lý nền nếu cần).",
+      "Thể hiện cách quản lý quyền truy cập: public link, private link, link hết hạn.",
+      "Nhắc tới kiểm soát loại file, dung lượng và audit cơ bản."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_3",
+    "category": "Fullstack Phần 2",
+    "title": "Thiết kế hệ thống notification (email/in-app) theo hướng nào khi số lượng tăng?",
+    "intro": "Câu này kiểm tra khả năng tách xử lý bất đồng bộ và đảm bảo hệ thống không nghẽn.",
+    "bullets": [
+      "Nêu lý do nên dùng queue/background job thay vì gửi trực tiếp trong request.",
+      "Thể hiện bạn nghĩ tới retry, dead-letter, và theo dõi job lỗi.",
+      "Nhắc tới việc người dùng có thể tắt/bật nhận thông báo và xử lý duplicate."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_4",
+    "category": "Fullstack Phần 2",
+    "title": "Khi lượng request tăng 10x, bạn ưu tiên thay đổi gì trước?",
+    "intro": "Interviewer đánh giá khả năng ưu tiên và giữ hệ thống sống khi tải tăng.",
+    "bullets": [
+      "Nêu bước quan sát trước: bottleneck nằm ở app, DB hay external service.",
+      "Thể hiện bạn ưu tiên giải pháp ít rủi ro trước (cache, scale ngang, tối ưu query).",
+      "Nhắc tới giới hạn của từng hướng và khi nào cần thay đổi kiến trúc sâu hơn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_5",
+    "category": "Fullstack Phần 2",
+    "title": "Khi database bắt đầu nghẽn, bạn thường xem xét những hướng nào?",
+    "intro": "Câu này nhằm xem bạn hiểu cách “đỡ DB” thay vì chỉ tăng máy.",
+    "bullets": [
+      "Nêu các hướng: tối ưu query/index, giảm query lặp, cache hợp lý.",
+      "Thể hiện bạn biết tách đọc/ghi hoặc phân vùng dữ liệu khi phù hợp.",
+      "Nhắc tới việc theo dõi query chậm và truy vấn hot path."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_6",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn thiết kế cache và invalidation ở mức hệ thống ra sao?",
+    "intro": "Câu hỏi này đo tư duy về tính đúng đắn dữ liệu, vì cache sai còn nguy hiểm hơn chậm.",
+    "bullets": [
+      "Nêu rõ mục tiêu cache và loại dữ liệu phù hợp để cache.",
+      "Thể hiện bạn nghĩ tới TTL, cache key, và khi nào phải invalidate.",
+      "Nhắc tới cách tránh cache gây sai dữ liệu cho các nghiệp vụ nhạy cảm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_7",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn thiết kế logging, metrics, tracing thế nào để debug nhanh?",
+    "intro": "Interviewer dùng câu này để xem bạn có tư duy vận hành, không chỉ tư duy phát triển.",
+    "bullets": [
+      "Nêu tối thiểu cần có: log theo request/context, metrics cơ bản, tracing khi cần.",
+      "Thể hiện bạn biết chọn điểm đo quan trọng, tránh “log mọi thứ”.",
+      "Nhắc tới việc chuẩn hoá format log để truy vết dễ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_8",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn rollout tính năng an toàn bằng cách nào (canary/feature flag/rollback)?",
+    "intro": "Câu này đánh giá khả năng giảm rủi ro triển khai.",
+    "bullets": [
+      "Nêu cách giảm phạm vi ảnh hưởng khi phát hành: bật dần, theo nhóm user, theo môi trường.",
+      "Thể hiện bạn chuẩn bị rollback nhanh và tiêu chí rollback rõ ràng.",
+      "Nhắc tới việc theo dõi chỉ số sau rollout, không deploy xong là xong."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_9",
+    "category": "Fullstack Phần 2",
+    "title": "Ở mức khái niệm, bạn xử lý distributed transaction theo hướng nào?",
+    "intro": "Interviewer hỏi để xem bạn có biết vấn đề và cách tránh “đau đầu” khi hệ thống tách nhỏ. Nhóm câu hỏi này thường xuất hiện khi nhà tuyển dụng muốn chắc một điều: bạn không chỉ làm được tính năng trên máy cá nhân, mà còn biết cách đưa ra môi trường thật một cách an toàn. Interviewer sẽ để ý cách bạn nói về môi trường, cấu hình, quan sát sau deploy và cách xử lý khi có sự cố, vì đây là những thứ quyết định hệ thống có chạy ổn lâu dài hay không.",
+    "bullets": [
+      "Nêu mục tiêu là hạn chế transaction xuyên service nếu không cần thiết.",
+      "Thể hiện bạn biết các hướng tiếp cận phổ biến ở mức ý tưởng (event, outbox, idempotency).",
+      "Nhắc tới việc đảm bảo hệ thống vẫn đúng dù xử lý bất đồng bộ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_10",
+    "category": "Fullstack Phần 2",
+    "title": "Docker giúp giải quyết vấn đề gì trong dự án thực tế?",
+    "intro": "Câu này nhằm xem bạn hiểu Docker như một công cụ chuẩn hoá môi trường và quy trình chạy, chứ không chỉ biết viết Dockerfile.",
+    "bullets": [
+      "Nêu vấn đề thường gặp trước khi có Docker: lệch môi trường, khó onboard, chạy không giống nhau giữa máy các thành viên.",
+      "Thể hiện bạn dùng Docker để làm môi trường dev gần production hơn, giảm thời gian setup.",
+      "Nhắc tới cách bạn tách dịch vụ theo container nếu dự án có nhiều thành phần như app, database, cache."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_11",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn tách cấu hình dev, staging, prod như thế nào để tránh chạy nhầm?",
+    "intro": "Interviewer hỏi để đánh giá bạn có tư duy quản lý môi trường và giảm rủi ro vận hành.",
+    "bullets": [
+      "Nêu cách bạn phân tách biến môi trường, file cấu hình hoặc config service.",
+      "Thể hiện bạn tránh hard-code các giá trị nhạy cảm và tránh để cấu hình prod nằm trong repo.",
+      "Nhắc tới cách kiểm tra trước deploy để giảm khả năng dùng nhầm cấu hình."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_12",
+    "category": "Fullstack Phần 2",
+    "title": "CI là gì và bạn thường đưa những bước nào vào pipeline?",
+    "intro": "Câu này nhằm xem bạn hiểu CI như một hàng rào chất lượng, không phải chỉ là chạy cho có.",
+    "bullets": [
+      "Nêu các bước thường có: chạy test, lint/format, build, kiểm tra bảo mật cơ bản nếu có.",
+      "Thể hiện bạn ưu tiên bước nào bắt lỗi sớm và nhanh nhất.",
+      "Nhắc tới việc pipeline cần ổn định và đủ nhanh để team không ngại dùng."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_13",
+    "category": "Fullstack Phần 2",
+    "title": "CD và triển khai tự động khác nhau ở điểm nào trong thực tế?",
+    "intro": "Câu này kiểm tra bạn hiểu mức độ tự động hoá triển khai và rủi ro đi kèm.",
+    "bullets": [
+      "Nêu sự khác nhau giữa việc có thể deploy tự động và việc luôn deploy tự động sau mỗi thay đổi.",
+      "Thể hiện bạn biết nhiều team chọn triển khai bán tự động để kiểm soát rủi ro.",
+      "Nhắc tới tiêu chí chấp nhận triển khai tự động: test đủ tin cậy, rollback rõ ràng, quan sát tốt."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_14",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn quản lý secret như API key, DB password theo hướng nào?",
+    "intro": "Câu này nhằm đánh giá bạn có ý thức bảo mật tối thiểu khi vận hành hệ thống.",
+    "bullets": [
+      "Nêu nguyên tắc: secret không nằm trong code và không commit lên git.",
+      "Thể hiện bạn dùng biến môi trường hoặc secret manager tuỳ theo bối cảnh.",
+      "Nhắc tới việc phân quyền truy cập secret và thay đổi secret khi nghi ngờ lộ."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_15",
+    "category": "Fullstack Phần 2",
+    "title": "Nếu deploy xong mà lỗi 500 tăng lên, bạn làm gì ngay lập tức?",
+    "intro": "Interviewer muốn thấy phản xạ ưu tiên đúng khi hệ thống gặp sự cố sau triển khai.",
+    "bullets": [
+      "Nêu bước đầu là xác định phạm vi ảnh hưởng và mức độ nghiêm trọng.",
+      "Thể hiện bạn kiểm tra nhanh log, health check và thay đổi gần nhất.",
+      "Nhắc tới phương án an toàn: rollback hoặc tắt tính năng nếu có cơ chế phù hợp."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_16",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn theo dõi hệ thống sau deploy bằng cách nào để biết có vấn đề sớm?",
+    "intro": "Câu này kiểm tra bạn có thói quen quan sát sau triển khai hay không.",
+    "bullets": [
+      "Nêu các tín hiệu thường xem: tỷ lệ lỗi, latency, tài nguyên, các endpoint quan trọng.",
+      "Thể hiện bạn đặt ngưỡng cảnh báo hợp lý để không bỏ sót nhưng cũng không bị nhiễu.",
+      "Nhắc tới việc so sánh trước và sau deploy để phát hiện bất thường."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_17",
+    "category": "Fullstack Phần 2",
+    "title": "Health check, readiness và liveness bạn hiểu và áp dụng ra sao?",
+    "intro": "Câu này dùng để đánh giá bạn hiểu cách hệ thống tự bảo vệ khi có instance lỗi hoặc chưa sẵn sàng.",
+    "bullets": [
+      "Nêu mục tiêu của health check là phát hiện trạng thái không phục vụ được.",
+      "Thể hiện bạn phân biệt trạng thái chưa sẵn sàng nhận traffic và trạng thái cần restart.",
+      "Nhắc tới việc health check phải phản ánh đúng khả năng phục vụ thực tế, không chỉ trả 200 cho có."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_18",
+    "category": "Fullstack Phần 2",
+    "title": "Kế hoạch rollback của bạn thường gồm những gì?",
+    "intro": "Câu này đánh giá khả năng giảm rủi ro triển khai và phục hồi nhanh khi có sự cố. Nhóm câu hỏi này thường xuất hiện khi nhà tuyển dụng muốn biết bạn làm sản phẩm theo kiểu chắc tay hay chỉ chạy theo tiến độ. Một người Fullstack mạnh không nhất thiết phải viết test thật nhiều, nhưng họ thường biết chọn đúng thứ cần test, biết cách giữ chất lượng ở mức ổn định và tránh để bug lặp đi lặp lại vì thiếu quy trình.",
+    "bullets": [
+      "Nêu bạn chuẩn bị rollback như một phần của kế hoạch deploy, không phải tới lúc lỗi mới nghĩ.",
+      "Thể hiện bạn biết rollback có thể là quay phiên bản, tắt feature, hoặc chuyển traffic.",
+      "Nhắc tới việc sau rollback vẫn cần theo dõi để chắc hệ thống ổn định trở lại."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_19",
+    "category": "Fullstack Phần 2",
+    "title": "Unit test, integration test và end-to-end test khác nhau ở mục tiêu nào?",
+    "intro": "Câu này nhằm xem bạn hiểu test là để giảm rủi ro theo từng tầng, chứ không phải chỉ là viết test cho đủ.",
+    "bullets": [
+      "Nêu mục tiêu chính của từng loại: kiểm tra logic nhỏ, kiểm tra tích hợp giữa các phần, kiểm tra hành vi như người dùng.",
+      "Thể hiện bạn hiểu trade-off giữa tốc độ chạy test và mức độ bao phủ.",
+      "Nhắc tới việc chọn loại test phù hợp với rủi ro của hệ thống."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_20",
+    "category": "Fullstack Phần 2",
+    "title": "Khi làm một feature mới, bạn ưu tiên test phần nào trước?",
+    "intro": "Interviewer hỏi để đánh giá khả năng nhận diện điểm rủi ro trong feature, thay vì test tràn lan.",
+    "bullets": [
+      "Nêu nguyên tắc ưu tiên: nơi dễ lỗi nhất, ảnh hưởng lớn nhất, thay đổi nhiều nhất.",
+      "Thể hiện bạn chú ý tới các nhánh xử lý lỗi và dữ liệu biên, không chỉ happy path.",
+      "Nhắc tới việc test giúp bạn tự tin refactor và deploy."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_21",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn viết test case để bắt edge case như thế nào?",
+    "intro": "Câu này kiểm tra cách bạn nghĩ về những trường hợp hiếm nhưng gây lỗi nặng.",
+    "bullets": [
+      "Nêu cách liệt kê đầu vào xấu: null, rỗng, sai format, quá dài, vượt giới hạn.",
+      "Thể hiện bạn nghĩ tới dữ liệu thực tế từ user và từ hệ thống bên ngoài.",
+      "Nhắc tới việc test nên bám theo bug đã từng xảy ra để tránh tái diễn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_22",
+    "category": "Fullstack Phần 2",
+    "title": "Làm sao tránh flaky test và test chạy chậm khiến team ngại chạy?",
+    "intro": "Interviewer muốn biết bạn có trải nghiệm thực tế với test trong team, vì flaky test làm mất niềm tin rất nhanh.",
+    "bullets": [
+      "Nêu các nguyên nhân hay gặp: phụ thuộc thời gian, phụ thuộc network, dữ liệu test không ổn định.",
+      "Thể hiện bạn cô lập external dependency bằng mock hoặc environment riêng khi cần.",
+      "Nhắc tới việc tách test nhanh và test nặng để pipeline không bị kéo dài vô lý."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_23",
+    "category": "Fullstack Phần 2",
+    "title": "Khi code review, bạn thường xem những điểm nào để chặn bug sớm?",
+    "intro": "Câu này đánh giá bạn có tư duy kiểm soát chất lượng qua quy trình, không đợi tới lúc QA mới phát hiện.",
+    "bullets": [
+      "Nêu những thứ dễ gây lỗi: xử lý null, validate đầu vào, lỗi logic ở nhánh ít gặp.",
+      "Thể hiện bạn quan tâm tới readability và maintainability, không chỉ đúng output.",
+      "Nhắc tới bảo mật và performance cơ bản nếu thay đổi chạm tới các phần nhạy cảm."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_24",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn dùng linting, formatting và quy ước code để hỗ trợ chất lượng ra sao?",
+    "intro": "Interviewer muốn biết bạn có thói quen giảm tranh cãi và giảm lỗi lặt vặt trong team.",
+    "bullets": [
+      "Nêu mục tiêu: thống nhất style, giảm lỗi ngớ ngẩn, giúp review tập trung vào logic.",
+      "Thể hiện bạn coi công cụ như một phần của pipeline, không phải việc làm thủ công.",
+      "Nhắc tới việc quy ước tốt giúp người mới vào dự án đọc code nhanh hơn."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_25",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn làm gì để chất lượng không phụ thuộc vào một người, mà trở thành thói quen của cả team?",
+    "intro": "Câu này kiểm tra khả năng xây dựng quy trình bền vững, nhất là khi dự án lớn dần. Nhóm câu hỏi về security thường không đi quá sâu vào lý thuyết hàn lâm, nhưng lại rất dễ khiến ứng viên mất điểm nếu trả lời hời hợt. Interviewer không kỳ vọng bạn là chuyên gia bảo mật, họ chỉ muốn biết bạn **nhận diện được rủi ro phổ biến** và có những nguyên tắc cơ bản để không vô tình mở cửa cho lỗi nghiêm trọng.",
+    "bullets": [
+      "Nêu cách thiết lập tiêu chuẩn tối thiểu: definition of done, checklist release, quy tắc review.",
+      "Thể hiện bạn biết chọn mức vừa đủ để team theo được, tránh đặt chuẩn quá cao rồi bỏ.",
+      "Nhắc tới việc đo lường đơn giản như tỷ lệ bug, thời gian fix, hoặc các lỗi lặp lại."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_26",
+    "category": "Fullstack Phần 2",
+    "title": "JWT và session khác nhau ở điểm nào và bạn dùng khi nào?",
+    "intro": "Câu hỏi này nhằm đánh giá bạn hiểu cơ chế xác thực ở mức thực dụng, không chỉ biết dùng theo mặc định.",
+    "bullets": [
+      "Nêu sự khác nhau về cách lưu trạng thái và kiểm soát phiên đăng nhập.",
+      "Thể hiện bạn cân nhắc giữa tính tiện lợi, khả năng scale và mức độ kiểm soát.",
+      "Nhắc tới rủi ro phổ biến như token bị lộ hoặc session bị chiếm quyền."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_27",
+    "category": "Fullstack Phần 2",
+    "title": "CORS là gì và vì sao nhiều hệ thống hay cấu hình sai?",
+    "intro": "Interviewer dùng câu này để xem bạn có hiểu bản chất CORS hay chỉ làm theo hướng dẫn có sẵn.",
+    "bullets": [
+      "Nêu mục đích của CORS trong việc kiểm soát truy cập từ trình duyệt.",
+      "Thể hiện bạn hiểu vì sao mở wildcard có thể gây rủi ro.",
+      "Nhắc tới việc cấu hình CORS nên bám theo domain và nhu cầu thực tế."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_28",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn phòng tránh XSS và CSRF ở mức ứng dụng như thế nào?",
+    "intro": "Câu hỏi này kiểm tra ý thức bảo mật ở những điểm rất dễ bị bỏ qua.",
+    "bullets": [
+      "Nêu nguyên tắc xử lý và hiển thị dữ liệu người dùng nhập vào.",
+      "Thể hiện bạn biết tách vai trò của frontend và backend trong việc phòng tránh.",
+      "Nhắc tới việc bảo vệ các request nhạy cảm bằng cơ chế phù hợp."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_29",
+    "category": "Fullstack Phần 2",
+    "title": "SQL Injection là gì và bạn tránh nó ra sao trong dự án thật?",
+    "intro": "Interviewer muốn biết bạn không viết code nguy hiểm dù vô tình.",
+    "bullets": [
+      "Nêu cách tấn công xảy ra khi ghép query trực tiếp từ input.",
+      "Thể hiện bạn dùng cơ chế an toàn sẵn có thay vì tự xử lý chuỗi.",
+      "Nhắc tới việc validate dữ liệu đầu vào như một lớp bảo vệ bổ sung."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_30",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn lưu mật khẩu người dùng như thế nào để đảm bảo an toàn?",
+    "intro": "Câu hỏi này đánh giá hiểu biết tối thiểu về bảo vệ thông tin nhạy cảm.",
+    "bullets": [
+      "Nêu nguyên tắc không lưu mật khẩu dạng rõ ràng hoặc mã hoá tự chế.",
+      "Thể hiện bạn hiểu việc băm kèm yếu tố ngẫu nhiên để giảm rủi ro lộ dữ liệu.",
+      "Nhắc tới việc xử lý reset mật khẩu và giới hạn thử sai."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_31",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn thiết kế phân quyền theo role hoặc permission như thế nào để dễ mở rộng?",
+    "intro": "Câu hỏi này nhằm xem bạn nghĩ xa hơn một vài vai trò cố định ban đầu. Đây là nhóm câu hỏi thường xuất hiện ở các vòng sâu hoặc khi phỏng vấn ứng viên đã có kinh nghiệm đi làm. Interviwer dùng những tình huống này để xem bạn **phản xạ ra sao khi hệ thống gặp sự cố**, cách bạn ưu tiên xử lý, và khả năng giữ hệ thống ổn định dưới áp lực, chứ không chỉ kiểm tra kiến thức kỹ thuật.",
+    "bullets": [
+      "Nêu cách tách quyền khỏi logic nghiệp vụ cụ thể.",
+      "Thể hiện bạn tránh hard-code quyền trong code xử lý.",
+      "Nhắc tới việc kiểm tra quyền ở backend thay vì chỉ dựa vào frontend."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_32",
+    "category": "Fullstack Phần 2",
+    "title": "Sau khi deploy, số lượng lỗi 500 tăng đột biến, bạn làm gì ngay lập tức?",
+    "intro": "Câu hỏi này kiểm tra phản xạ ưu tiên trong tình huống khẩn cấp.",
+    "bullets": [
+      "Xác định nhanh phạm vi ảnh hưởng và mức độ nghiêm trọng.",
+      "Kiểm tra thay đổi vừa deploy và các tín hiệu bất thường trong log, monitoring.",
+      "Ưu tiên rollback hoặc tắt tính năng gây lỗi nếu có cơ chế phù hợp."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_33",
+    "category": "Fullstack Phần 2",
+    "title": "Lỗi không tái hiện được trên local nhưng lại xảy ra ở production, bạn xử lý thế nào?",
+    "intro": "Interviewer muốn biết bạn có biết dựa vào dữ liệu thực tế thay vì cố đoán mò.",
+    "bullets": [
+      "Thu thập thông tin từ log, request, môi trường production.",
+      "So sánh khác biệt giữa local, staging và production.",
+      "Tạo điều kiện tái hiện gần nhất có thể để xác định nguyên nhân."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_34",
+    "category": "Fullstack Phần 2",
+    "title": "Latency tăng rõ rệt sau một lần release, bạn khoanh vùng nguyên nhân ra sao?",
+    "intro": "Câu này đánh giá khả năng phân tích theo từng lớp, không tối ưu mù.",
+    "bullets": [
+      "So sánh số liệu trước và sau release để tìm điểm thay đổi.",
+      "Kiểm tra lần lượt app, database và các service phụ thuộc.",
+      "Tránh kết luận sớm khi chưa có đủ dấu hiệu."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_35",
+    "category": "Fullstack Phần 2",
+    "title": "Bộ nhớ của service tăng dần theo thời gian, bạn nghi ngờ nguyên nhân gì trước?",
+    "intro": "Interviewer muốn xem bạn có hiểu các dấu hiệu memory issue thường gặp.",
+    "bullets": [
+      "Nêu khả năng giữ reference không cần thiết hoặc cache không kiểm soát.",
+      "Thể hiện bạn theo dõi hành vi tăng bộ nhớ theo thời gian.",
+      "Nhắc tới việc dùng công cụ quan sát để xác nhận giả thuyết."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_36",
+    "category": "Fullstack Phần 2",
+    "title": "CPU hoặc load database tăng cao bất thường, bạn ưu tiên kiểm tra gì?",
+    "intro": "Câu hỏi này kiểm tra tư duy bảo vệ thành phần lõi của hệ thống.",
+    "bullets": [
+      "Kiểm tra query chậm hoặc query lặp lại nhiều lần.",
+      "Xem có thay đổi nào ở code hoặc traffic pattern gần đây.",
+      "Thể hiện bạn tìm cách giảm tải tạm thời trước khi tối ưu sâu."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_37",
+    "category": "Fullstack Phần 2",
+    "title": "Retry bị cấu hình sai gây ra thác request, bạn nhận ra và xử lý thế nào?",
+    "intro": "Interviewer dùng câu này để đánh giá hiểu biết về rủi ro của retry.",
+    "bullets": [
+      "Nhận diện dấu hiệu: số request tăng theo cấp số nhân khi upstream chậm.",
+      "Thể hiện bạn biết giới hạn retry và kết hợp backoff.",
+      "Nhắc tới việc bảo vệ hệ thống bằng circuit breaker hoặc cơ chế tương tự."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_38",
+    "category": "Fullstack Phần 2",
+    "title": "Cache gây ra dữ liệu sai hoặc không đồng nhất, bạn phát hiện và xử lý ra sao?",
+    "intro": "Câu hỏi này kiểm tra khả năng cân bằng giữa hiệu năng và tính đúng đắn.",
+    "bullets": [
+      "Nêu cách phát hiện thông qua phản hồi người dùng hoặc log bất thường.",
+      "Thể hiện bạn biết tạm thời tắt cache hoặc giảm TTL khi cần.",
+      "Nhắc tới việc xem lại chiến lược invalidation sau khi sự cố qua đi."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_39",
+    "category": "Fullstack Phần 2",
+    "title": "Một endpoint bị abuse hoặc bị gọi quá mức, bạn xử lý thế nào?",
+    "intro": "Interviewer đánh giá khả năng bảo vệ hệ thống trước hành vi xấu hoặc lỗi client.",
+    "bullets": [
+      "Nêu cách phát hiện qua log, metrics hoặc alert.",
+      "Thể hiện bạn biết áp dụng rate limit hoặc chặn tạm thời.",
+      "Nhắc tới việc phân biệt lỗi vô tình và hành vi cố ý."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_40",
+    "category": "Fullstack Phần 2",
+    "title": "Queue bị backlog lớn và job xử lý chậm, bạn ưu tiên xử lý theo hướng nào?",
+    "intro": "Câu hỏi này kiểm tra tư duy xử lý bất đồng bộ khi hệ thống chịu tải.",
+    "bullets": [
+      "Xác định nguyên nhân: job chậm, worker ít, hoặc job lỗi retry liên tục.",
+      "Thể hiện bạn ưu tiên xử lý job quan trọng trước nếu có phân loại.",
+      "Nhắc tới việc dọn dẹp hoặc tạm ngừng job không cần thiết."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_41",
+    "category": "Fullstack Phần 2",
+    "title": "Khi upstream service timeout hoặc không ổn định, bạn làm gì để hệ thống không bị kéo sập?",
+    "intro": "Interviewer muốn biết bạn biết cách cô lập sự cố.",
+    "bullets": [
+      "Nêu cách giới hạn thời gian chờ và số lần gọi.",
+      "Thể hiện bạn tránh để request bị treo lâu.",
+      "Nhắc tới việc trả về phản hồi hợp lý cho client trong thời gian sự cố."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_42",
+    "category": "Fullstack Phần 2",
+    "title": "Bug liên quan tới timezone hoặc định dạng thời gian, bạn debug theo hướng nào?",
+    "intro": "Câu này thường dùng để kiểm tra kinh nghiệm với những lỗi rất khó chịu.",
+    "bullets": [
+      "Nêu cách xác định timezone của server, database và client.",
+      "Thể hiện bạn kiểm tra dữ liệu gốc thay vì chỉ nhìn giao diện.",
+      "Nhắc tới việc chuẩn hoá cách lưu và hiển thị thời gian."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_43",
+    "category": "Fullstack Phần 2",
+    "title": "Deploy nhầm cấu hình môi trường, bạn xử lý và phòng tránh thế nào?",
+    "intro": "Interviewer muốn xem bạn có học được bài học từ lỗi vận hành hay không.",
+    "bullets": [
+      "Xử lý nhanh để đưa hệ thống về trạng thái an toàn.",
+      "Thể hiện bạn kiểm tra lại pipeline và quy trình deploy.",
+      "Nhắc tới việc thêm bước kiểm tra để tránh lặp lại lỗi tương tự."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_44",
+    "category": "Fullstack Phần 2",
+    "title": "Khi xảy ra incident vào giờ cao điểm, bạn ưu tiên phục hồi hay tìm root cause?",
+    "intro": "Câu hỏi này kiểm tra khả năng ưu tiên và giao tiếp dưới áp lực.",
+    "bullets": [
+      "Nêu rõ ưu tiên khôi phục dịch vụ cho người dùng trước.",
+      "Thể hiện bạn tách thời điểm xử lý sự cố và thời điểm phân tích nguyên nhân.",
+      "Nhắc tới việc thông báo tình trạng cho các bên liên quan."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_45",
+    "category": "Fullstack Phần 2",
+    "title": "Bạn viết postmortem sau sự cố như thế nào để tránh lặp lại?",
+    "intro": "Interviewer muốn thấy bạn biến sự cố thành bài học.",
+    "bullets": [
+      "Nêu cách ghi lại bối cảnh, nguyên nhân và tác động.",
+      "Thể hiện bạn đề xuất hành động cải thiện cụ thể.",
+      "Nhắc tới việc chia sẻ bài học cho team, không đổ lỗi cá nhân."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "fullstack_ph_n_2_46",
+    "category": "Fullstack Phần 2",
+    "title": "Khi phải chỉnh sửa legacy code ngay trong lúc incident, bạn làm thế nào để giảm rủi ro?",
+    "intro": "Câu hỏi này đánh giá khả năng làm việc trong điều kiện không lý tưởng. Thay vì cố nhồi nhét toàn bộ kiến thức bạn hãy chọn lọc và luyện theo mục tiêu. Bạn chỉ cần tập trung vào những câu hỏi phù hợp với vị trí ứng tuyển và những phần bạn có khả năng gặp nhiều nhất, vì luyện dàn trải thường khiến bạn mệt nhưng không sâu. Khi luyện trả lời, hãy ưu tiên sự rõ ràng. Một câu trả lời tốt thường đi theo trình tự đơn giản: bạn hiểu vấn đề gì, bạn sẽ làm gì trước, và bạn dựa vào dấu hiệu nào để kết luận. Nếu có thể nói thêm một điểm đánh đổi hoặc rủi ro cần tránh, câu trả lời sẽ chắc hơn rất nhiều mà không cần dùng nhiều thuật ngữ. Bạn cũng nên chuẩn bị sẵn vài câu chuyện ngắn từ dự án thật, vì hầu hết câu hỏi Fullstack đều dễ ghi điểm hơn khi bạn nói bằng trải nghiệm của mình. Không cần câu chuyện hoành tráng, chỉ cần đúng tình huống, có bối cảnh rõ, có cách xử lý hợp lý và có một bài học rút ra là đủ để tạo cảm giác tin cậy. Cuối cùng, đừng luyện theo kiểu cố có câu trả lời hoàn hảo. Điều nhà tuyển dụng muốn nghe thường là cách bạn suy nghĩ và cách bạn làm việc khi gặp vấn đề, vì đó mới là thứ họ sẽ thấy mỗi ngày nếu bạn vào team. Bạn càng luyện theo hướng thể hiện tư duy và quy trình làm việc, bạn càng bớt sợ phỏng vấn và càng dễ giữ bình tĩnh khi gặp câu hỏi khó. Một trong những khó khăn lớn nhất khi chuẩn bị phỏng vấn Fullstack là biết nhiều kiến thức nhưng lại thiếu trải nghiệm để nói cho tròn câu, đúng trọng tâm. Đây cũng là lý do nhiều học viên tìm tới [**Onschool Bootcamp**](https://onschoolbootcamp.edu.vn/) như một bước đệm trước khi bước vào thị trường tuyển dụng. Điểm khác biệt của các chương trình Fullstack tại Onschool Bootcamp nằm ở cách học gắn chặt với dự án thực tế. Người học không chỉ viết code cho chạy, mà được hướng dẫn cách thiết kế API, xử lý dữ liệu, triển khai ứng dụng, theo dõi sau deploy và phản ứng khi hệ thống gặp sự cố ở mức vừa đủ để đi phỏng vấn. Nhờ đó, khi trả lời các câu hỏi về system, production hay trade-off, bạn có trải nghiệm thật để nói, thay vì chỉ nhắc lại lý thuyết. Ngoài kiến thức kỹ thuật, lộ trình học còn giúp người học rèn tư duy làm việc của một Fullstack developer thực thụ: biết ưu tiên, biết đánh đổi, biết giữ hệ thống ổn định và biết trình bày vấn đề rõ ràng. Đây chính là những yếu tố thường quyết định việc bạn vượt qua vòng technical hay dừng lại ở mức tiềm năng. Nếu bạn đang tìm một lộ trình học Fullstack bài bản, có dự án để làm và có mentor đồng hành để chuẩn bị cho phỏng vấn một cách tự tin hơn, Onschool Bootcamp là một lựa chọn đáng cân nhắc. Onschool Bootcamp tự hào chỉ trong 120 ngày, đào tạo thế hệ lập trình viên kiến tạo thế giới số - bắt đầu từ con số 0 [Tìm hiểu thêmSVG Image](/) Đừng quên chia sẻ bài viết này! Sao chép link Fullstack java web developer [Showing lines 1-491 of 639 (49.5KB limit). Use :492 to continue]",
+    "bullets": [
+      "Ưu tiên thay đổi nhỏ, dễ rollback.",
+      "Thể hiện bạn hạn chế refactor lớn khi đang chữa cháy.",
+      "Nhắc tới việc bổ sung test hoặc ghi chú sau khi hệ thống ổn định."
+    ],
+    "sampleAnswer": ""
+  },
+  {
+    "id": "h_nh_vi__behavioral__1",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một lỗi hệ thống phức tạp giữa Front-end và Back-end mà bạn từng gặp. Bạn đã phát hiện nguyên nhân và xử lý nó như thế nào?",
+    "intro": "Nhà tuyển dụng đặt câu hỏi này để đánh giá khả năng nhìn tổng thể hệ thống của một Fullstack Developer. Khi xảy ra lỗi giữa Front-end và Back-end, vấn đề thường không nằm rõ ràng ở một phía. Vì vậy, điều quan trọng không phải là bạn đoán đúng lỗi ngay lập tức, mà là cách bạn tiếp cận và khoanh vùng nguyên nhân một cách có hệ thống. Một quy trình debug hợp lý thường bắt đầu từ phía client, sau đó lần lượt kiểm tra request, response và logic xử lý ở server. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả ngắn gọn bối cảnh dự án và tính năng đang phát triển",
+      "Giải thích dấu hiệu của bug (ví dụ: dữ liệu không cập nhật hoặc hiển thị sai)",
+      "Trình bày cách bạn kiểm tra từng tầng của hệ thống: Network, API response, log backend",
+      "Xác định nguyên nhân gốc rễ của vấn đề",
+      "Kết thúc bằng cách bạn xử lý lỗi và bài học rút ra"
+    ],
+    "sampleAnswer": "Trong một dự án thương mại điện tử mà tôi tham gia, có một lỗi khiến hệ thống không cập nhật giỏ hàng dù người dùng đã nhấn thêm sản phẩm. Khi kiểm tra tab Network trên trình duyệt, tôi thấy request gửi đi thành công nhưng response trả về lại thiếu một trường dữ liệu quan trọng.\nSau khi kiểm tra phần xử lý ở Back-end, tôi phát hiện nguyên nhân nằm ở việc mapping dữ liệu từ database sang object bị sai sau một lần cập nhật schema. Tôi đã điều chỉnh lại lớp Entity và bổ sung validation cho dữ liệu trả về từ API. Sau khi deploy bản sửa lỗi, chức năng giỏ hàng hoạt động ổn định trở lại và team cũng bổ sung thêm test case để tránh lỗi tương tự trong tương lai."
+  },
+  {
+    "id": "h_nh_vi__behavioral__2",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Mô tả một lần bạn phải giải quyết một vấn đề kỹ thuật mà trước đó bạn chưa từng gặp. Bạn đã tiếp cận và tìm ra giải pháp ra sao?",
+    "intro": "Câu hỏi này nhằm đánh giá cách developer tiếp cận những vấn đề mới. Trong thực tế, không phải lúc nào lập trình viên cũng gặp những vấn đề quen thuộc. Nhà tuyển dụng muốn thấy cách bạn học nhanh, nghiên cứu tài liệu và thử nghiệm giải pháp khi đối mặt với một vấn đề hoàn toàn mới. Điều quan trọng trong câu trả lời không phải là mức độ phức tạp của vấn đề, mà là quá trình bạn tìm hiểu và từng bước giải quyết nó. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả ngắn gọn vấn đề kỹ thuật bạn gặp phải",
+      "Giải thích vì sao đây là vấn đề mới với bạn",
+      "Trình bày cách bạn nghiên cứu tài liệu, thử nghiệm hoặc trao đổi với team",
+      "Nêu giải pháp cuối cùng được áp dụng",
+      "Chia sẻ bài học rút ra từ trải nghiệm đó"
+    ],
+    "sampleAnswer": "Trong một dự án phát triển dashboard quản lý dữ liệu, tôi gặp vấn đề khi cần xử lý một lượng lớn dữ liệu realtime từ server. Trước đó tôi chưa từng làm việc với WebSocket nên ban đầu việc đồng bộ dữ liệu giữa Front-end và Back-end gặp nhiều khó khăn.\nTôi bắt đầu bằng việc đọc tài liệu chính thức của thư viện WebSocket mà dự án đang sử dụng, sau đó tạo một môi trường thử nghiệm nhỏ để hiểu cách hoạt động của nó. Sau vài lần thử nghiệm, tôi xây dựng được cơ chế cập nhật dữ liệu theo sự kiện thay vì polling liên tục. Giải pháp này giúp giảm đáng kể số lượng request đến server và cải thiện hiệu năng của ứng dụng."
+  },
+  {
+    "id": "h_nh_vi__behavioral__3",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một tình huống bạn phát hiện ra rủi ro hoặc lỗ hổng bảo mật trong hệ thống sát thời điểm release. Bạn đã xử lý tình huống đó như thế nào?",
+    "intro": "Câu hỏi này giúp nhà tuyển dụng đánh giá khả năng nhận diện rủi ro và cách ứng viên xử lý các vấn đề nghiêm trọng trong hệ thống. Với các sản phẩm thực tế, bảo mật luôn là yếu tố quan trọng, đặc biệt khi ứng dụng chuẩn bị được triển khai ra môi trường production. Nhà tuyển dụng muốn hiểu cách bạn phản ứng khi phát hiện vấn đề lớn vào thời điểm nhạy cảm, cũng như cách bạn trao đổi với team để đưa ra quyết định phù hợp. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả bối cảnh dự án và thời điểm phát hiện vấn đề",
+      "Giải thích rủi ro bảo mật có thể xảy ra",
+      "Trình bày cách bạn báo cáo và thảo luận với team",
+      "Nêu giải pháp được triển khai để khắc phục",
+      "Chia sẻ cách team cải thiện quy trình để tránh lỗi tương tự"
+    ],
+    "sampleAnswer": "Trong một dự án xây dựng hệ thống quản lý tài khoản người dùng, tôi phát hiện một endpoint API có thể truy cập dữ liệu của người khác nếu thay đổi ID trong request. Điều này có thể dẫn đến việc lộ thông tin người dùng nếu hệ thống được deploy.\nTôi đã nhanh chóng báo cáo vấn đề cho team và đề xuất bổ sung kiểm tra quyền truy cập ở tầng service thay vì chỉ kiểm tra ở phía client. Sau khi sửa logic xác thực và bổ sung thêm middleware kiểm tra quyền, team tiến hành kiểm thử lại toàn bộ API trước khi release. Từ sự cố này, chúng tôi cũng bổ sung thêm một số security test vào pipeline CI để phát hiện sớm các lỗi tương tự."
+  },
+  {
+    "id": "h_nh_vi__behavioral__4",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Hãy kể về một lần bạn phải tối ưu hiệu suất cho một tính năng hoặc API đang chạy chậm. Bạn đã xác định bottleneck và cải thiện nó ra sao?",
+    "intro": "Hiệu suất là một trong những yếu tố quan trọng của hệ thống phần mềm. Câu hỏi này giúp nhà tuyển dụng hiểu cách bạn phân tích và tối ưu performance trong ứng dụng thực tế. Thay vì nói chung chung rằng bạn “tối ưu code”, nhà tuyển dụng muốn thấy cách bạn đo lường, xác định bottleneck và kiểm chứng kết quả sau khi cải thiện hệ thống. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả tính năng hoặc API đang gặp vấn đề hiệu suất",
+      "Giải thích cách bạn đo lường hoặc phát hiện bottleneck",
+      "Trình bày phương pháp tối ưu (query, caching, refactor code…)",
+      "Nêu kết quả sau khi tối ưu",
+      "Chia sẻ bài học về việc đo lường hiệu năng"
+    ],
+    "sampleAnswer": "Trong một dự án dashboard phân tích dữ liệu, một API tổng hợp báo cáo mất gần 5 giây để phản hồi khi lượng dữ liệu tăng lên. Điều này khiến giao diện tải rất chậm khi người dùng truy cập.\nSau khi kiểm tra log và profiling query database, tôi phát hiện một truy vấn SQL đang thực hiện nhiều join không cần thiết. Tôi đã refactor lại truy vấn, bổ sung index cho một số cột thường dùng và thêm caching cho kết quả trong một khoảng thời gian ngắn. Sau khi triển khai thay đổi, thời gian phản hồi của API giảm xuống còn khoảng 500ms và trải nghiệm người dùng được cải thiện rõ rệt."
+  },
+  {
+    "id": "h_nh_vi__behavioral__5",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Mô tả một quyết định kỹ thuật khó mà bạn từng phải đưa ra khi yêu cầu dự án còn mơ hồ hoặc chưa rõ ràng.",
+    "intro": "Trong nhiều dự án phần mềm, developer không phải lúc nào cũng nhận được yêu cầu đầy đủ ngay từ đầu. Đôi khi lập trình viên phải đưa ra quyết định kỹ thuật khi thông tin còn hạn chế. Câu hỏi này giúp nhà tuyển dụng hiểu cách bạn suy nghĩ và đưa ra lựa chọn trong những tình huống như vậy. Họ muốn biết bạn dựa trên những yếu tố nào để đưa ra quyết định và cách bạn giảm thiểu rủi ro khi yêu cầu dự án chưa rõ ràng. Gợi ý cách xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả bối cảnh dự án và yêu cầu chưa rõ ràng",
+      "Giải thích các phương án kỹ thuật có thể áp dụng",
+      "Trình bày cách bạn trao đổi với team hoặc stakeholder",
+      "Nêu quyết định cuối cùng và lý do lựa chọn",
+      "Chia sẻ kết quả sau khi triển khai giải pháp"
+    ],
+    "sampleAnswer": "Trong một dự án xây dựng hệ thống quản lý nội dung, team cần phát triển một module tìm kiếm nhưng yêu cầu ban đầu chưa xác định rõ khối lượng dữ liệu và cách người dùng sẽ sử dụng tính năng này.\nTôi đã đề xuất hai phương án: sử dụng tìm kiếm trực tiếp bằng database hoặc triển khai một công cụ search chuyên dụng như Elasticsearch. Sau khi trao đổi với Product Manager và xem xét kế hoạch phát triển sản phẩm, chúng tôi quyết định bắt đầu với giải pháp database search để triển khai nhanh hơn, đồng thời thiết kế kiến trúc sao cho có thể mở rộng sang Elasticsearch khi lượng dữ liệu tăng lên. Quyết định này giúp dự án kịp tiến độ ban đầu và vẫn giữ được khả năng mở rộng trong tương lai.\n## **Nhóm câu hỏi quản lý công việc và áp lực thời gian**\nTrong môi trường phát triển phần mềm, lập trình viên thường phải xử lý nhiều nhiệm vụ cùng lúc: phát triển tính năng mới, sửa lỗi hệ thống, tham gia code review hoặc hỗ trợ các thành viên khác trong team. Với Fullstack Developer, khối lượng công việc đôi khi còn phức tạp hơn vì phải làm việc ở cả Front-end và Back-end.\nNhững câu hỏi trong nhóm này giúp nhà tuyển dụng hiểu cách bạn quản lý thời gian, sắp xếp ưu tiên và xử lý áp lực khi dự án có nhiều việc cần hoàn thành trong thời gian ngắn."
+  },
+  {
+    "id": "h_nh_vi__behavioral__6",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một giai đoạn bạn phải xử lý nhiều đầu việc cùng lúc trong dự án. Bạn đã sắp xếp và ưu tiên công việc như thế nào?",
+    "intro": "Trong thực tế, developer thường phải làm việc với nhiều task song song. Nhà tuyển dụng muốn hiểu cách bạn xác định việc nào cần làm trước và cách bạn giữ tiến độ cho cả dự án. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả bối cảnh dự án và khối lượng công việc cần xử lý",
+      "Giải thích cách bạn xác định mức độ ưu tiên của từng task",
+      "Trình bày cách bạn chia nhỏ công việc hoặc lập kế hoạch thực hiện",
+      "Nêu kết quả đạt được sau khi sắp xếp lại công việc"
+    ],
+    "sampleAnswer": "Trong một dự án phát triển hệ thống quản lý bán hàng, tôi cùng lúc phụ trách sửa bug ở API thanh toán và phát triển thêm một tính năng mới cho dashboard. Vì cả hai task đều liên quan đến phần Back-end nên ban đầu tiến độ khá căng.\nTôi bắt đầu bằng cách trao đổi với Product Manager để xác định mức độ ưu tiên. Sau khi phân tích, chúng tôi quyết định xử lý bug thanh toán trước vì nó ảnh hưởng trực tiếp đến người dùng. Sau khi hoàn thành phần sửa lỗi, tôi chia nhỏ tính năng dashboard thành nhiều task nhỏ và triển khai dần trong các ngày tiếp theo. Nhờ cách sắp xếp này, cả hai công việc đều được hoàn thành đúng tiến độ mà không ảnh hưởng đến chất lượng code."
+  },
+  {
+    "id": "h_nh_vi__behavioral__7",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Mô tả một lần bạn nhận ra mình có thể không kịp deadline. Bạn đã trao đổi với team hoặc stakeholders ra sao để xử lý tình huống đó?",
+    "intro": "Không phải lúc nào developer cũng có thể hoàn thành mọi task đúng kế hoạch ban đầu. Điều nhà tuyển dụng muốn thấy là cách bạn giao tiếp và xử lý tình huống khi tiến độ có nguy cơ bị chậm. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả bối cảnh dự án và nguyên nhân dẫn đến nguy cơ trễ deadline",
+      "Giải thích cách bạn nhận ra vấn đề sớm",
+      "Trình bày cách bạn trao đổi với team hoặc quản lý",
+      "Nêu giải pháp được đưa ra để giữ tiến độ dự án"
+    ],
+    "sampleAnswer": "Trong một sprint phát triển tính năng báo cáo dữ liệu, tôi nhận ra phần xử lý aggregation phức tạp hơn dự kiến và có nguy cơ trễ deadline. Thay vì cố gắng hoàn thành trong im lặng, tôi đã trao đổi sớm với Tech Lead trong buổi standup.\nSau khi thảo luận, team quyết định tách một phần logic xử lý sang service riêng và ưu tiên triển khai phiên bản cơ bản trước. Điều này giúp tính năng vẫn kịp release trong sprint, đồng thời chúng tôi có thêm thời gian để tối ưu phần xử lý dữ liệu ở sprint tiếp theo."
+  },
+  {
+    "id": "h_nh_vi__behavioral__8",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Khi một hệ thống xuất hiện nhiều bug cùng lúc, bạn thường quyết định thứ tự xử lý chúng như thế nào?",
+    "intro": "Một hệ thống production có thể xuất hiện nhiều lỗi cùng lúc, nhưng không phải bug nào cũng có mức độ ảnh hưởng giống nhau. Câu hỏi này nhằm đánh giá cách bạn ưu tiên và xử lý sự cố trong môi trường thực tế. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Giải thích cách bạn phân loại mức độ nghiêm trọng của bug",
+      "Nêu tiêu chí ưu tiên (ảnh hưởng người dùng, dữ liệu, bảo mật…)",
+      "Trình bày cách bạn phối hợp với team để xử lý bug",
+      "Nêu ví dụ thực tế nếu có"
+    ],
+    "sampleAnswer": "Khi hệ thống xuất hiện nhiều bug cùng lúc, tôi thường bắt đầu bằng cách phân loại chúng theo mức độ ảnh hưởng. Những lỗi liên quan đến dữ liệu hoặc làm gián đoạn chức năng chính của hệ thống sẽ được ưu tiên xử lý trước.\nTrong một dự án thương mại điện tử, có thời điểm hệ thống gặp ba lỗi khác nhau: một lỗi hiển thị giao diện, một lỗi API thanh toán và một lỗi liên quan đến báo cáo nội bộ. Sau khi trao đổi với team, chúng tôi quyết định xử lý API thanh toán trước vì nó ảnh hưởng trực tiếp đến giao dịch của người dùng. Sau khi lỗi này được khắc phục, các bug còn lại được xử lý theo thứ tự ưu tiên thấp hơn."
+  },
+  {
+    "id": "h_nh_vi__behavioral__9",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một lần Product Manager yêu cầu thay đổi hoặc thêm tính năng mới trong khi sprint đang diễn ra. Bạn đã phản ứng và xử lý việc đó như thế nào?",
+    "intro": "Trong các dự án Agile, yêu cầu sản phẩm đôi khi thay đổi trong quá trình phát triển. Nhà tuyển dụng muốn hiểu cách bạn cân bằng giữa yêu cầu mới và tiến độ hiện tại của sprint. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả tình huống thay đổi yêu cầu trong sprint",
+      "Giải thích cách bạn trao đổi với Product Manager và team",
+      "Trình bày cách đánh giá ảnh hưởng đến tiến độ",
+      "Nêu giải pháp được đưa ra"
+    ],
+    "sampleAnswer": "Trong một sprint phát triển hệ thống quản lý đơn hàng, Product Manager đề xuất thêm một chức năng lọc dữ liệu mới cho dashboard. Tuy nhiên, sprint lúc đó đã gần hoàn thành và team đang tập trung vào việc hoàn thiện các task còn lại.\nThay vì thêm ngay tính năng mới vào sprint, tôi cùng Tech Lead trao đổi với Product Manager để đánh giá mức độ ưu tiên. Sau khi thảo luận, chúng tôi quyết định đưa tính năng này vào backlog cho sprint tiếp theo để tránh ảnh hưởng đến kế hoạch hiện tại. Điều này giúp team giữ được tiến độ và vẫn đảm bảo tính năng mới được phát triển đúng cách."
+  },
+  {
+    "id": "h_nh_vi__behavioral__10",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Trong môi trường làm việc remote hoặc hybrid, bạn làm thế nào để duy trì hiệu suất và đảm bảo tiến độ công việc?",
+    "intro": "Nhiều công ty công nghệ hiện nay làm việc theo mô hình remote hoặc hybrid. Câu hỏi này giúp nhà tuyển dụng hiểu cách bạn tổ chức công việc cá nhân và duy trì hiệu suất khi không làm việc trực tiếp tại văn phòng. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Giải thích cách bạn tổ chức thời gian làm việc",
+      "Nêu các công cụ hỗ trợ quản lý task và giao tiếp",
+      "Trình bày cách bạn cập nhật tiến độ cho team",
+      "Chia sẻ cách bạn duy trì kỷ luật làm việc"
+    ],
+    "sampleAnswer": "Trong môi trường remote, tôi thường bắt đầu ngày làm việc bằng cách xem lại backlog và xác định các task quan trọng cần hoàn thành trong ngày. Tôi sử dụng các công cụ như Jira hoặc Trello để theo dõi tiến độ công việc và cập nhật trạng thái thường xuyên cho team.\nNgoài ra, tôi luôn tham gia đầy đủ các buổi standup hoặc họp sprint để đảm bảo mọi người nắm được tiến độ chung của dự án. Việc duy trì giao tiếp rõ ràng và cập nhật thường xuyên giúp tôi làm việc hiệu quả ngay cả khi team không ở cùng một văn phòng.\n## **Nhóm câu hỏi khả năng thích nghi và tư duy học hỏi**\nNgành công nghệ thay đổi rất nhanh. Một Fullstack Developer hôm nay có thể làm việc với React và Node.js, nhưng chỉ vài tháng sau dự án có thể chuyển sang một framework hoặc công cụ hoàn toàn khác. Vì vậy, khả năng học hỏi và thích nghi với công nghệ mới là yếu tố mà nhà tuyển dụng đánh giá rất cao.\nNhững câu hỏi trong nhóm này giúp nhà tuyển dụng hiểu cách bạn tiếp cận kiến thức mới, phản ứng với feedback và phát triển kỹ năng của mình theo thời gian."
+  },
+  {
+    "id": "h_nh_vi__behavioral__11",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một công nghệ hoặc công cụ mới mà bạn phải học nhanh để phục vụ dự án. Bạn đã tiếp cận và áp dụng nó ra sao?",
+    "intro": "Trong thực tế, developer thường phải làm việc với những công nghệ mà trước đó mình chưa từng sử dụng. Nhà tuyển dụng đặt câu hỏi này để đánh giá khả năng tự học và cách bạn chuyển kiến thức mới thành giải pháp thực tế. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả công nghệ hoặc công cụ mới mà bạn phải học",
+      "Giải thích vì sao bạn cần học nó trong thời gian ngắn",
+      "Trình bày cách bạn tiếp cận tài liệu và thử nghiệm",
+      "Nêu cách bạn áp dụng công nghệ đó vào dự án"
+    ],
+    "sampleAnswer": "Trong một dự án phát triển hệ thống quản lý nội dung, team quyết định chuyển sang sử dụng Docker để chuẩn hóa môi trường triển khai. Trước đó tôi chưa từng làm việc với container nên phải học khá nhanh để kịp tiến độ dự án.\nTôi bắt đầu bằng việc đọc tài liệu chính thức của Docker và xem một số ví dụ triển khai đơn giản. Sau đó tôi thử container hóa ứng dụng Node.js của dự án trên máy cá nhân để hiểu cách Dockerfile hoạt động. Sau khi nắm được các bước cơ bản, tôi giúp team viết lại cấu hình Docker cho toàn bộ project. Nhờ đó môi trường development và staging được đồng bộ hơn, việc triển khai cũng trở nên đơn giản hơn trước."
+  },
+  {
+    "id": "h_nh_vi__behavioral__12",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Mô tả một dự án mà bạn phải làm việc với một stack công nghệ hoàn toàn mới đối với mình. Bạn đã thích nghi như thế nào?",
+    "intro": "Câu hỏi này giúp nhà tuyển dụng hiểu cách bạn xử lý khi phải bước ra khỏi vùng an toàn của mình. Thay vì chỉ làm việc với công nghệ quen thuộc, developer đôi khi phải học một stack hoàn toàn mới để đáp ứng yêu cầu của dự án. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả dự án và stack công nghệ mới",
+      "Giải thích những khó khăn ban đầu",
+      "Trình bày cách bạn học và thử nghiệm công nghệ",
+      "Nêu kết quả sau khi thích nghi với stack mới"
+    ],
+    "sampleAnswer": "Trong một dự án nội bộ của công ty, team quyết định xây dựng một dịch vụ mới bằng Go để cải thiện hiệu suất xử lý dữ liệu. Trước đó tôi chủ yếu làm việc với JavaScript và Java nên việc chuyển sang Go ban đầu khá bỡ ngỡ.\nTôi bắt đầu bằng việc đọc tài liệu chính thức và xây dựng một vài chương trình nhỏ để hiểu cách Go xử lý concurrency. Sau đó tôi tham gia review code với các thành viên có kinh nghiệm hơn trong team để học cách tổ chức project theo chuẩn của Go. Sau vài tuần, tôi có thể đảm nhận việc phát triển một số module nhỏ trong hệ thống và dần quen với stack mới."
+  },
+  {
+    "id": "h_nh_vi__behavioral__13",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một lần bạn nhận được feedback tiêu cực trong buổi code review. Bạn đã phản ứng và cải thiện code của mình ra sao?",
+    "intro": "Code review là một phần quan trọng trong quy trình phát triển phần mềm. Nhà tuyển dụng muốn hiểu cách bạn tiếp nhận phản hồi từ đồng nghiệp và cách bạn cải thiện chất lượng code của mình. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả tình huống trong buổi code review",
+      "Giải thích feedback mà bạn nhận được",
+      "Trình bày cách bạn điều chỉnh code",
+      "Nêu bài học rút ra sau trải nghiệm đó"
+    ],
+    "sampleAnswer": "Trong một dự án xây dựng API cho hệ thống quản lý người dùng, tôi từng nhận được khá nhiều góp ý trong một buổi code review. Một số đoạn code của tôi xử lý logic khá dài trong controller, khiến việc bảo trì sau này có thể khó khăn.\nSau khi trao đổi với Tech Lead, tôi refactor lại phần logic đó sang service layer và tách một số hàm thành các module nhỏ hơn. Việc này giúp code dễ đọc hơn và cũng phù hợp hơn với kiến trúc chung của dự án. Từ trải nghiệm đó, tôi học được cách tổ chức code rõ ràng hơn trước khi gửi pull request."
+  },
+  {
+    "id": "h_nh_vi__behavioral__14",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Theo bạn, AI và các công cụ hỗ trợ lập trình đang ảnh hưởng như thế nào đến công việc của Fullstack Developer?",
+    "intro": "Trong vài năm gần đây, các công cụ hỗ trợ lập trình bằng AI như GitHub Copilot hay ChatGPT ngày càng phổ biến. Nhà tuyển dụng muốn hiểu cách bạn nhìn nhận sự thay đổi này và cách bạn sử dụng các công cụ mới trong công việc. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Chia sẻ quan điểm về tác động của AI đối với lập trình viên",
+      "Nêu cách bạn sử dụng AI trong công việc hàng ngày",
+      "Giải thích vì sao developer vẫn cần hiểu bản chất của code",
+      "Đưa ra ví dụ cụ thể nếu có"
+    ],
+    "sampleAnswer": "Theo tôi, các công cụ AI đang giúp developer tăng tốc trong nhiều công việc như viết boilerplate code, tìm hiểu thư viện mới hoặc gợi ý cách giải quyết một vấn đề kỹ thuật. Trong công việc hàng ngày, tôi đôi khi sử dụng AI để tham khảo cách viết một đoạn code hoặc tìm hiểu nhanh về một API.\nTuy nhiên, tôi vẫn luôn kiểm tra lại logic và đảm bảo mình hiểu rõ đoạn code trước khi đưa vào dự án. AI có thể hỗ trợ quá trình phát triển, nhưng trách nhiệm cuối cùng về chất lượng hệ thống vẫn thuộc về developer."
+  },
+  {
+    "id": "h_nh_vi__behavioral__15",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Hãy kể về một dự án hoặc tính năng không đạt kết quả như mong đợi. Bạn đã rút ra bài học gì từ trải nghiệm đó?",
+    "intro": "Không phải dự án nào cũng thành công ngay từ đầu. Nhà tuyển dụng đặt câu hỏi này để hiểu cách bạn nhìn nhận thất bại và rút ra bài học cho những dự án sau. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả dự án hoặc tính năng gặp vấn đề",
+      "Giải thích nguyên nhân dẫn đến kết quả không như mong đợi",
+      "Trình bày cách bạn cùng team xử lý tình huống",
+      "Chia sẻ bài học mà bạn rút ra"
+    ],
+    "sampleAnswer": "Trong một dự án phát triển hệ thống báo cáo dữ liệu, team tôi từng triển khai một tính năng phân tích dữ liệu khá phức tạp. Tuy nhiên sau khi release, chúng tôi nhận ra người dùng thực tế không sử dụng nhiều tính năng này như dự đoán ban đầu.\nSau khi trao đổi với Product Manager và phân tích lại dữ liệu sử dụng, team quyết định đơn giản hóa giao diện và tập trung vào những báo cáo quan trọng nhất. Từ trải nghiệm đó, tôi học được rằng việc hiểu rõ nhu cầu người dùng ngay từ đầu là yếu tố rất quan trọng khi thiết kế một tính năng mới.\n## **Nhóm câu hỏi giao tiếp và làm việc nhóm**\nPhát triển phần mềm hiếm khi là công việc của một cá nhân. Trong một dự án thực tế, Fullstack Developer phải làm việc với nhiều vai trò khác nhau như Product Manager, Designer, QA, DevOps hoặc các lập trình viên khác trong team. Vì vậy, kỹ năng giao tiếp và khả năng hợp tác trong nhóm là yếu tố quan trọng mà nhà tuyển dụng luôn quan tâm.\nNhững câu hỏi dưới đây giúp nhà tuyển dụng hiểu cách bạn trao đổi ý tưởng, xử lý bất đồng quan điểm và đóng góp vào mục tiêu chung của cả đội."
+  },
+  {
+    "id": "h_nh_vi__behavioral__16",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Kể về một lần bạn và đồng nghiệp có quan điểm kỹ thuật khác nhau trong dự án. Hai bên đã thảo luận và đi đến quyết định cuối cùng như thế nào?",
+    "intro": "Trong quá trình phát triển phần mềm, việc các thành viên trong team có quan điểm kỹ thuật khác nhau là điều khá bình thường. Nhà tuyển dụng đặt câu hỏi này để đánh giá cách bạn trao đổi và giải quyết bất đồng một cách chuyên nghiệp. Gợi ý khi xây dựng câu trả lời:",
+    "bullets": [
+      "Mô tả ngắn gọn bối cảnh dự án và vấn đề kỹ thuật đang tranh luận",
+      "Trình bày hai hướng tiếp cận khác nhau",
+      "Giải thích cách team thảo luận hoặc thử nghiệm giải pháp",
+      "Nêu quyết định cuối cùng và kết quả"
+    ],
+    "sampleAnswer": "Trong một dự án xây dựng hệ thống quản lý dữ liệu người dùng, tôi và một đồng nghiệp có quan điểm khác nhau về cách triển khai chức năng tìm kiếm. Tôi đề xuất sử dụng Elasticsearch để cải thiện hiệu suất, trong khi đồng nghiệp muốn giữ giải pháp tìm kiếm trực tiếp bằng database để giảm độ phức tạp của hệ thống.\nThay vì tranh luận theo cảm tính, chúng tôi quyết định thử nghiệm cả hai phương án với một bộ dữ liệu mẫu. Sau khi đo thời gian phản hồi và đánh giá mức độ phức tạp khi triển khai, team nhận thấy giải pháp database search vẫn đáp ứng tốt nhu cầu hiện tại. Vì vậy chúng tôi giữ giải pháp đơn giản hơn, đồng thời thiết kế hệ thống theo hướng có thể tích hợp Elasticsearch trong tương lai nếu dữ liệu tăng lên."
+  },
+  {
+    "id": "h_nh_vi__behavioral__17",
+    "category": "Hành vi (Behavioral)",
+    "title": ": Mô tả một tình huống bạn phải giải thích một vấn đề kỹ thuật phức tạp cho người không có nền tảng IT.",
+    "intro": "Không phải ai trong công ty cũng có kiến thức kỹ thuật. Developer thường phải trao đổi với Product Manager, Designer hoặc khách hàng về các vấn đề liên quan đến hệ thống. Câu hỏi này giúp nhà tuyển dụng hiểu cách bạn truyền đạt thông tin kỹ thuật một cách dễ hiểu. Gợi ý khi xây dựng câu trả lời: [Showing lines 1-368 of 648 (50.0KB limit). Use :369 to continue]",
+    "bullets": [
+      "Mô tả bối cảnh cuộc trao đổi"
+    ],
+    "sampleAnswer": ""
+  }
+]
