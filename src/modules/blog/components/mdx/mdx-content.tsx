@@ -1,3 +1,5 @@
+import { cacheLife } from "next/cache";
+
 import Image from "next/image";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -136,7 +138,9 @@ const components = {
   td: (props: any) => <td className="px-4 py-3 text-gray-300" {...props} />,
 };
 
-export const MDXContent = ({ source }: { source: string }) => {
+export const MDXContent = async ({ source }: { source: string }) => {
+  "use cache";
+  cacheLife("days");
   return (
     <MDXRemote
       source={source}

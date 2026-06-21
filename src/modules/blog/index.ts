@@ -6,3 +6,4 @@ export {
 export { MDXContent } from "./components/mdx/mdx-content";
 export { TableOfContents } from "./components/table-of-contents";
 export { BlogCard } from "./components/blog-card";
+export { FormattedDate } from "./components/formatted-date";

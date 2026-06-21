@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { updateTag } from "next/cache";
 
-// PERF: Force Edge runtime for instant boot time and zero cold starts.
-export const runtime = "edge";
 
 // Time Complexity: O(1)
 export async function POST(request: NextRequest) {

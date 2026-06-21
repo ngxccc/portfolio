@@ -1,9 +1,6 @@
 import { getBlogPostsMetadata } from "@/modules/blog";
 import { NextResponse } from "next/server";
 
-// Build cái API này thành file tĩnh (static)
-export const dynamic = "force-static";
-
 export const GET = async () => {
   const posts = await getBlogPostsMetadata();
 

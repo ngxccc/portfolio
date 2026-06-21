@@ -6,6 +6,7 @@ import {
   getPostBySlug,
   MDXContent,
   TableOfContents,
+  FormattedDate,
 } from "@/modules/blog";
 import { siteConfig } from "@/shared/config/site";
 import { getTranslations } from "next-intl/server";
@@ -62,11 +63,7 @@ const BlogPost = async ({ params }: PageProps) => {
 
           <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
             <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString("vi-VN", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              <FormattedDate date={post.date} />
             </time>
             <span>🎉</span>
             <span>{post.readingTime}</span>

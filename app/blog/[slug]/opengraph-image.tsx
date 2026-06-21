@@ -33,13 +33,15 @@ export default async function Image({
   const post = await getPostBySlug(slug);
 
   const title = post?.title ?? "Blog Post";
-  const date = post?.date
-    ? new Date(post.date).toLocaleDateString("vi-VN", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : "Ngxc Blog";
+  let date = "Ngxc Blog";
+  if (post?.date) {
+    const parts = post.date.split("-");
+    if (parts.length === 3) {
+      date = `Ngày ${Number(parts[2])} tháng ${Number(parts[1])}, ${parts[0]}`;
+    } else {
+      date = post.date;
+    }
+  }
   const tags = post?.tags ?? ["Tech", "Coding"];
 
   const [interBold, jetBrainsMono] = await Promise.all([

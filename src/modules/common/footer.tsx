@@ -6,9 +6,15 @@ import { siteConfig } from "@/shared/config/site";
 import { navigationConfig } from "@/shared/config/navigation";
 import { useTranslations } from "next-intl";
 
+import { useState, useEffect } from "react";
+
 const Footer = () => {
   const t = useTranslations("Footer");
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState(2026);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="relative mt-12 border-t border-white/10">
